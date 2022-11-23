@@ -1,6 +1,6 @@
 # Food App
 
-A new Flutter project.
+A new Flutter project by 5F
 
 ## Getting Started
 
