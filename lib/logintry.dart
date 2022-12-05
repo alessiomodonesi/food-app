@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'homepage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -28,7 +29,12 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: InputDecoration(labelText: 'password'),
                   obscureText: true,
                 ),
-                ElevatedButton(onPressed: () {}, child: Text('Accedi'))
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => const Homepage()));
+                    },
+                    child: Text('Accedi'))
               ],
             ))));
   }
