@@ -9,6 +9,10 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   String name = "sample";
+  String catalogName = "Nome catalogo";
+  List _tagList = [1, 2, 3];
+  double topStart = 178;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -59,12 +63,13 @@ class _HomepageState extends State<Homepage> {
             ))),
         Positioned(
             left: 30,
+            right: 30,
             top: 126,
             child: Material(
               child: Column(
                 children: [
                   SizedBox(
-                    width: 330,
+                    width: MediaQuery.of(context).size.width - 60,
                     height: 39,
                     child: TextField(
                       decoration: InputDecoration(
@@ -80,6 +85,35 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
             )),
+        Positioned(
+            width: 61,
+            height: 24,
+            left: 30,
+            top: 215,
+            child: Container(
+                child: RichText(
+              text: TextSpan(
+                text: catalogName,
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    fontFamily: 'Inter'),
+              ),
+            ))),
+        Container(
+          padding: const EdgeInsets.only(top: 170),
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: _tagList.length,
+            itemBuilder: (context, index) {
+              return Container(
+                padding: const EdgeInsets.all(15),
+                child: Center(child: Text('aa')),
+              );
+            },
+          ),
+        )
       ],
     );
   }
