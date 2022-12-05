@@ -11,7 +11,7 @@ class myApp extends StatelessWidget {
     return MaterialApp(
         title: 'login try',
         theme: ThemeData(
-          primarySwatch: Colors.pink, //fabulous
+          primarySwatch: Colors.red, //fabulous
         ),
         home: LoginPage());
   }
