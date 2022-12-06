@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'main.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -49,7 +50,11 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: InputDecoration(labelText: 'password'),
                       obscureText: true,
                     ),
-                    ElevatedButton(onPressed: () {}, child: Text('Accedi'))
+                    ElevatedButton(
+                        onPressed: () {
+                          navigateNextPage(context);
+                        },
+                        child: Text('Accedi'))
                   ],
                 ))
               ],
