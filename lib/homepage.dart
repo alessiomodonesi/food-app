@@ -73,13 +73,15 @@ class _HomepageState extends State<Homepage> {
                     height: 39,
                     child: TextField(
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(
+                        enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(341),
+                          borderSide: const BorderSide(
+                              color: Color(0xEEEEEAEA), width: 0.0),
                         ),
                         filled: true,
                         fillColor: const Color(0xEEEEEAEA),
                       ),
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ),
                 ],
@@ -102,15 +104,103 @@ class _HomepageState extends State<Homepage> {
               ),
             ))),
         Container(
-          padding: const EdgeInsets.only(top: 170),
+          padding: EdgeInsets.only(
+            top: (MediaQuery.of(context).size.height / 2) - 240,
+            left: 14,
+            right: 14,
+          ),
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: _tagList.length,
             itemBuilder: (context, index) {
               return Container(
-                padding: const EdgeInsets.all(15),
-                child: Center(child: Text('aa')),
-              );
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Material(
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width - 28,
+                          height: 67,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: const Color(0xEEEEEAEA),
+                                boxShadow: const [
+                                  BoxShadow(
+                                      color: Color.fromARGB(64, 0, 0, 0),
+                                      blurRadius: 7,
+                                      offset: Offset(0, 4)),
+                                ]),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  height: 55,
+                                  width: 55,
+                                  margin: const EdgeInsets.only(
+                                    left: 14,
+                                    top: 6,
+                                  ),
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xEEEEEAEA),
+                                  ),
+                                  child: const Center(
+                                    child: Text("aa"),
+                                  ),
+                                ),
+                                Container(
+                                    height: 20,
+                                    width: 119,
+                                    margin: const EdgeInsets.only(
+                                      top: 24,
+                                      left: 80,
+                                    ),
+                                    child: RichText(
+                                      text: const TextSpan(
+                                        text: "Nome panino",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w700,
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 16,
+                                            fontFamily: 'Inter'),
+                                      ),
+                                    )),
+                                Container(
+                                  height: 37,
+                                  width: 57,
+                                  margin: const EdgeInsets.only(
+                                    top: 15,
+                                    left: 302,
+                                  ),
+                                  child: SizedBox(
+                                      height: 37,
+                                      width: 57,
+                                      child: DecoratedBox(
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            color: const Color(0xFFEE0F38)),
+                                        child: Center(
+                                            child: RichText(
+                                                text: const TextSpan(
+                                          text: "\$1,50",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w700,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 16,
+                                              fontFamily: 'Inter'),
+                                        ))),
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ));
             },
           ),
         )
