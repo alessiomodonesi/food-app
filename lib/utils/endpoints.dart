@@ -1,1 +1,5 @@
-const getCatalogUrl = "";
+const getTagUrl = "";
+
+const getProductTagUrl = "";
+
+const getProductUrl = "";
