@@ -1,6 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:food_app/types/product.dart';
+import 'package:food_app/types/productTag.dart';
+import 'package:food_app/utils/utils.dart';
+import 'package:food_app/types/tag.dart';
 
 class Homepage extends StatefulWidget {
+  final int id = 1;
   const Homepage({super.key});
 
   @override
@@ -9,11 +16,43 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   String name = "sample";
-  String catalogName = "Nome catalogo";
-  List _tagList = [1, 2, 3];
-  double topStart = 178;
+  String catalogName = "";
+  List<ProductTag> _productTagList = List.empty();
+  List<Product> _productList = List.empty();
+
+  String capitalize(String str) {
+    return str[0].toUpperCase() + str.substring(1);
+  }
 
   @override
+  void initState() {
+    super.initState();
+    getTag(widget.id.toString()).then(
+        (value) => setState(() {
+              catalogName = capitalize(value[0].name);
+            }), onError: (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Sending Message"),
+      ));
+    });
+
+    getProductTag(widget.id.toString()).then(
+        (value) => setState(() {
+              _productTagList = value;
+            }), onError: (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Sending Message"),
+      ));
+    }).then((value) => setState(() {
+          for (var i = 0; i < _productTagList.length; i++) {
+            getProduct(_productTagList[i].product).then((value) => {
+                  _productList[i] = value[0],
+                });
+          }
+          log(_productList.toString());
+        }));
+  }
+
   Widget build(BuildContext context) {
     return Stack(
       children: [
@@ -88,7 +127,7 @@ class _HomepageState extends State<Homepage> {
               ),
             )),
         Positioned(
-            width: 61,
+            width: 65,
             height: 24,
             left: 30,
             top: 215,
@@ -111,7 +150,7 @@ class _HomepageState extends State<Homepage> {
           ),
           child: ListView.builder(
             shrinkWrap: true,
-            itemCount: _tagList.length,
+            itemCount: _productTagList.length,
             itemBuilder: (context, index) {
               return Container(
                   padding: const EdgeInsets.only(top: 15),
@@ -156,9 +195,9 @@ class _HomepageState extends State<Homepage> {
                                       left: 80,
                                     ),
                                     child: RichText(
-                                      text: const TextSpan(
-                                        text: "Nome panino",
-                                        style: TextStyle(
+                                      text: TextSpan(
+                                        text: _productTagList[index].product,
+                                        style: const TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.w700,
                                             fontStyle: FontStyle.normal,
