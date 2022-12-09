@@ -18,7 +18,7 @@ class _HomepageState extends State<Homepage> {
   String name = "sample";
   String catalogName = "";
   List<ProductTag> _productTagList = List.empty();
-  List<Product> _productList = List.empty();
+  List<Product> _productList = List.empty(growable: true);
 
   String capitalize(String str) {
     return str[0].toUpperCase() + str.substring(1);
@@ -43,14 +43,20 @@ class _HomepageState extends State<Homepage> {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Sending Message"),
       ));
-    }).then((value) => setState(() {
-          for (var i = 0; i < _productTagList.length; i++) {
-            getProduct(_productTagList[i].product).then((value) => {
-                  _productList[i] = value[0],
-                });
-          }
-          log(_productList.toString());
-        }));
+    }).then((value) => {
+          for (var i = 0; i < _productTagList.length; i++)
+            {
+              getProduct(_productTagList[i].product).then((value) => setState(
+                    () {
+                      log(value[0].name);
+                      _productList.add(Product(
+                          id: value[0].id.toString(),
+                          name: value[0].name,
+                          price: value[0].price));
+                    },
+                  ))
+            }
+        });
   }
 
   Widget build(BuildContext context) {
@@ -189,14 +195,13 @@ class _HomepageState extends State<Homepage> {
                                 ),
                                 Container(
                                     height: 20,
-                                    width: 119,
                                     margin: const EdgeInsets.only(
                                       top: 24,
                                       left: 80,
                                     ),
                                     child: RichText(
                                       text: TextSpan(
-                                        text: _productTagList[index].product,
+                                        text: _productList[index].name,
                                         style: const TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.w700,

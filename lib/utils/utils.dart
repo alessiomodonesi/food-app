@@ -10,7 +10,6 @@ import 'package:dio/dio.dart';
 Future<List<Tag>> getTag(String id) async {
   try {
     Response response = await Dio().get(getTagUrl + id);
-    log(response.data.toString());
     return parseTag((response.data));
   } catch (e) {
     log(e.toString());
@@ -32,7 +31,7 @@ Future<List<Product>> getProduct(id) async {
   try {
     Response response = await Dio().get(getProductUrl + id);
     log(response.data.toString());
-    return List.empty();
+    return parseProduct(jsonEncode(response.data));
   } catch (e) {
     log(e.toString());
     return List.empty();
