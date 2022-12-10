@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'main.dart';
+import 'pages/homepage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -15,49 +14,28 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext conterxt) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text('login page'),
+        ),
         body: Container(
             padding: EdgeInsets.all(30.0),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SvgPicture.asset("lib/assets/right_side_pills.svg",
-                        semanticsLabel: 'Pills'),
-                  ],
+            child: Form(
+                child: Column(
+              children: <Widget>[
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'e-mail'),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset("lib/assets/app_logo.svg",
-                        semanticsLabel: 'SandWech Logo'),
-                  ],
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'password'),
+                  obscureText: true,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SvgPicture.asset("lib/assets/left_side_pills.svg",
-                        semanticsLabel: 'Pills'),
-                  ],
-                ),
-                Form(
-                    child: Column(
-                  children: <Widget>[
-                    TextFormField(
-                      decoration: InputDecoration(labelText: 'e-mail'),
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(labelText: 'password'),
-                      obscureText: true,
-                    ),
-                    ElevatedButton(
-                        onPressed: () {
-                          navigateNextPage(context);
-                        },
-                        child: Text('Accedi'))
-                  ],
-                ))
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => const Homepage()));
+                    },
+                    child: Text('Accedi'))
               ],
-            )));
+            ))));
   }
 }
