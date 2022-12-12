@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:food_app/types/product.dart';
 import 'package:food_app/types/productTag.dart';
