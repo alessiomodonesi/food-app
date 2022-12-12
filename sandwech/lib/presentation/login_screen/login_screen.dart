@@ -185,7 +185,7 @@ class LoginScreen extends GetWidget<LoginController> {
                     validator: (value) {
                       if (value == null ||
                           (!isValidEmail(value, isRequired: true))) {
-                        return "Please enter valid email";
+                        return "Inserisci un indirizzo email valido";
                       }
                       return null;
                     },
@@ -233,7 +233,7 @@ class LoginScreen extends GetWidget<LoginController> {
                       validator: (value) {
                         if (value == null ||
                             (!isValidPassword(value, isRequired: true))) {
-                          return "Please enter valid password";
+                          return "Inserisci la tua password";
                         }
                         return null;
                       },

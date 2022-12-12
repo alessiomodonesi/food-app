@@ -2,8 +2,8 @@ import 'package:sandwech/presentation/open_screen/open_screen.dart';
 import 'package:sandwech/presentation/open_screen/binding/open_binding.dart';
 import 'package:sandwech/presentation/login_screen/login_screen.dart';
 import 'package:sandwech/presentation/login_screen/binding/login_binding.dart';
-import 'package:sandwech/presentation/signin_screen/signin_screen.dart';
-import 'package:sandwech/presentation/signin_screen/binding/signin_binding.dart';
+import 'package:sandwech/presentation/signup_screen/signup_screen.dart';
+import 'package:sandwech/presentation/signup_screen/binding/signup_binding.dart';
 import 'package:sandwech/presentation/category_screen/category_screen.dart';
 import 'package:sandwech/presentation/category_screen/binding/category_binding.dart';
 import 'package:sandwech/presentation/home_screen/home_screen.dart';
@@ -21,7 +21,7 @@ class AppRoutes {
 
   static String loginScreen = '/login_screen';
 
-  static String signinScreen = '/signin_screen';
+  static String signupScreen = '/signup_screen';
 
   static String categoryScreen = '/category_screen';
 
@@ -51,10 +51,10 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: signinScreen,
-      page: () => SigninScreen(),
+      name: signupScreen,
+      page: () => SignupScreen(),
       bindings: [
-        SigninBinding(),
+        SignupBinding(),
       ],
     ),
     GetPage(

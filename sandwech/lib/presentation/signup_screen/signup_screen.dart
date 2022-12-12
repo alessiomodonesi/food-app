@@ -1,4 +1,4 @@
-import 'controller/signin_controller.dart';
+import 'controller/signup_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:sandwech/core/app_export.dart';
 import 'package:sandwech/core/utils/validation_functions.dart';
@@ -7,7 +7,7 @@ import 'package:sandwech/widgets/app_bar/custom_app_bar.dart';
 import 'package:sandwech/widgets/custom_button.dart';
 import 'package:sandwech/widgets/custom_text_form_field.dart';
 
-class SigninScreen extends GetWidget<SigninController> {
+class SignupScreen extends GetWidget<SignupController> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -93,38 +93,15 @@ class SigninScreen extends GetWidget<SigninController> {
                       ),
                     ),
                   ),
-                  Container(
-                    width: double.infinity,
+                  CustomTextFormField(
+                    width: 358,
+                    focusNode: FocusNode(),
+                    controller: controller.nameController,
+                    hintText: "lbl_mario".tr,
                     margin: getMargin(
                       left: 16,
+                      top: 1,
                       right: 16,
-                    ),
-                    decoration: AppDecoration.fillGray200.copyWith(
-                      borderRadius: BorderRadiusStyle.roundedBorder15,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Padding(
-                            padding: getPadding(
-                              left: 20,
-                              top: 19,
-                              right: 20,
-                              bottom: 16,
-                            ),
-                            child: Text(
-                              "lbl_mario".tr,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.left,
-                              style: AppStyle.txtInterRegular16,
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                   Align(
@@ -143,38 +120,15 @@ class SigninScreen extends GetWidget<SigninController> {
                       ),
                     ),
                   ),
-                  Container(
-                    width: double.infinity,
+                  CustomTextFormField(
+                    width: 358,
+                    focusNode: FocusNode(),
+                    controller: controller.surnameController,
+                    hintText: "lbl_rossi".tr,
                     margin: getMargin(
                       left: 16,
+                      top: 1,
                       right: 16,
-                    ),
-                    decoration: AppDecoration.fillGray200.copyWith(
-                      borderRadius: BorderRadiusStyle.roundedBorder15,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Padding(
-                            padding: getPadding(
-                              left: 19,
-                              top: 17,
-                              right: 19,
-                              bottom: 18,
-                            ),
-                            child: Text(
-                              "lbl_rossi".tr,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.left,
-                              style: AppStyle.txtInterRegular16,
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                   Align(
@@ -224,6 +178,7 @@ class SigninScreen extends GetWidget<SigninController> {
                     width: double.infinity,
                     margin: getMargin(
                       left: 16,
+                      top: 1,
                       right: 16,
                     ),
                     decoration: AppDecoration.fillGray200.copyWith(
@@ -234,48 +189,49 @@ class SigninScreen extends GetWidget<SigninController> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Container(
-                            decoration: AppDecoration.fillGray200.copyWith(
-                              borderRadius: BorderRadiusStyle.roundedBorder15,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: getPadding(
-                                    left: 21,
-                                    top: 18,
-                                    bottom: 17,
-                                  ),
-                                  child: Text(
-                                    "lbl".tr,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
-                                    style: AppStyle.txtInterRegular16,
-                                  ),
+                        Obx(
+                          () => CustomTextFormField(
+                            width: 358,
+                            focusNode: FocusNode(),
+                            controller: controller.passwordController,
+                            hintText: "lbl".tr,
+                            textInputAction: TextInputAction.done,
+                            alignment: Alignment.centerLeft,
+                            suffix: InkWell(
+                              onTap: () {
+                                controller.isShowPassword.value =
+                                    !controller.isShowPassword.value;
+                              },
+                              child: Container(
+                                margin: getMargin(
+                                  left: 169,
+                                  top: 17,
+                                  right: 20,
+                                  bottom: 17,
                                 ),
-                                Padding(
-                                  padding: getPadding(
-                                    top: 17,
-                                    right: 20,
-                                    bottom: 17,
-                                  ),
-                                  child: CommonImageView(
-                                    svgPath: ImageConstant.imgEye,
-                                    height: getSize(
-                                      22.00,
-                                    ),
-                                    width: getSize(
-                                      22.00,
-                                    ),
-                                  ),
+                                child: CommonImageView(
+                                  svgPath: controller.isShowPassword.value
+                                      ? ImageConstant.imgEye
+                                      : ImageConstant.imgEye,
                                 ),
-                              ],
+                              ),
                             ),
+                            suffixConstraints: BoxConstraints(
+                              minWidth: getHorizontalSize(
+                                22.00,
+                              ),
+                              minHeight: getVerticalSize(
+                                22.00,
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null ||
+                                  (!isValidPassword(value, isRequired: true))) {
+                                return "Please enter valid password";
+                              }
+                              return null;
+                            },
+                            isObscureText: !controller.isShowPassword.value,
                           ),
                         ),
                       ],
@@ -316,14 +272,14 @@ class SigninScreen extends GetWidget<SigninController> {
                           () => CustomTextFormField(
                             width: 358,
                             focusNode: FocusNode(),
-                            controller: controller.frameTwoController,
+                            controller: controller.confirmPasswordController,
                             hintText: "lbl".tr,
                             textInputAction: TextInputAction.done,
                             alignment: Alignment.centerLeft,
                             suffix: InkWell(
                               onTap: () {
-                                controller.isShowPassword.value =
-                                    !controller.isShowPassword.value;
+                                controller.isShowPasswordConfirm.value =
+                                    !controller.isShowPasswordConfirm.value;
                               },
                               child: Container(
                                 margin: getMargin(
@@ -333,9 +289,10 @@ class SigninScreen extends GetWidget<SigninController> {
                                   bottom: 17,
                                 ),
                                 child: CommonImageView(
-                                  svgPath: controller.isShowPassword.value
-                                      ? ImageConstant.imgEye
-                                      : ImageConstant.imgEye,
+                                  svgPath:
+                                      controller.isShowPasswordConfirm.value
+                                          ? ImageConstant.imgEye
+                                          : ImageConstant.imgEye,
                                 ),
                               ),
                             ),
@@ -354,7 +311,8 @@ class SigninScreen extends GetWidget<SigninController> {
                               }
                               return null;
                             },
-                            isObscureText: !controller.isShowPassword.value,
+                            isObscureText:
+                                !controller.isShowPasswordConfirm.value,
                           ),
                         ),
                       ],

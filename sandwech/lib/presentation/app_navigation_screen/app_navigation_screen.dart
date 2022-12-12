@@ -168,7 +168,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                                     ]))),
                                         GestureDetector(
                                             onTap: () {
-                                              onTapSignin();
+                                              onTapSignup();
                                             },
                                             child: Container(
                                                 width:
@@ -193,7 +193,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                                                       bottom:
                                                                           10),
                                                               child: Text(
-                                                                  "lbl_signin"
+                                                                  "lbl_Signup"
                                                                       .tr,
                                                                   overflow:
                                                                       TextOverflow
@@ -446,8 +446,8 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
     Get.toNamed(AppRoutes.loginScreen);
   }
 
-  onTapSignin() {
-    Get.toNamed(AppRoutes.signinScreen);
+  onTapSignup() {
+    Get.toNamed(AppRoutes.signupScreen);
   }
 
   onTapCategory() {
