@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'logintry.dart';
 import 'pages/homepage.dart';
-import 'pages/category.dart';
+// import 'pages/category.dart';
 
 void main() {
   runApp(myApp());
