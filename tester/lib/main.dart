@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'logintry.dart';
+import 'homepage.dart';
 
 void main() {
   runApp(myApp());
@@ -7,7 +8,7 @@ void main() {
 
 void navigateNextPage(BuildContext context) {
   Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-    return HomePage();
+    return Homepage();
   }));
 }
 
