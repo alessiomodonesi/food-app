@@ -9,7 +9,7 @@ void main() {
 
 void navigateNextPage(BuildContext context) {
   Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-    return Homepage();
+    return Homepage(1);
   }));
 }
 

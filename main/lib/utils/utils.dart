@@ -30,7 +30,6 @@ Future<List<ProductTag>> getProductTag(id) async {
 Future<List<Product>> getProduct(id) async {
   try {
     Response response = await Dio().get(getProductUrl + id);
-    log(response.data.toString());
     return parseProduct(jsonEncode(response.data));
   } catch (e) {
     log(e.toString());

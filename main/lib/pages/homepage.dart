@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:food_app/types/product.dart';
 import 'package:food_app/types/product_tag.dart';
@@ -6,8 +5,8 @@ import 'package:food_app/utils/utils.dart';
 //import 'package:food_app/types/tag.dart';
 
 class Homepage extends StatefulWidget {
-  final int id = 1;
-  const Homepage({super.key});
+  final int id;
+  const Homepage(this.id, {super.key});
 
   @override
   State<Homepage> createState() => _HomepageState();
@@ -16,8 +15,10 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   String name = "sample";
   String catalogName = "";
-  List<ProductTag> _productTagList = List.empty();
   List<Product> _productList = List.empty(growable: true);
+  List<ProductTag> _productTagList = List.empty();
+  int k = 0;
+  int j = 0;
 
   String capitalize(String str) {
     return str[0].toUpperCase() + str.substring(1);
@@ -45,16 +46,15 @@ class _HomepageState extends State<Homepage> {
     }).then((value) => {
           for (var i = 0; i < _productTagList.length; i++)
             {
-              getProduct(_productTagList[i].product).then((value) => setState(
-                    () {
-                      log(value[0].name);
-                      _productList.add(Product(
-                          id: value[0].id.toString(),
-                          name: value[0].name,
-                          price: value[0].price));
-                    },
-                  ))
-            }
+              getProduct(_productTagList[i].product).then(
+                (value) => setState(() {
+                  _productList.add(Product(
+                      id: value[0].id.toString(),
+                      name: value[0].name,
+                      price: value[0].price));
+                }),
+              ),
+            },
         });
   }
 
@@ -155,7 +155,7 @@ class _HomepageState extends State<Homepage> {
           ),
           child: ListView.builder(
             shrinkWrap: true,
-            itemCount: _productTagList.length,
+            itemCount: _productList.length,
             itemBuilder: (context, index) {
               return Container(
                   padding: const EdgeInsets.only(top: 15),
@@ -226,9 +226,10 @@ class _HomepageState extends State<Homepage> {
                                             color: const Color(0xFFEE0F38)),
                                         child: Center(
                                             child: RichText(
-                                                text: const TextSpan(
-                                          text: "\$1,50",
-                                          style: TextStyle(
+                                                text: TextSpan(
+                                          text:
+                                              "\$  ${_productList[index].price}",
+                                          style: const TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w700,
                                               fontStyle: FontStyle.normal,
