@@ -108,36 +108,36 @@ class _HomepageState extends State<Homepage> {
                   ),
                 ))),
             Positioned(
-                left: 30,
-                right: 30,
-                top: 126,
+                left: (MediaQuery.of(context).size.width -
+                        (MediaQuery.of(context).size.width - 30)) /
+                    2,
+                width: (MediaQuery.of(context).size.width) - 30,
+                top: 100,
                 child: Material(
+                  color: Colors.white,
                   child: Column(
                     children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width - 60,
-                        height: 39,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(341),
-                              borderSide: const BorderSide(
-                                  color: Color(0xEEEEEAEA), width: 0.0),
-                            ),
-                            filled: true,
-                            fillColor: const Color(0xEEEEEAEA),
-                          ),
-                          style: const TextStyle(fontSize: 20),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        child: CupertinoSearchTextField(
+                          borderRadius: BorderRadius.circular(20),
+                          placeholder: 'Cerca qualcosa...',
+                          prefixInsets: const EdgeInsets.only(left: 10),
+                          suffixIcon:
+                              const Icon(CupertinoIcons.slider_horizontal_3),
+                          suffixMode: OverlayVisibilityMode.always,
+                          suffixInsets: const EdgeInsets.only(right: 10),
+                          onSuffixTap: () {},
                         ),
                       ),
                     ],
                   ),
                 )),
             Positioned(
-                width: 65,
+                width: 100,
                 height: 24,
                 left: 30,
-                top: 215,
+                top: 205,
                 child: Container(
                     child: RichText(
                   text: TextSpan(
@@ -150,8 +150,8 @@ class _HomepageState extends State<Homepage> {
                   ),
                 ))),
             Container(
-              padding: EdgeInsets.only(
-                top: (MediaQuery.of(context).size.height / 2) - 240,
+              padding: const EdgeInsets.only(
+                top: 170,
                 left: 14,
                 right: 14,
               ),
@@ -272,7 +272,7 @@ class _HomepageState extends State<Homepage> {
                 items: const <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                       icon: Icon(
-                        CupertinoIcons.person_fill,
+                        CupertinoIcons.person,
                         color: Colors.white,
                       ),
                       label: ''),

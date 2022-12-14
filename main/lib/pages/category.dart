@@ -11,20 +11,20 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> titles = [
-      "PANINI",
-      "PIADINE",
-      "BRIOCHES",
-      "SNACK",
-      "BIBITE",
-    ];
+    var titles = {
+      "PANINI": "1",
+      "PIADINE": "3",
+      "BRIOCHES": "4",
+      "SNACK": "5",
+      "BIBITE": "2"
+    };
 
     final List<Widget> images = [
       Container(
         decoration: BoxDecoration(
             //image: ,
             borderRadius: BorderRadius.circular(100),
-            color: Color.fromARGB(228, 255, 194, 28)),
+            color: Color.fromARGB(255, 158, 11, 0)),
       ),
       Container(
         decoration: BoxDecoration(
@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
               Expanded(
                 child: Container(
                   child: VerticalCardPager(
-                      titles: titles, // required
+                      titles: titles.keys.toList(), // required
                       images: images, // required
                       textStyle: TextStyle(
                           color: Colors.white,
@@ -75,11 +75,22 @@ class HomePage extends StatelessWidget {
                         // optional
                       },
                       onSelectedItem: (index) {
-                        log(index.toString());
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Homepage(1)));
+                        if (!titles.values
+                            .toList()
+                            .contains((index + 1).toString())) {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("Errore")));
+                        } else {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Homepage(int.parse(
+                                      titles.values.toList()[index]))));
+                        }
                         // optional
                       },
                       initialPage: 0, // optional
