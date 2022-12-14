@@ -40,6 +40,18 @@ Future<List<Product>> getProduct(id) async {
   }
 }
 
+// il ? sta a indicare che la funzione può tornare Product oppure null
+Future<Product?> getSingleProduct(id) async {
+  try {
+    Response response = await Dio().get(getProductUrl + id);
+    log(response.toString());
+    return parseSingleProduct(jsonEncode(response.data));
+  } catch (e) {
+    log(e.toString());
+    return null;
+  }
+}
+
 List<Tag> parseTag(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
@@ -56,4 +68,10 @@ List<Product> parseProduct(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
   return parsed.map<Product>((json) => Product.fromJson(json)).toList();
+}
+
+Product parseSingleProduct(String responseBody) {
+  List parsed = jsonDecode(responseBody);
+  //log(parsed.toString());
+  return parsed.map<Product>((json) => Product.fromJson(json)).toList()[0];
 }
