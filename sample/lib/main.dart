@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       fallbackLocale: Locale('en', 'US'),
       title: 'sandwech',
       initialBinding: InitialBindings(),
-      initialRoute: AppRoutes.initialRoute,
+      initialRoute: AppRoutes.signupScreen,
       getPages: AppRoutes.pages,
     );
   }

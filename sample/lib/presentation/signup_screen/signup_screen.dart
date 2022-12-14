@@ -103,6 +103,12 @@ class SignupScreen extends GetWidget<SignupController> {
                       top: 1,
                       right: 16,
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Il nome è obbligatorio";
+                      }
+                      return null;
+                    },
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -130,6 +136,12 @@ class SignupScreen extends GetWidget<SignupController> {
                       top: 1,
                       right: 16,
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Il cognome è obbligatorio";
+                      }
+                      return null;
+                    },
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -157,6 +169,13 @@ class SignupScreen extends GetWidget<SignupController> {
                       top: 1,
                       right: 16,
                     ),
+                    validator: (value) {
+                      if (value == null ||
+                          (!isValidEmail(value, isRequired: true))) {
+                        return "Questa non è un email valida";
+                      }
+                      return null;
+                    },
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -366,6 +385,7 @@ class SignupScreen extends GetWidget<SignupController> {
                     ),
                   ),
                   CustomButton(
+                    onTap: () => controller.PostSignUp(),
                     width: 338,
                     text: "lbl_registrati".tr,
                     margin: getMargin(
