@@ -17,10 +17,12 @@ class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'login try',
-        theme: ThemeData(
-          primarySwatch: Colors.red, //fabulous
-        ),
-        home: LoginPage());
+      title: 'login try',
+      theme: ThemeData(
+        primarySwatch: Colors.red, //fabulous
+      ),
+      home: LoginPage(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }

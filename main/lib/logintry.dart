@@ -3,8 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_app/pages/category.dart';
-import 'package:food_app/pages/homepage.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:vertical_card_pager/vertical_card_pager.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -43,6 +42,16 @@ class _LoginPageState extends State<LoginPage> {
                         semanticsLabel: 'Pills'),
                   ],
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Padding(padding: EdgeInsets.fromLTRB(0, 150, 0, 0)),
+                    Text(
+                        'Uno non può pensare bene, amare bene, \ndormire bene se non ha mangiato bene.',
+                        style: TextStyle(
+                            fontSize: 14, fontStyle: FontStyle.italic)),
+                  ],
+                ),
                 Form(
                     child: Column(
                   children: <Widget>[
@@ -58,12 +67,14 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(0, 100, 0, 0),
+                                      const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   child: SizedBox(
                                     width: (MediaQuery.of(context).size.width) -
                                         30,
                                     child: TextField(
                                         decoration: InputDecoration(
+                                            contentPadding:
+                                                EdgeInsets.all(20.0),
                                             hintText: "email",
                                             filled: true,
                                             fillColor: Color.fromARGB(
@@ -93,12 +104,15 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(0, 30, 0, 30),
+                                      const EdgeInsets.fromLTRB(0, 30, 0, 20),
                                   child: SizedBox(
                                     width: (MediaQuery.of(context).size.width) -
                                         30,
                                     child: TextField(
+                                        obscureText: true,
                                         decoration: InputDecoration(
+                                            contentPadding:
+                                                EdgeInsets.all(20.0),
                                             hintText: "password",
                                             filled: true,
                                             fillColor: Color.fromARGB(
@@ -116,45 +130,44 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                           ),
                         )),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: const [
+                          Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
+                          Text('Password dimenticata?',
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 158, 11, 0),
+                                  fontSize: 14,
+                                  decoration: TextDecoration.underline)),
+                        ]),
                     ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomePage()));
-                        },
-                        child: Text('Accedi'))
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                      },
+                      child: Text('Accedi'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 158, 11, 0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Padding(padding: EdgeInsets.fromLTRB(0, 170, 0, 0)),
+                          Text('Registrati ora!',
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 158, 11, 0),
+                                  fontSize: 14,
+                                  decoration: TextDecoration.underline)),
+                        ]),
                   ],
                 ))
               ],
             )));
   }
 }
-
-/*
-Positioned(
-                left: (MediaQuery.of(context).size.width -
-                        (MediaQuery.of(context).size.width - 30)) /
-                    2,
-                width: (MediaQuery.of(context).size.width) - 30,
-                top: 126,
-                child: Material(
-                  color: Colors.white,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        child: CupertinoSearchTextField(
-                          borderRadius: BorderRadius.circular(20),
-                          placeholder: 'Cerca qualcosa...',
-                          prefixInsets: const EdgeInsets.only(left: 10),
-                          suffixIcon:
-                              const Icon(CupertinoIcons.slider_horizontal_3),
-                          suffixMode: OverlayVisibilityMode.always,
-                          suffixInsets: const EdgeInsets.only(right: 10),
-                          onSuffixTap: () {},
-                        ),
-                      ),
-                    ],
-                  ),
-                )),*/
