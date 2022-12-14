@@ -246,7 +246,7 @@ class SignupScreen extends GetWidget<SignupController> {
                             validator: (value) {
                               if (value == null ||
                                   (!isValidPassword(value, isRequired: true))) {
-                                return "Please enter valid password";
+                                return "Questa password non è valida";
                               }
                               return null;
                             },
@@ -326,7 +326,7 @@ class SignupScreen extends GetWidget<SignupController> {
                             validator: (value) {
                               if (value == null ||
                                   (!isValidPassword(value, isRequired: true))) {
-                                return "Please enter valid password";
+                                return "Questa password non è valida";
                               }
                               return null;
                             },
@@ -385,7 +385,7 @@ class SignupScreen extends GetWidget<SignupController> {
                     ),
                   ),
                   CustomButton(
-                    onTap: () => controller.PostSignUp(),
+                    onTap: () => {controller.PostSignUp(context)},
                     width: 338,
                     text: "lbl_registrati".tr,
                     margin: getMargin(
