@@ -99,6 +99,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: Container(
+            margin: EdgeInsets.only(top: 50),
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(30), topLeft: Radius.circular(30)),
@@ -118,8 +119,9 @@ class HomePage extends StatelessWidget {
                 backgroundColor: const Color.fromRGBO(166, 4, 0, 1),
                 items: const <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
-                      icon: Icon(
-                        CupertinoIcons.person_fill,
+                      icon: //Padding(padding: EdgeInsets.all(10)); ma che cazzo dc, aggiustare.
+                          Icon(
+                        CupertinoIcons.person,
                         color: Colors.white,
                       ),
                       label: ''),
