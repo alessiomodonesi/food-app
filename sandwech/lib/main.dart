@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'logintry.dart';
-import 'pages/homepage.dart';
-// import 'pages/product.dart'; //non togliere il commento
+// import 'pages/homepage.dart';
+// import 'pages/product.dart';
 
 void main() {
   runApp(myApp());
 }
 
-/*
-void navigateNextPage(BuildContext context) {
-  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-    return Homepage(1);
-  }));
-}
-*/
+// void navigateNextPage(BuildContext context) {
+//   Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+//     return Homepage(1);
+//   }));
+// }
 
 // ignore: camel_case_types
 class myApp extends StatelessWidget {
@@ -22,7 +20,7 @@ class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'login try',
+      title: 'sandwech',
       theme: ThemeData(
         primarySwatch: Colors.red, //fabulous
       ),
