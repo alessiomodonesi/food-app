@@ -4,6 +4,7 @@ import 'package:food_app/types/product_tag.dart';
 import 'package:food_app/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 //import 'package:food_app/types/tag.dart';
+//import 'package:food_app/pages/product.dart';
 
 class Homepage extends StatefulWidget {
   final int idCat;
@@ -14,7 +15,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  String name = "sample";
+  String name = "Utente";
   String catalogName = "";
   List<Product> _productList = List.empty(growable: true);
   List<ProductTag> _productTagList = List.empty();
