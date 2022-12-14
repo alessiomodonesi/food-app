@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:food_app/pages/homepage.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,11 +19,13 @@ class HomePage extends StatelessWidget {
     ];
 
     final List<Widget> images = [
-      Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100),
-            color: Color.fromARGB(255, 158, 11, 0)),
-      ),
+      GestureDetector(
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: Color.fromARGB(255, 158, 11, 0)),
+          ),
+          onTap: () {}),
       Container(
         decoration: BoxDecoration(
             //image: ,
@@ -32,11 +37,17 @@ class HomePage extends StatelessWidget {
             borderRadius: BorderRadius.circular(100),
             color: Color.fromARGB(255, 255, 17, 0)),
       ),
-      Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100),
-            color: Color.fromARGB(255, 158, 11, 0)),
-      ),
+      InkWell(
+          onTap: () {
+            log('mzzz');
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Homepage(1)));
+          },
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: Color.fromARGB(255, 158, 11, 0)),
+          )),
       Container(
         decoration: BoxDecoration(
             //image: ,
