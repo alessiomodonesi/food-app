@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String name = "sample";
+    String name = "utente";
     var titles = {
       "PANINI": "1",
       "PIADINE": "3",

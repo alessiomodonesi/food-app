@@ -15,7 +15,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  String name = "Utente";
+  String name = "utente";
   String catalogName = "";
   List<Product> _productList = List.empty(growable: true);
   List<ProductTag> _productTagList = List.empty();
