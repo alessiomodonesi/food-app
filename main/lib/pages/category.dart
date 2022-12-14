@@ -20,13 +20,12 @@ class HomePage extends StatelessWidget {
     ];
 
     final List<Widget> images = [
-      GestureDetector(
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: Color.fromARGB(255, 158, 11, 0)),
-          ),
-          onTap: () {}),
+      Container(
+        decoration: BoxDecoration(
+            //image: ,
+            borderRadius: BorderRadius.circular(100),
+            color: Color.fromARGB(228, 255, 194, 28)),
+      ),
       Container(
         decoration: BoxDecoration(
             //image: ,
@@ -76,6 +75,11 @@ class HomePage extends StatelessWidget {
                         // optional
                       },
                       onSelectedItem: (index) {
+                        log(index.toString());
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Homepage(1)));
                         // optional
                       },
                       initialPage: 0, // optional

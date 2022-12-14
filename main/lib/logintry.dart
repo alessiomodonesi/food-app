@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_app/pages/category.dart';
+import 'package:food_app/pages/homepage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
