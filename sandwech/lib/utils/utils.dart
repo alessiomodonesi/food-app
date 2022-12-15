@@ -1,6 +1,6 @@
-import 'package:food_app/types/product.dart';
-import 'package:food_app/types/tag.dart';
-import 'package:food_app/types/product_tag.dart';
+import 'package:sandwech/types/product.dart';
+import 'package:sandwech/types/tag.dart';
+import 'package:sandwech/types/product_tag.dart';
 
 import 'dart:convert';
 import 'endpoints.dart';

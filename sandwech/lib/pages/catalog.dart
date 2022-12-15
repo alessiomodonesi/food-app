@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/types/product.dart';
-import 'package:food_app/types/product_tag.dart';
-import 'package:food_app/utils/utils.dart';
+import 'package:sandwech/types/product.dart';
+import 'package:sandwech/types/product_tag.dart';
+import 'package:sandwech/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
-//import 'package:food_app/types/tag.dart';
-//import 'package:food_app/pages/product.dart';
+//import 'package:sandwech/types/tag.dart';
+//import 'package:sandwech/pages/product.dart';
 
 class Homepage extends StatefulWidget {
   final int idCat;

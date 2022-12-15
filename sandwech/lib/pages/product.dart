@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/types/product.dart';
-import 'package:food_app/utils/utils.dart';
-import 'package:food_app/utils/calculation.dart';
+import 'package:sandwech/types/product.dart';
+import 'package:sandwech/utils/utils.dart';
+import 'package:sandwech/utils/calculation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 /// Pagina del singolo prodotto
