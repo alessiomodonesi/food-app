@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'logintry.dart';
-// import 'pages/homepage.dart';
-// import 'pages/product.dart';
+//import 'pages/product.dart';
 
 void main() {
-  runApp(myApp());
+  runApp(const myApp());
 }
-
-// void navigateNextPage(BuildContext context) {
-//   Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-//     return Homepage(1);
-//   }));
-// }
 
 // ignore: camel_case_types
 class myApp extends StatelessWidget {
