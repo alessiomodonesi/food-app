@@ -1,4 +1,4 @@
-package com.example.sandwech
+package com.sandwech
 
 import io.flutter.embedding.android.FlutterActivity
 
