@@ -5,26 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "sample",
-            "cwd": "sample",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "sample (profile mode)",
-            "cwd": "sample",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "sample (release mode)",
-            "cwd": "sample",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "release"
-        },
-        {
             "name": "sandwech",
             "cwd": "sandwech",
             "request": "launch",
