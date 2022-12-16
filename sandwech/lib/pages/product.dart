@@ -1,8 +1,11 @@
 import 'dart:developer';
 
-import 'package:flutter/material.dart';
 import 'package:sandwech/types/product.dart';
+import 'package:sandwech/types/ingredient.dart';
+
+import 'package:flutter/material.dart';
 import 'package:sandwech/utils/utils.dart';
+import 'package:sandwech/utils/navbar.dart';
 import 'package:sandwech/utils/calculation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -22,6 +25,7 @@ class _ProductPageState extends State<ProductPage> {
   String paninoPath = "lib/assets/panino.png";
   // ignore: prefer_const_constructors
   Product prodotto = Product(id: '0', name: '', price: '');
+  List<Ingredient> ingredienti = List.empty();
 
   @override
   void initState() {
@@ -30,6 +34,15 @@ class _ProductPageState extends State<ProductPage> {
         (value) => setState(() {
               prodotto = value as Product;
               checkDescription(prodotto.description as String);
+            }), onError: (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Sending Message"),
+      ));
+    });
+
+    getArchieveIngredients(widget.idProduct.toString()).then(
+        (value) => setState(() {
+              ingredienti = value;
             }), onError: (e) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Sending Message"),
@@ -44,6 +57,20 @@ class _ProductPageState extends State<ProductPage> {
     } else {
       return "Descrizione non disponibile";
     }
+  }
+
+  String concatIngredients(List<Ingredient> ing) {
+    var listOfIngredients = "";
+
+    for (int i = 0; i < ing.length; i++) {
+      if (i != 0) {
+        listOfIngredients += ", ${ing[i].name}";
+      } else {
+        listOfIngredients += " ${ing[i].name}";
+      }
+    }
+
+    return listOfIngredients;
   }
 
   @override
@@ -158,6 +185,26 @@ class _ProductPageState extends State<ProductPage> {
                                   ),
                                 ),
                               ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(concatIngredients(ingredienti)),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    top: calcPercentage(
+                                        MediaQuery.of(context).size.height,
+                                        12)),
+                                height: 50,
+                                width: calcPercentage(
+                                    MediaQuery.of(context).size.width, 70),
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(25.0)),
+                                    color: Color.fromRGBO(255, 155, 24, 1)),
+                              )
                             ],
                           )
                         ],
@@ -168,6 +215,7 @@ class _ProductPageState extends State<ProductPage> {
           ),
         )
       ]),
+      bottomNavigationBar: const Navbar(),
     );
   }
 }

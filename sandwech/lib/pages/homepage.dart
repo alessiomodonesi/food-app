@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sandwech/pages/catalog.dart';
+import 'package:sandwech/utils/navbar.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
 
 class HomePage extends StatelessWidget {
@@ -149,46 +150,6 @@ class HomePage extends StatelessWidget {
                 )
               ],
             )),
-        bottomNavigationBar: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(30), topLeft: Radius.circular(30)),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black38, spreadRadius: 0, blurRadius: 10),
-              ],
-            ),
-            child: ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                topRight: Radius.circular(30.0),
-              ),
-              child: BottomNavigationBar(
-                showSelectedLabels: false,
-                showUnselectedLabels: false,
-                backgroundColor: const Color.fromRGBO(166, 4, 0, 1),
-                items: const <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                      icon: Icon(
-                        CupertinoIcons.person_fill,
-                        color: Colors.white,
-                      ),
-                      label: ''),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      CupertinoIcons.home,
-                      color: Colors.white,
-                    ),
-                    label: '',
-                  ),
-                  BottomNavigationBarItem(
-                      icon: Icon(
-                        CupertinoIcons.shopping_cart,
-                        color: Colors.white,
-                      ),
-                      label: '')
-                ],
-              ),
-            )));
+        bottomNavigationBar: const Navbar());
   }
 }

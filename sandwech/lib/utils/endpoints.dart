@@ -13,3 +13,5 @@ const getProductUrl =
 //const getTagUrl = "http://IP_VM:8081/API/tag/getTag.php?tag_ID=";
 //const getProductTagUrl = "http://IP_VM:8081/API/tag/product-tag/getArchiveProductTag.php?tag_id=";
 //const getProductUrl = "http://IP_VM:8081/API/product/getProduct.php?PRODUCT_ID=";
+const getArchieveIngredientsUrl =
+    "http://IP_VM:8081/API/product/getArchiveIngredients.php?panino=";
