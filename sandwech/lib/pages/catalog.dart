@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/product_tag.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:sandwech/pages/product.dart';
 //import 'package:sandwech/types/tag.dart';
 //import 'package:sandwech/pages/product.dart';
 
@@ -160,93 +163,107 @@ class _HomepageState extends State<Homepage> {
                 shrinkWrap: true,
                 itemCount: _productList.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Material(
-                        color: Colors.white,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width - 28,
-                              height: 67,
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: const Color(0xEEEEEAEA),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                          color: Color.fromARGB(64, 0, 0, 0),
-                                          blurRadius: 7,
-                                          offset: Offset(0, 4)),
-                                    ]),
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      height: 55,
-                                      width: 55,
-                                      margin: const EdgeInsets.only(
-                                        left: 14,
-                                        top: 6,
-                                      ),
-                                      decoration: const BoxDecoration(
-                                        color: Color(0xEEEEEAEA),
-                                      ),
-                                      child: Image.asset(
-                                          'lib/assets/sandwich.png'),
-                                    ),
-                                    Container(
-                                        height: 20,
-                                        margin: const EdgeInsets.only(
-                                          top: 24,
-                                          left: 80,
-                                        ),
-                                        child: RichText(
-                                          text: TextSpan(
-                                            text: _productList[index].name,
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w700,
-                                                fontStyle: FontStyle.normal,
-                                                fontSize: 16,
-                                                fontFamily: 'Inter'),
+                  return GestureDetector(
+                      onTap: () {
+                        log(_productList[index].id);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProductPage(
+                                    int.parse(_productList[index].id))));
+                      },
+                      child: Container(
+                          padding: const EdgeInsets.only(top: 15),
+                          child: Material(
+                            color: Colors.white,
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width - 28,
+                                  height: 67,
+                                  child: DecoratedBox(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                        color: const Color(0xEEEEEAEA),
+                                        boxShadow: const [
+                                          BoxShadow(
+                                              color:
+                                                  Color.fromARGB(64, 0, 0, 0),
+                                              blurRadius: 7,
+                                              offset: Offset(0, 4)),
+                                        ]),
+                                    child: Stack(
+                                      children: [
+                                        Container(
+                                          height: 55,
+                                          width: 55,
+                                          margin: const EdgeInsets.only(
+                                            left: 14,
+                                            top: 6,
                                           ),
-                                        )),
-                                    Container(
-                                      height: 37,
-                                      width: 57,
-                                      margin: const EdgeInsets.only(
-                                        top: 15,
-                                        left: 302,
-                                      ),
-                                      child: SizedBox(
+                                          decoration: const BoxDecoration(
+                                            color: Color(0xEEEEEAEA),
+                                          ),
+                                          child: Image.asset(
+                                              'lib/assets/sandwich.png'),
+                                        ),
+                                        Container(
+                                            height: 20,
+                                            margin: const EdgeInsets.only(
+                                              top: 24,
+                                              left: 80,
+                                            ),
+                                            child: RichText(
+                                              text: TextSpan(
+                                                text: _productList[index].name,
+                                                style: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.w700,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontSize: 16,
+                                                    fontFamily: 'Inter'),
+                                              ),
+                                            )),
+                                        Container(
                                           height: 37,
                                           width: 57,
-                                          child: DecoratedBox(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(15),
-                                                color: const Color(0xFFEE0F38)),
-                                            child: Center(
-                                                child: RichText(
-                                                    text: TextSpan(
-                                              text:
-                                                  "\$  ${_productList[index].price}",
-                                              style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w700,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 16,
-                                                  fontFamily: 'Inter'),
-                                            ))),
-                                          )),
+                                          margin: const EdgeInsets.only(
+                                            top: 15,
+                                            left: 302,
+                                          ),
+                                          child: SizedBox(
+                                              height: 37,
+                                              width: 57,
+                                              child: DecoratedBox(
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15),
+                                                    color: const Color(
+                                                        0xFFEE0F38)),
+                                                child: Center(
+                                                    child: RichText(
+                                                        text: TextSpan(
+                                                  text:
+                                                      "\$  ${_productList[index].price}",
+                                                  style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontStyle:
+                                                          FontStyle.normal,
+                                                      fontSize: 16,
+                                                      fontFamily: 'Inter'),
+                                                ))),
+                                              )),
+                                        ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ));
+                          )));
                 },
               ),
             ),
