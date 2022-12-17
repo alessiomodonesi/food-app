@@ -1,6 +1,7 @@
-import 'package:food_app/types/product.dart';
-import 'package:food_app/types/tag.dart';
-import 'package:food_app/types/product_tag.dart';
+import 'package:sandwech/types/product.dart';
+import 'package:sandwech/types/tag.dart';
+import 'package:sandwech/types/product_tag.dart';
+import 'package:sandwech/types/ingredient.dart';
 
 import 'dart:convert';
 import 'endpoints.dart';
@@ -52,6 +53,17 @@ Future<Product?> getSingleProduct(id) async {
   }
 }
 
+Future<List<Ingredient>> getArchieveIngredients(id) async {
+  try {
+    Response response = await Dio().get(getArchieveIngredientsUrl + id);
+    log(response.toString());
+    return parseArchieveIngredients(jsonEncode(response.data));
+  } catch (e) {
+    log(e.toString());
+    return List.empty();
+  }
+}
+
 List<Tag> parseTag(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
@@ -74,4 +86,10 @@ Product parseSingleProduct(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
   return parsed.map<Product>((json) => Product.fromJson(json)).toList()[0];
+}
+
+List<Ingredient> parseArchieveIngredients(String responseBody) {
+  List parsed = jsonDecode(responseBody);
+  //log(parsed.toString());
+  return parsed.map<Ingredient>((json) => Ingredient.fromJson(json)).toList();
 }

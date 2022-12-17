@@ -1,0 +1,28 @@
+{
+    // Usare IntelliSense per informazioni sui possibili attributi.
+    // Al passaggio del mouse vengono visualizzate le descrizioni degli attributi esistenti.
+    // Per altre informazioni, visitare: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "sandwech",
+            "cwd": "sandwech",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "sandwech (profile mode)",
+            "cwd": "sandwech",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "sandwech (release mode)",
+            "cwd": "sandwech",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
