@@ -6,9 +6,8 @@ import 'package:sandwech/types/product_tag.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/navbar.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:sandwech/pages/product.dart';
 //import 'package:sandwech/types/tag.dart';
-//import 'package:sandwech/pages/product.dart';
+import 'package:sandwech/pages/product.dart';
 
 class Homepage extends StatefulWidget {
   final int idCat;
