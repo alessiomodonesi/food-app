@@ -128,7 +128,7 @@ class _ProductPageState extends State<ProductPage> {
                           Align(
                             alignment: Alignment.topRight,
                             child: SvgPicture.asset(
-                              "lib/assets/left_side_pills.svg",
+                              "lib/assets/svg/left_side_pills.svg",
                               semanticsLabel: 'Pills',
                               width: 50,
                             ),
@@ -164,7 +164,7 @@ class _ProductPageState extends State<ProductPage> {
                           Align(
                             alignment: Alignment.topLeft,
                             child: Text(
-                              prodotto.description as String,
+                              prodotto.description.toString(),
                               textScaleFactor: 1,
                               style: const TextStyle(
                                 color: Colors.black,

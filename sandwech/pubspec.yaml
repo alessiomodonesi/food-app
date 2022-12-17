@@ -68,8 +68,8 @@ flutter:
     - lib/assets/
     - lib/assets/app_logo.png
     - lib/assets/app_logo.svg
-    - lib/assets/right_side_pills.svg
-    - lib/assets/left_side_pills.svg
+    - lib/assets/svg/right_side_pills.svg
+    - lib/assets/svg/left_side_pills.svg
     - lib/assets/sandwich.png
     - lib/assets/images/panino.png
 
