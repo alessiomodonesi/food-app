@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-const Color ambratoApp = Color.fromRGBO(255, 155, 24, 1);
+const Color ambratoApp = Color(0xFFFF9B18);
+const Color rossoApp = Color(0xFFEE0F38);
 
 /// Widget per crare un pulsante rotondo, bianco
 class ButtonCircle extends StatelessWidget {

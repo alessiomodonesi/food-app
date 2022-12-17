@@ -29,6 +29,12 @@ class _ProductPageState extends State<ProductPage> {
   Product prodotto = Product(id: '0', name: '', price: '');
   List<Ingredient> ingredienti = List.empty();
 
+  int addDescrizione = 2;
+  int addIngredienti = 2;
+
+  int moltiplicatoreNoDescrizione = 0;
+  int moltiplicatoreNoIngredienti = 0;
+
   @override
   void initState() {
     super.initState();
@@ -55,14 +61,36 @@ class _ProductPageState extends State<ProductPage> {
   /// Controlla se la descrizione contiene qualcosa, sennò ritorna una stringa preimpostata
   String checkDescription(String str) {
     if (str.isNotEmpty) {
+      setState(() {
+        if (str.length > 46) {
+          moltiplicatoreNoDescrizione = 0;
+        } else {
+          moltiplicatoreNoDescrizione = addDescrizione;
+        }
+      });
+      log("La descrizione ha : ${str.length}}");
       return str;
     } else {
+      setState(() {
+        moltiplicatoreNoDescrizione = addDescrizione;
+      });
       return "Descrizione non disponibile";
     }
   }
 
   String concatIngredients(List<Ingredient> ing) {
     var listOfIngredients = "";
+
+    if (ing.isEmpty) {
+      setState(() {
+        moltiplicatoreNoIngredienti = addIngredienti;
+      });
+      return "Lista degli ingredienti non disponibile";
+    } else {
+      setState(() {
+        moltiplicatoreNoIngredienti = 0;
+      });
+    }
 
     for (int i = 0; i < ing.length; i++) {
       if (i != 0) {
@@ -119,7 +147,7 @@ class _ProductPageState extends State<ProductPage> {
                               textAlign: TextAlign.left,
                               textScaleFactor: 1.9,
                               style: const TextStyle(
-                                color: Colors.red,
+                                color: rossoApp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -153,7 +181,7 @@ class _ProductPageState extends State<ProductPage> {
                               textAlign: TextAlign.left,
                               textScaleFactor: 1.5,
                               style: TextStyle(
-                                color: Colors.amber,
+                                color: ambratoApp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -164,7 +192,7 @@ class _ProductPageState extends State<ProductPage> {
                           Align(
                             alignment: Alignment.topLeft,
                             child: Text(
-                              prodotto.description.toString(),
+                              checkDescription(prodotto.description.toString()),
                               textScaleFactor: 1,
                               style: const TextStyle(
                                 color: Colors.black,
@@ -183,7 +211,7 @@ class _ProductPageState extends State<ProductPage> {
                                   textAlign: TextAlign.left,
                                   textScaleFactor: 1.5,
                                   style: TextStyle(
-                                    color: Colors.amber,
+                                    color: ambratoApp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -199,14 +227,16 @@ class _ProductPageState extends State<ProductPage> {
                                 margin: EdgeInsets.only(
                                     top: calcPercentage(
                                         MediaQuery.of(context).size.height,
-                                        9.8)),
+                                        9.8 +
+                                            moltiplicatoreNoIngredienti +
+                                            moltiplicatoreNoDescrizione)),
                                 height: 50,
                                 width: calcPercentage(
-                                    MediaQuery.of(context).size.width, 70),
+                                    MediaQuery.of(context).size.width, 80),
                                 decoration: BoxDecoration(
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(25.0)),
-                                  color: const Color.fromRGBO(255, 155, 24, 1),
+                                  color: ambratoApp,
                                   boxShadow: [
                                     BoxShadow(
                                       color: Colors.grey.withOpacity(0.5),
@@ -220,11 +250,6 @@ class _ProductPageState extends State<ProductPage> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    /*
-                                    const SizedBox(
-                                      width: 20,
-                                    ),
-                                    */
                                     Align(
                                       alignment: Alignment.center,
                                       child: Text(
@@ -237,11 +262,11 @@ class _ProductPageState extends State<ProductPage> {
                                       ),
                                     ),
                                     const SizedBox(
-                                      width: 40,
+                                      width: 50,
                                     ),
                                     Container(
                                       height: 30,
-                                      width: 100,
+                                      width: 120,
                                       decoration: BoxDecoration(
                                         borderRadius: const BorderRadius.all(
                                             Radius.circular(25.0)),
@@ -259,10 +284,10 @@ class _ProductPageState extends State<ProductPage> {
                                           ButtonCircle(
                                               25,
                                               ambratoApp,
-                                              CupertinoIcons.plus,
+                                              CupertinoIcons.minus,
                                               Alignment.center,
                                               Colors.white, () {
-                                            // aumentare numero carrello
+                                            // diminuire numero carrello
                                           }),
                                           const Text(
                                             "1",
@@ -274,10 +299,10 @@ class _ProductPageState extends State<ProductPage> {
                                           ButtonCircle(
                                               25,
                                               ambratoApp,
-                                              CupertinoIcons.minus,
+                                              CupertinoIcons.plus,
                                               Alignment.center,
                                               Colors.white, () {
-                                            // diminuire numero carrello
+                                            // aumentare numero carrello
                                           }),
                                           const SizedBox(
                                             width: 1,
@@ -293,7 +318,7 @@ class _ProductPageState extends State<ProductPage> {
                                         Colors.white,
                                         CupertinoIcons.cart_fill,
                                         Alignment.center,
-                                        Colors.amber,
+                                        ambratoApp,
                                         () {})
                                   ],
                                 ),
