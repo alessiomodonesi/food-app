@@ -23,7 +23,7 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-  String paninoPath = "lib/assets/panino.png";
+  String paninoPath = "lib/assets/images/panino.png";
   // ignore: prefer_const_constructors
   Product prodotto = Product(id: '0', name: '', price: '');
   List<Ingredient> ingredienti = List.empty();

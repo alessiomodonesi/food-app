@@ -24,21 +24,21 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    SvgPicture.asset("lib/assets/right_side_pills.svg",
+                    SvgPicture.asset("lib/assets/svg/right_side_pills.svg",
                         semanticsLabel: 'Pills'),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset("lib/assets/app_logo.svg",
+                    SvgPicture.asset("lib/assets/svg/app_logo.svg",
                         semanticsLabel: 'SandWech Logo'),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SvgPicture.asset("lib/assets/left_side_pills.svg",
+                    SvgPicture.asset("lib/assets/svg/left_side_pills.svg",
                         semanticsLabel: 'Pills'),
                   ],
                 ),
