@@ -96,7 +96,7 @@ class _ProductPageState extends State<ProductPage> {
               ),
               color: Colors.white,
             ),
-            height: calcPercentage(MediaQuery.of(context).size.height, 57),
+            height: calcPercentage(MediaQuery.of(context).size.height, 50),
             width: MediaQuery.of(context).size.width,
             child: Container(
                 margin: const EdgeInsets.only(
@@ -197,7 +197,7 @@ class _ProductPageState extends State<ProductPage> {
                                 margin: EdgeInsets.only(
                                     top: calcPercentage(
                                         MediaQuery.of(context).size.height,
-                                        12)),
+                                        9.5)),
                                 height: 50,
                                 width: calcPercentage(
                                     MediaQuery.of(context).size.width, 70),
@@ -205,7 +205,7 @@ class _ProductPageState extends State<ProductPage> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(25.0)),
                                     color: Color.fromRGBO(255, 155, 24, 1)),
-                              )
+                              ),
                             ],
                           )
                         ],
