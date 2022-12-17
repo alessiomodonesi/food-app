@@ -5,6 +5,7 @@ import 'package:sandwech/types/ingredient.dart';
 
 import 'package:flutter/material.dart';
 import 'package:sandwech/utils/utils.dart';
+import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/utils/navbar.dart';
 import 'package:sandwech/utils/calculation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -83,7 +84,7 @@ class _ProductPageState extends State<ProductPage> {
           left: 10,
           child: ButtonCircle(30, () {
             Navigator.pop(context);
-          }, Icons.arrow_back_ios),
+          }, Icons.arrow_back_ios, Alignment.centerRight),
         ),
         Align(
           alignment: Alignment.bottomCenter,
@@ -216,43 +217,6 @@ class _ProductPageState extends State<ProductPage> {
         )
       ]),
       bottomNavigationBar: const Navbar(),
-    );
-  }
-}
-
-/// Widget per crare un pulsante rotondo, bianco
-class ButtonCircle extends StatelessWidget {
-  final double size;
-  final GestureTapCallback onTap;
-  final IconData iconData;
-
-  /// [double] size: rappresenta la grandezza del cerchio
-  ///
-  /// [GestureTapCallback] onTap: è la funzione che viene eseguita quando si clicca il pulsante
-  ///
-  /// [IconData] iconData: è l'icona che sta al centro del cerchio
-  const ButtonCircle(this.size, this.onTap, this.iconData, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return InkResponse(
-      onTap: onTap,
-      child: Container(
-        width: size,
-        height: size,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          shape: BoxShape.circle,
-        ),
-        child: Align(
-          alignment: Alignment.centerRight,
-          child: Icon(
-            iconData,
-            color: Colors.black,
-            size: 22,
-          ),
-        ),
-      ),
     );
   }
 }
