@@ -141,7 +141,7 @@ class _HomepageState extends State<Homepage> {
                 width: 100,
                 height: 24,
                 left: 30,
-                top: 205,
+                top: 160,
                 child: Container(
                     child: RichText(
                   text: TextSpan(
@@ -155,7 +155,7 @@ class _HomepageState extends State<Homepage> {
                 ))),
             Container(
               padding: const EdgeInsets.only(
-                top: 170,
+                top: 150,
                 left: 14,
                 right: 14,
               ),

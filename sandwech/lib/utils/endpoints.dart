@@ -14,7 +14,7 @@ const getArchieveIngredientsUrl =
     "http://localhost/food-api/API/product/getArchiveIngredients.php?panino=";
 
 //Altro
-// const getTagUrl = "http://192.168.19.212:8081/API/tag/getTag.php?tag_ID=";
-// const getProductUrl = "http://192.168.19.212:8081/API/product/getProduct.php?PRODUCT_ID=";
-// const getProductTagUrl = "http://192.168.19.212:8081/API/tag/product-tag/getArchiveProductTag.php?tag_id=";
-// const getArchieveIngredientsUrl = "http://192.168.19.212:8081/API/product/getArchiveIngredients.php?panino=";
+//const getTagUrl = "http://IP_VM:8081/API/tag/getTag.php?tag_ID=";
+//const getProductUrl = "http://IP_VM:8081/API/product/getProduct.php?PRODUCT_ID=";
+//const getProductTagUrl = "http://IP_VM:8081/API/tag/product-tag/getArchiveProductTag.php?tag_id=";
+//const getArchieveIngredientsUrl = "http://IP_VM:8081/API/product/getArchiveIngredients.php?panino=";

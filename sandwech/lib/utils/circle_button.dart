@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
 
+const Color ambratoApp = Color.fromRGBO(255, 155, 24, 1);
+
 /// Widget per crare un pulsante rotondo, bianco
 class ButtonCircle extends StatelessWidget {
   final double size;
-  final GestureTapCallback onTap;
+  final Color? backgroundColor;
   final IconData iconData;
   final AlignmentGeometry iconAlignment;
+  final Color? iconColor;
+  final GestureTapCallback onTap;
 
   /// [double] size: rappresenta la grandezza del cerchio
   ///
-  /// [GestureTapCallback] onTap: è la funzione che viene eseguita quando si clicca il pulsante
+  /// [Color?] backgroundColor: colore dello sfondo del bottone
   ///
-  /// [IconData] iconData: è l'icona che sta al centro del cerchio
+  /// [IconData] iconData: icona che sta al centro del cerchio
   ///
   /// [AlignmentGeometry] iconAlignment: allineamento dell'icona rispetto al cerchio
-  const ButtonCircle(this.size, this.onTap, this.iconData, this.iconAlignment,
+  ///
+  /// [Color?] iconColor: colore dell'icona del bottone
+  ///
+  /// [GestureTapCallback] onTap: funzione che viene eseguita quando si clicca il pulsante
+
+  const ButtonCircle(this.size, this.backgroundColor, this.iconData,
+      this.iconAlignment, this.iconColor, this.onTap,
       {super.key});
 
   @override
@@ -24,15 +34,15 @@ class ButtonCircle extends StatelessWidget {
       child: Container(
         width: size,
         height: size,
-        decoration: const BoxDecoration(
-          color: Colors.white,
+        decoration: BoxDecoration(
+          color: backgroundColor,
           shape: BoxShape.circle,
         ),
         child: Align(
           alignment: iconAlignment,
           child: Icon(
             iconData,
-            color: Colors.black,
+            color: iconColor,
             size: 22,
           ),
         ),

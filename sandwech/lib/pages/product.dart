@@ -9,6 +9,7 @@ import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/utils/navbar.dart';
 import 'package:sandwech/utils/calculation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/cupertino.dart';
 
 /// Pagina del singolo prodotto
 ///
@@ -82,9 +83,10 @@ class _ProductPageState extends State<ProductPage> {
         Positioned(
           top: 40,
           left: 10,
-          child: ButtonCircle(30, () {
+          child: ButtonCircle(30, Colors.white, Icons.arrow_back_ios,
+              Alignment.centerRight, Colors.black, () {
             Navigator.pop(context);
-          }, Icons.arrow_back_ios, Alignment.centerRight),
+          }),
         ),
         Align(
           alignment: Alignment.bottomCenter,
@@ -104,8 +106,8 @@ class _ProductPageState extends State<ProductPage> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: calcPercentage(
-                          MediaQuery.of(context).size.height, 12),
+                      height:
+                          calcPercentage(MediaQuery.of(context).size.height, 8),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -128,7 +130,7 @@ class _ProductPageState extends State<ProductPage> {
                             child: SvgPicture.asset(
                               "lib/assets/left_side_pills.svg",
                               semanticsLabel: 'Pills',
-                              width: 55,
+                              width: 50,
                             ),
                           ),
                         ],
@@ -197,14 +199,104 @@ class _ProductPageState extends State<ProductPage> {
                                 margin: EdgeInsets.only(
                                     top: calcPercentage(
                                         MediaQuery.of(context).size.height,
-                                        9.5)),
+                                        9.8)),
                                 height: 50,
                                 width: calcPercentage(
                                     MediaQuery.of(context).size.width, 70),
-                                decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(25.0)),
-                                    color: Color.fromRGBO(255, 155, 24, 1)),
+                                decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(25.0)),
+                                  color: const Color.fromRGBO(255, 155, 24, 1),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 2,
+                                      blurRadius: 10,
+                                      offset: const Offset(
+                                          0, 5), // changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    /*
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    */
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "€${prodotto.price}",
+                                        textScaleFactor: 1.75,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 40,
+                                    ),
+                                    Container(
+                                      height: 30,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(25.0)),
+                                        //color: Colors.white,
+                                        border: Border.all(
+                                            color: Colors.white, width: 2),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          const SizedBox(
+                                            width: 1,
+                                          ),
+                                          ButtonCircle(
+                                              25,
+                                              ambratoApp,
+                                              CupertinoIcons.plus,
+                                              Alignment.center,
+                                              Colors.white, () {
+                                            // aumentare numero carrello
+                                          }),
+                                          const Text(
+                                            "1",
+                                            textScaleFactor: 1.6,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          ButtonCircle(
+                                              25,
+                                              ambratoApp,
+                                              CupertinoIcons.minus,
+                                              Alignment.center,
+                                              Colors.white, () {
+                                            // diminuire numero carrello
+                                          }),
+                                          const SizedBox(
+                                            width: 1,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 15,
+                                    ),
+                                    ButtonCircle(
+                                        35,
+                                        Colors.white,
+                                        CupertinoIcons.cart_fill,
+                                        Alignment.center,
+                                        Colors.amber,
+                                        () {})
+                                  ],
+                                ),
                               ),
                             ],
                           )
