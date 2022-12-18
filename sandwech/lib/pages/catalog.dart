@@ -26,6 +26,8 @@ class _HomepageState extends State<Homepage> {
   int k = 0;
   int j = 0;
 
+  int debugUserID = 4;
+
   String capitalize(String str) {
     return str[0].toUpperCase() + str.substring(1);
   }
@@ -90,7 +92,7 @@ class _HomepageState extends State<Homepage> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
-                      color: const Color(0xFFFF9B18)),
+                      color: ambratoApp),
                 )),
             Positioned(
                 width: 23,
@@ -99,14 +101,13 @@ class _HomepageState extends State<Homepage> {
                 top: -13,
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: const Color(0xFFEE0F38)),
+                      borderRadius: BorderRadius.circular(25), color: rossoApp),
                 )),
             Positioned(
                 width: 400,
                 height: 270,
                 left: 24,
-                top: 60,
+                top: 70,
                 child: Container(
                     child: RichText(
                   text: TextSpan(
@@ -195,6 +196,7 @@ class _HomepageState extends State<Homepage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => ProductPage(
+                                            debugUserID,
                                             int.parse(
                                                 _productList[index].id))));
                               },
@@ -277,13 +279,12 @@ class _HomepageState extends State<Homepage> {
                                                                 BorderRadius
                                                                     .circular(
                                                                         15),
-                                                            color: const Color(
-                                                                0xFFEE0F38)),
+                                                            color: rossoApp),
                                                         child: Center(
                                                             child: RichText(
                                                                 text: TextSpan(
                                                           text:
-                                                              "\$  ${_productList[index].price}",
+                                                              "${_productList[index].price} €",
                                                           style: const TextStyle(
                                                               color:
                                                                   Colors.white,

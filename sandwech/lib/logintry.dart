@@ -140,31 +140,49 @@ class _LoginPageState extends State<LoginPage> {
                                   fontSize: 14,
                                   decoration: TextDecoration.underline)),
                         ]),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()));
-                      },
-                      child: Text('Accedi'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 158, 11, 0),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        top: 15,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(255, 158, 11, 0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: Text('Accedi'),
+                          ),
+                          const SizedBox(
+                            width: 50,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(255, 158, 11, 0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: Text('Registrati'),
+                          ),
+                        ],
                       ),
                     ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Padding(padding: EdgeInsets.fromLTRB(0, 170, 0, 0)),
-                          Text('Registrati ora!',
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 158, 11, 0),
-                                  fontSize: 14,
-                                  decoration: TextDecoration.underline)),
-                        ]),
                   ],
                 ))
               ],

@@ -4,6 +4,7 @@ import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/ingredient.dart';
 
 import 'package:flutter/material.dart';
+import 'package:sandwech/utils/endpoints.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/utils/navbar.dart';
@@ -15,9 +16,11 @@ import 'package:flutter/cupertino.dart';
 ///
 /// Bisogna passare al costruttore l'id del prodotto in formato [int]
 class ProductPage extends StatefulWidget {
-  final int idProduct; // attributo
+  // attributi
+  final int idUser;
+  final int idProduct;
 
-  const ProductPage(this.idProduct, {super.key});
+  const ProductPage(this.idUser, this.idProduct, {super.key});
 
   @override
   State<ProductPage> createState() => _ProductPageState();
@@ -28,6 +31,7 @@ class _ProductPageState extends State<ProductPage> {
   // ignore: prefer_const_constructors
   Product prodotto = Product(id: '0', name: '', price: '');
   List<Ingredient> ingredienti = List.empty();
+  int quantita = 1;
 
   int addDescrizione = 2;
   int addIngredienti = 2;
@@ -68,7 +72,7 @@ class _ProductPageState extends State<ProductPage> {
           moltiplicatoreNoDescrizione = addDescrizione;
         }
       });
-      log("La descrizione ha : ${str.length}}");
+      //log("La descrizione ha : ${str.length}}");
       return str;
     } else {
       setState(() {
@@ -281,28 +285,39 @@ class _ProductPageState extends State<ProductPage> {
                                           const SizedBox(
                                             width: 1,
                                           ),
+
+                                          // Diminuisce numero prodotti
                                           ButtonCircle(
                                               25,
                                               ambratoApp,
                                               CupertinoIcons.minus,
                                               Alignment.center,
                                               Colors.white, () {
-                                            // diminuire numero carrello
+                                            setState(() {
+                                              if (quantita > 1) {
+                                                quantita--;
+                                              }
+                                            });
                                           }),
-                                          const Text(
-                                            "1",
+                                          Text(
+                                            quantita.toString(),
                                             textScaleFactor: 1.6,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               color: Colors.white,
                                             ),
                                           ),
+                                          // Aumenta numero prodotti
                                           ButtonCircle(
                                               25,
                                               ambratoApp,
                                               CupertinoIcons.plus,
                                               Alignment.center,
                                               Colors.white, () {
-                                            // aumentare numero carrello
+                                            setState(() {
+                                              if (quantita < 99) {
+                                                quantita++;
+                                              }
+                                            });
                                           }),
                                           const SizedBox(
                                             width: 1,
@@ -318,8 +333,13 @@ class _ProductPageState extends State<ProductPage> {
                                         Colors.white,
                                         CupertinoIcons.cart_fill,
                                         Alignment.center,
-                                        ambratoApp,
-                                        () {})
+                                        ambratoApp, () {
+                                      addItemCart(widget.idUser,
+                                          widget.idProduct, quantita);
+                                      setState(() {
+                                        quantita = 1;
+                                      });
+                                    })
                                   ],
                                 ),
                               ),

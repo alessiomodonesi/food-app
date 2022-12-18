@@ -64,6 +64,18 @@ Future<List<Ingredient>> getArchieveIngredients(id) async {
   }
 }
 
+Future<String> addItemCart(userID, productID, quantity) async {
+  try {
+    var response = await Dio().post(addItemCartUrl,
+        data: {"user": userID, "product": productID, "quantity": quantity});
+    log(response.toString());
+    return jsonEncode(response.data);
+  } catch (e) {
+    log(e.toString());
+    return "error";
+  }
+}
+
 List<Tag> parseTag(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
