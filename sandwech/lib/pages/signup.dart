@@ -7,9 +7,20 @@ import 'package:sandwech/utils/validation.dart';
 import 'package:get/get.dart';
 import 'package:sandwech/utils/colors.dart';
 import 'package:sandwech/utils/size.dart';
+import 'package:sandwech/utils/text_form_field.dart';
 
 class SignupScreen extends GetWidget<SignupController> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  @override
+  final controller = SignupController();
+
+  // final nameController = SignupController().nameController;
+  // final surnameController = SignupController().surnameController;
+  // final emailController = SignupController().emailController;
+  // final passwordController = SignupController().passwordController;
+  // final confirmPasswordController =
+  //     SignupController().confirmPasswordController;
 
   @override
   Widget build(BuildContext context) {
@@ -106,20 +117,23 @@ class SignupScreen extends GetWidget<SignupController> {
                   Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                       child: SizedBox(
-                        width: (MediaQuery.of(context).size.width) - 40,
-                        child: TextField(
-                            decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(20.0),
-                                hintText: "Mario",
-                                filled: true,
-                                fillColor: Color.fromARGB(255, 239, 237, 237),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                  borderSide: BorderSide(
-                                    width: 0,
-                                    color: Color.fromARGB(255, 239, 237, 237),
-                                  ),
-                                ))),
+                        child: CustomTextFormField(
+                          width: 358,
+                          focusNode: FocusNode(),
+                          controller: controller.nameController,
+                          hintText: "Mario",
+                          margin: getMargin(
+                            left: 16,
+                            top: 1,
+                            right: 16,
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Il nome è obbligatorio";
+                            }
+                            return null;
+                          },
+                        ),
                       )),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -146,20 +160,24 @@ class SignupScreen extends GetWidget<SignupController> {
                   Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                       child: SizedBox(
-                        width: (MediaQuery.of(context).size.width) - 40,
-                        child: TextField(
-                            decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(20.0),
-                                hintText: "Rossi",
-                                filled: true,
-                                fillColor: Color.fromARGB(255, 239, 237, 237),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                  borderSide: BorderSide(
-                                    width: 0,
-                                    color: Color.fromARGB(255, 239, 237, 237),
-                                  ),
-                                ))),
+                        width: (MediaQuery.of(context).size.width),
+                        child: CustomTextFormField(
+                          width: 358,
+                          focusNode: FocusNode(),
+                          controller: controller.surnameController,
+                          hintText: "Rossi",
+                          margin: getMargin(
+                            left: 16,
+                            top: 1,
+                            right: 16,
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Il cognome è obbligatorio";
+                            }
+                            return null;
+                          },
+                        ),
                       )),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -186,20 +204,25 @@ class SignupScreen extends GetWidget<SignupController> {
                   Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                       child: SizedBox(
-                        width: (MediaQuery.of(context).size.width) - 40,
-                        child: TextField(
-                            decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(20.0),
-                                hintText: "mario.rossi@gmail.com",
-                                filled: true,
-                                fillColor: Color.fromARGB(255, 239, 237, 237),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                  borderSide: BorderSide(
-                                    width: 0,
-                                    color: Color.fromARGB(255, 239, 237, 237),
-                                  ),
-                                ))),
+                        width: (MediaQuery.of(context).size.width),
+                        child: CustomTextFormField(
+                          width: 358,
+                          focusNode: FocusNode(),
+                          controller: controller.emailController,
+                          hintText: "mario.rossi@gmail.com",
+                          margin: getMargin(
+                            left: 16,
+                            top: 1,
+                            right: 16,
+                          ),
+                          validator: (value) {
+                            if (value == null ||
+                                (!isValidEmail(value, isRequired: true))) {
+                              return "Questa non è un email valida";
+                            }
+                            return null;
+                          },
+                        ),
                       )),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -230,19 +253,53 @@ class SignupScreen extends GetWidget<SignupController> {
                       children: [
                         SizedBox(
                           width: (MediaQuery.of(context).size.width) - 40,
-                          child: TextField(
-                              decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(20.0),
-                                  hintText: "Password",
-                                  filled: true,
-                                  fillColor: Color.fromARGB(255, 239, 237, 237),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                      width: 0,
-                                      color: Color.fromARGB(255, 239, 237, 237),
-                                    ),
-                                  ))),
+                          child: Obx(
+                            () => CustomTextFormField(
+                              width: 358,
+                              focusNode: FocusNode(),
+                              controller: controller.passwordController,
+                              hintText: "••••••••••••••",
+                              textInputAction: TextInputAction.done,
+                              alignment: Alignment.centerLeft,
+                              suffix: InkWell(
+                                onTap: () {
+                                  controller.isShowPassword.value =
+                                      !controller.isShowPassword.value;
+                                },
+                                child: Container(
+                                  margin: getMargin(
+                                    left: 169,
+                                    top: 17,
+                                    right: 20,
+                                    bottom: 17,
+                                  ),
+                                  child: SvgPicture.asset(
+                                    "lib/assets/svg/img_eye.svg",
+                                    semanticsLabel: 'Pills',
+                                    width: 20,
+                                    height: 20,
+                                  ),
+                                ),
+                              ),
+                              suffixConstraints: BoxConstraints(
+                                minWidth: getHorizontalSize(
+                                  22.00,
+                                ),
+                                minHeight: getVerticalSize(
+                                  22.00,
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value == null ||
+                                    (!isValidPassword(value,
+                                        isRequired: true))) {
+                                  return "Questa password non è valida";
+                                }
+                                return null;
+                              },
+                              isObscureText: !controller.isShowPassword.value,
+                            ),
+                          ),
                         ),
                         // SvgPicture.asset(
                         //   "lib/assets/svg/eye.svg",
@@ -282,19 +339,53 @@ class SignupScreen extends GetWidget<SignupController> {
                       children: [
                         SizedBox(
                           width: (MediaQuery.of(context).size.width) - 40,
-                          child: TextField(
-                              decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(20.0),
-                                  hintText: "Password",
-                                  filled: true,
-                                  fillColor: Color.fromARGB(255, 239, 237, 237),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                      width: 0,
-                                      color: Color.fromARGB(255, 239, 237, 237),
-                                    ),
-                                  ))),
+                          child: Obx(
+                            () => CustomTextFormField(
+                              width: 358,
+                              focusNode: FocusNode(),
+                              controller: controller.confirmPasswordController,
+                              hintText: "••••••••••••••",
+                              textInputAction: TextInputAction.done,
+                              alignment: Alignment.centerLeft,
+                              suffix: InkWell(
+                                onTap: () {
+                                  controller.isShowPassword.value =
+                                      !controller.isShowPassword.value;
+                                },
+                                child: Container(
+                                  margin: getMargin(
+                                    left: 169,
+                                    top: 17,
+                                    right: 20,
+                                    bottom: 17,
+                                  ),
+                                  child: SvgPicture.asset(
+                                    "lib/assets/svg/img_eye.svg",
+                                    semanticsLabel: 'Pills',
+                                    width: 20,
+                                    height: 20,
+                                  ),
+                                ),
+                              ),
+                              suffixConstraints: BoxConstraints(
+                                minWidth: getHorizontalSize(
+                                  22.00,
+                                ),
+                                minHeight: getVerticalSize(
+                                  22.00,
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value == null ||
+                                    (value !=
+                                        controller.passwordController.text)) {
+                                  return "La password non corrisponde a quella precedente";
+                                }
+                                return null;
+                              },
+                              isObscureText: !controller.isShowPassword.value,
+                            ),
+                          ),
                         ),
                         // SvgPicture.asset(
                         //   "lib/assets/svg/eye.svg",
@@ -355,10 +446,13 @@ class SignupScreen extends GetWidget<SignupController> {
                   ),
                   Container(
                       child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text('Registrati'),
+                        onPressed: () {
+                          controller.PostSignUp(context);
+                        },
+                        child: const Text('Registrati'),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 158, 11, 0),
+                          backgroundColor:
+                              const Color.fromARGB(255, 158, 11, 0),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),

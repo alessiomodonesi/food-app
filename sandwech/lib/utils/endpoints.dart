@@ -8,6 +8,8 @@ const getProductTagUrl =
 const getArchieveIngredientsUrl =
     "http://10.0.2.2:8080/food-api/API/product/getArchiveIngredients.php?panino=";
 
+const postSignUpUrl = "http://10.0.2.2:8080/food-api/API/user/registration.php";
+
 
 //IOS
 /*
@@ -18,6 +20,7 @@ const getProductTagUrl =
     "http://localhost/food-api/API/tag/product-tag/getArchiveProductTag.php?tag_id=";
 const getArchieveIngredientsUrl =
     "http://localhost/food-api/API/product/getArchiveIngredients.php?panino=";
+const postSignUpUrl = "http://localhost/food-api/API/user/registration.php";
 */
 
 //Altro
@@ -29,4 +32,5 @@ const getProductTagUrl =
     "http://192.168.0.230:8081/API/tag/product-tag/getArchiveProductTag.php?tag_id=";
 const getArchieveIngredientsUrl =
     "http://192.168.0.230:8081/API/product/getArchiveIngredients.php?panino=";
+    const postSignUpUrl = "http://192.168.0.230:8080/food-api/API/user/registration.php";
 */

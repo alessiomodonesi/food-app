@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
+class SignupModel {}
+
 class SignupController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController surnameController = TextEditingController();
@@ -13,7 +15,7 @@ class SignupController extends GetxController {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
-  //Rx<SignupModel> SignupModelObj = SignupModel().obs;
+  Rx<SignupModel> SignupModelObj = SignupModel().obs;
 
   Rx<bool> isShowPassword = false.obs;
   Rx<bool> isShowPasswordConfirm = false.obs;
@@ -45,12 +47,12 @@ class SignupController extends GetxController {
         passwordController.text != null &&
         isValidPassword(passwordController.text) &&
         confirmPasswordController.text == passwordController.text) {
-      // await dio.post(postSignUpUrl, data: {
-      //   'name': nameController.text,
-      //   'surname': surnameController.text,
-      //   'email': emailController.text,
-      //   'password': passwordController.text
-      // });
+      await dio.post(postSignUpUrl, data: {
+        'name': nameController.text,
+        'surname': surnameController.text,
+        'email': emailController.text,
+        'password': passwordController.text
+      });
       return;
     }
 
