@@ -1,5 +1,5 @@
 //Android
-
+/*
 const getTagUrl = "http://10.0.2.2:8080/food-api/API/tag/getTag.php?tag_ID=";
 const getProductUrl =
     "http://10.0.2.2:8080/food-api/API/product/getProduct.php?PRODUCT_ID=";
@@ -9,10 +9,10 @@ const getArchieveIngredientsUrl =
     "http://10.0.2.2:8080/food-api/API/product/getArchiveIngredients.php?panino=";
 const addItemCartUrl = "http://10.0.2.2:8080/food-api/API/cart/setAddItem.php";
 const postSignUpUrl = "http://10.0.2.2:8080/food-api/API/user/registration.php";
-
+*/
 
 //IOS
-/*
+
 const getTagUrl = "http://localhost/food-api/API/tag/getTag.php?tag_ID=";
 const getProductUrl =
     "http://localhost/food-api/API/product/getProduct.php?PRODUCT_ID=";
@@ -22,7 +22,7 @@ const getArchieveIngredientsUrl =
     "http://localhost/food-api/API/product/getArchiveIngredients.php?panino=";
 const postSignUpUrl = "http://localhost/food-api/API/user/registration.php";
 const addItemCartUrl = "http://localhost/food-api/API/cart/setAddItem.php";
-*/
+
 
 //Altro
 // IP_VM

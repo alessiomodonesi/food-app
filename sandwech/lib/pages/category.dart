@@ -38,16 +38,11 @@ class HomePage extends StatelessWidget {
             color: Color.fromARGB(255, 255, 17, 0)),
       ),
       InkWell(
-          onTap: () {
-            log('mzzz');
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
-          },
           child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: Color.fromARGB(255, 158, 11, 0)),
-          )),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(100),
+            color: Color.fromARGB(255, 158, 11, 0)),
+      )),
       Container(
         decoration: BoxDecoration(
             //image: ,
@@ -78,7 +73,7 @@ class HomePage extends StatelessWidget {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Homepage(1)));
+                                  builder: (context) => HomePage()));
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text("Errore")));
                         } else {
