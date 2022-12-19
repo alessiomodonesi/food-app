@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'logintry.dart';
-import 'pages/signup.dart';
+import 'pages/logintry.dart';
+// import 'pages/signup.dart';
 //import 'pages/product.dart';
 
 void main() {
@@ -18,8 +18,9 @@ class myApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red, //fabulous
       ),
-      home: SignupScreen(),
-      //home: const ProductPage(5),
+      home: LoginPage(),
+      // home: SignupScreen(),
+      // home: const ProductPage(5),
       debugShowCheckedModeBanner: false,
     );
   }
