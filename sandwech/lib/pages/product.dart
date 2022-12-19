@@ -100,7 +100,7 @@ class _ProductPageState extends State<ProductPage> {
       if (i != 0) {
         listOfIngredients += ", ${ing[i].name}";
       } else {
-        listOfIngredients += " ${ing[i].name}";
+        listOfIngredients += "${ing[i].name}";
       }
     }
 

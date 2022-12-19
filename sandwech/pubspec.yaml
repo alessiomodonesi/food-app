@@ -70,6 +70,7 @@ flutter:
     - lib/assets/app_logo.svg
     - lib/assets/svg/right_side_pills.svg
     - lib/assets/svg/left_side_pills.svg
+    - lib/assets/svg/img_eye.svg
     - lib/assets/sandwich.png
     - lib/assets/images/panino.png
 
