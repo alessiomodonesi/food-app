@@ -5,6 +5,7 @@ import 'package:sandwech/utils/endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:sandwech/utils/size.dart';
 
 class SignupModel {}
 
@@ -56,38 +57,58 @@ class SignupController extends GetxController {
       return;
     }
 
-    // showDialog(
-    //     context: context,
-    //     builder: (context) => AlertDialog(
-    //           title: Text(
-    //             'Impossibile registrarsi',
-    //             style: AppStyle.txtInterBold20RedA400,
-    //             textAlign: TextAlign.center,
-    //           ),
-    //           content: Text(
-    //             'Controlla tutti i campi e poi riprova',
-    //             style: AppStyle.txtInterRegular16,
-    //             textAlign: TextAlign.center,
-    //           ),
-    //           shape: RoundedRectangleBorder(
-    //             borderRadius: BorderRadius.circular(15),
-    //           ),
-    //           actions: [
-    //             CustomButton(
-    //               onTap: () => Get.back(),
-    //               width: 220,
-    //               text: "Chiudi",
-    //               margin: getMargin(
-    //                 left: 16,
-    //                 top: 5,
-    //                 right: 16,
-    //                 bottom: 5,
-    //               ),
-    //               variant: ButtonVariant.FillRedA400,
-    //               shape: ButtonShape.CircleBorder30,
-    //               fontStyle: ButtonFontStyle.InterBold16,
-    //             ),
-    //           ],
-    //         ));
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: const Text(
+                "Impossibile registrarti",
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: "Inter",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Color.fromARGB(255, 158, 11, 0),
+                ),
+                //style: AppStyle.txtInterBold20,
+              ),
+              content: const Text(
+                'Controlla tutti i campi e poi riprova',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              actions: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                        margin: getMargin(
+                          left: 16,
+                          top: 10,
+                          right: 16,
+                          bottom: 5,
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () => Navigator.pop(context),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 158, 11, 0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                          ),
+                          child: const Text('Chiudi'),
+                        )),
+                  ],
+                ),
+              ],
+            ));
   }
 }
