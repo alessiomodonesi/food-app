@@ -23,8 +23,6 @@ class _HomepageState extends State<Homepage> {
   String catalogName = "";
   List<Product> _productList = List.empty(growable: true);
   List<ProductTag> _productTagList = List.empty();
-  int k = 0;
-  int j = 0;
 
   int debugUserID = 4;
 
