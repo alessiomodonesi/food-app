@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/ingredient.dart';
 import 'package:flutter/material.dart';
@@ -350,7 +349,7 @@ class _ProductPageState extends State<ProductPage> {
           ),
         )
       ]),
-      bottomNavigationBar: GNavi(0),
+      bottomNavigationBar: const GNavi(0),
     );
   }
 }

@@ -310,6 +310,6 @@ class _CatalogPageState extends State<CatalogPage> {
                 ),
           ],
         ),
-        bottomNavigationBar: GNavi(0));
+        bottomNavigationBar: const GNavi(0));
   }
 }

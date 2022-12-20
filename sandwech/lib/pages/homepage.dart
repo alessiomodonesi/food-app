@@ -22,30 +22,30 @@ class HomePage extends StatelessWidget {
         decoration: BoxDecoration(
             //image: ,
             borderRadius: BorderRadius.circular(100),
-            color: Color.fromARGB(255, 158, 11, 0)),
+            color: const Color.fromARGB(255, 158, 11, 0)),
       ),
       Container(
         decoration: BoxDecoration(
             //image: ,
             borderRadius: BorderRadius.circular(100),
-            color: Color.fromARGB(228, 255, 194, 28)),
+            color: const Color.fromARGB(228, 255, 194, 28)),
       ),
       Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100),
-            color: Color.fromARGB(255, 255, 17, 0)),
+            color: const Color.fromARGB(255, 255, 17, 0)),
       ),
       InkWell(
           child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100),
-            color: Color.fromARGB(255, 158, 11, 0)),
+            color: const Color.fromARGB(255, 158, 11, 0)),
       )),
       Container(
         decoration: BoxDecoration(
             //image: ,
             borderRadius: BorderRadius.circular(100),
-            color: Color.fromARGB(228, 255, 194, 28)),
+            color: const Color.fromARGB(228, 255, 194, 28)),
       ),
     ];
 
@@ -103,7 +103,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ))),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 100, 0, 10),
+                  padding: const EdgeInsets.fromLTRB(0, 100, 0, 10),
                   child: Expanded(
                     child: Container(
                       child: VerticalCardPager(
@@ -143,6 +143,6 @@ class HomePage extends StatelessWidget {
                 )
               ],
             )),
-        bottomNavigationBar: GNavi(0));
+        bottomNavigationBar: const GNavi(0));
   }
 }

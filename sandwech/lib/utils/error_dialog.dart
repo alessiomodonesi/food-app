@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sandwech/utils/size.dart';
-import 'package:get/get.dart';
 
 Function showDialogError = (context, title, message) => showDialog(
     context: context,
@@ -9,7 +8,7 @@ Function showDialogError = (context, title, message) => showDialog(
             title,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: "Inter",
               fontWeight: FontWeight.bold,
               fontSize: 20,
@@ -19,7 +18,7 @@ Function showDialogError = (context, title, message) => showDialog(
           ),
           content: Text(
             message,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Inter',
               fontWeight: FontWeight.bold,
