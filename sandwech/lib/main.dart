@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sandwech/pages/signin.dart';
-// import 'pages/signup.dart';
-// import 'pages/product.dart';
+// import 'package:sandwech/pages/signup.dart';
+// import 'package:sandwech/pages/product.dart';
 
 void main() {
   runApp(const myApp());
@@ -20,7 +20,7 @@ class myApp extends StatelessWidget {
       ),
       home: SignInPage(),
       // home: SignupScreen(),
-      // home: const ProductPage(5),
+      // home: const ProductPage(),
       debugShowCheckedModeBanner: false,
     );
   }
