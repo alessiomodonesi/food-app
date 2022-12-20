@@ -26,7 +26,6 @@ class _GNavState extends State<GNav> {
               activeColor: Colors.red,
               //tabBackgroundColor: Colors.grey,
               gap: 8,
-
               tabs: [
                 GButton(
                   icon: Icons.person,
