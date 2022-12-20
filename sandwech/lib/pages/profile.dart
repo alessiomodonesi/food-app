@@ -43,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Padding(padding: EdgeInsets.only(top: 80)),
+              const Padding(padding: EdgeInsets.only(top: 100)),
               Align(
                   alignment: Alignment.center,
                   child: ClipRRect(
@@ -66,21 +66,35 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   )),
               Container(
-                margin: const EdgeInsets.only(top: 40),
+                margin: const EdgeInsets.only(top: 45),
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
-                    "$nomeUtente $cognomeUtente",
+                    nomeUtente,
                     style: const TextStyle(
                       color: Colors.black,
-                      fontSize: 35,
+                      fontSize: 34,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
               Container(
-                  margin: const EdgeInsets.only(top: 60),
+                margin: const EdgeInsets.only(top: 10),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    cognomeUtente,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 34,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                  margin: const EdgeInsets.only(top: 230),
                   width: 300,
                   height: 50,
                   child: ElevatedButton(
@@ -92,9 +106,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     child: const Text(
-                      'Reset password',
+                      'Reset Password',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 24,
                       ),
                     ),
                   )),
@@ -111,9 +125,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     child: const Text(
-                      'Logout',
+                      'Log Out',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 24,
                       ),
                     ),
                   )),
