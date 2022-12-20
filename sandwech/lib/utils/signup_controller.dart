@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:sandwech/utils/size.dart';
+import 'package:sandwech/utils/error_dialog.dart';
+import 'package:sandwech/pages/homepage.dart';
 
 class SignupModel {}
 
@@ -48,67 +50,41 @@ class SignupController extends GetxController {
         passwordController.text != null &&
         isValidPassword(passwordController.text) &&
         confirmPasswordController.text == passwordController.text) {
-      await dio.post(postSignUpUrl, data: {
-        'name': nameController.text,
-        'surname': surnameController.text,
-        'email': emailController.text,
-        'password': passwordController.text
-      });
+      try {
+        var response = await dio.post(postSignUpUrl,
+            data: {
+              'name': nameController.text,
+              'surname': surnameController.text,
+              'email': emailController.text,
+              'password': passwordController.text
+            },
+            options: Options(
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                },
+                validateStatus: (status) {
+                  return status! < 500;
+                }));
+        if (response.statusCode == 200) {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const HomePage()));
+          return;
+        } else {
+          showDialogError(context, 'Impossibile registrarsi',
+              'Controlla tutti i campi e poi riprova');
+          return;
+        }
+      } catch (e) {
+        showDialogError(context, 'Impossibile registrarsi',
+            'Impossibile contattare il server. Controlla la connessione e riprova.');
+        return;
+      }
+      return;
+    } else {
+      showDialogError(context, 'Impossibile registrarsi',
+          'Compila tutti i campi correttamente');
       return;
     }
-
-    showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              title: const Text(
-                "Impossibile registrarti",
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: "Inter",
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Color.fromARGB(255, 158, 11, 0),
-                ),
-                //style: AppStyle.txtInterBold20,
-              ),
-              content: const Text(
-                'Controlla tutti i campi e poi riprova',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              actions: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                        margin: getMargin(
-                          left: 16,
-                          top: 10,
-                          right: 16,
-                          bottom: 5,
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () => Navigator.pop(context),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(255, 158, 11, 0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          child: const Text('Chiudi'),
-                        )),
-                  ],
-                ),
-              ],
-            ));
   }
 }
