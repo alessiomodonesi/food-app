@@ -79,16 +79,16 @@ class _CartPageState extends State<CartPage> {
                   child: RichText(
                 // ignore: prefer_const_constructors
                 text: TextSpan(
-                  text: 'Ciao, ecco il tuo ',
+                  text: 'Ciao, ',
                   style: const TextStyle(
                       color: Colors.black,
                       fontStyle: FontStyle.normal,
                       fontSize: 20,
                       fontFamily: 'Inter'),
-                  children: <TextSpan>[
+                  children: const <TextSpan>[
                     TextSpan(
-                        text: ('carrello'),
-                        style: const TextStyle(fontWeight: FontWeight.bold)),
+                        text: ('Alessio'),
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
               ))),
@@ -96,7 +96,7 @@ class _CartPageState extends State<CartPage> {
               child: Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-                padding: EdgeInsets.only(top: 23, bottom: 25),
+                padding: const EdgeInsets.only(top: 23, bottom: 25),
                 width: 250,
                 height: 74,
                 decoration: BoxDecoration(
@@ -126,7 +126,7 @@ class _CartPageState extends State<CartPage> {
                           top: 10, bottom: 10, left: 20, right: 20),
                       color: const Color.fromARGB(255, 236, 235, 235),
                       child: Padding(
-                          padding: EdgeInsets.only(top: 15, bottom: 15),
+                          padding: const EdgeInsets.only(top: 15, bottom: 15),
                           child: ListTile(
                             leading: Image.asset('lib/assets/sandwich.png'),
                             title: Text('Panino al Salame',
@@ -150,7 +150,7 @@ class _CartPageState extends State<CartPage> {
                           top: 10, bottom: 10, left: 20, right: 20),
                       color: const Color.fromARGB(255, 236, 235, 235),
                       child: Padding(
-                          padding: EdgeInsets.only(top: 15, bottom: 15),
+                          padding: const EdgeInsets.only(top: 15, bottom: 15),
                           child: ListTile(
                             leading: Image.asset('lib/assets/sandwich.png'),
                             title: Text('Panino al Salame',
@@ -169,7 +169,7 @@ class _CartPageState extends State<CartPage> {
               ))
         ],
       ),
-      bottomNavigationBar: GNavi(2),
+      bottomNavigationBar: const GNavi(2),
     );
   }
 }
