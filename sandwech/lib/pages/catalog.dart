@@ -92,6 +92,7 @@ class _CatalogPageState extends State<CatalogPage> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(
