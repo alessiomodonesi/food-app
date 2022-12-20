@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:sandwech/utils/utils.dart';
+import 'package:sandwech/utils/cart_card.dart';
+import 'package:sandwech/types/product.dart';
 
 class CartPage extends StatefulWidget {
   final int userID;
@@ -15,6 +17,26 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   String productName = "";
   String nomeUtente = "";
+  List<Product> productList = const [
+    Product(
+        id: "1",
+        name: "Panino al Salame",
+        price: "2.00",
+        quantity: "5",
+        description: ""),
+    Product(
+        id: "2",
+        name: "Panino proteico",
+        price: "3.00",
+        quantity: "7",
+        description: ""),
+    Product(
+        id: "3",
+        name: "Panino al formaggio",
+        price: "1.50",
+        quantity: "2",
+        description: ""),
+  ];
 
   String capitalize(String str) {
     return str[0].toUpperCase() + str.substring(1);
@@ -31,8 +53,18 @@ class _CartPageState extends State<CartPage> {
         content: Text("Sending Message"),
       ));
     });
+
+    getCart(widget.userID.toString()).then(
+        (value) => setState(() {
+              productList = value;
+            }), onError: (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Sending Message"),
+      ));
+    });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -70,17 +102,17 @@ class _CartPageState extends State<CartPage> {
               top: 68,
               child: Container(
                   child: RichText(
-                text: const TextSpan(
+                text: TextSpan(
                   text: 'Ciao, ',
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.black,
                       fontStyle: FontStyle.normal,
                       fontSize: 20,
                       fontFamily: 'Inter'),
                   children: <TextSpan>[
                     TextSpan(
-                        text: ('Alessio'),
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                        text: nomeUtente,
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
               ))),
@@ -94,10 +126,10 @@ class _CartPageState extends State<CartPage> {
                     padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      color: const Color(0xFFFF9B18),
+                      color: const Color.fromARGB(255, 158, 11, 0),
                     ),
                     child: Text(
-                      'Conferma Ordine',
+                      'Ordina',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -106,62 +138,36 @@ class _CartPageState extends State<CartPage> {
                     )),
               )),
           Align(
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Card(
-                      // ignore: prefer_const_constructors
-                      elevation: 10,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      margin: const EdgeInsets.only(
-                          top: 10, bottom: 10, left: 20, right: 20),
-                      color: const Color.fromARGB(255, 236, 235, 235),
-                      child: Padding(
-                          padding: const EdgeInsets.only(top: 15, bottom: 15),
-                          child: ListTile(
-                            leading:
-                                Image.asset('lib/assets/icons/panini-icon.png'),
-                            title: Text('Panino al Salame',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: getFontSize(20))),
-                            subtitle: Text(
-                              '€ 2,00',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: getFontSize(18)),
-                            ),
-                            isThreeLine: false,
-                          ))),
-                  Card(
-                      // ignore: prefer_const_constructors
-                      elevation: 10,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      margin: const EdgeInsets.only(
-                          top: 10, bottom: 10, left: 20, right: 20),
-                      color: const Color.fromARGB(255, 236, 235, 235),
-                      child: Padding(
-                          padding: const EdgeInsets.only(top: 15, bottom: 15),
-                          child: ListTile(
-                            leading:
-                                Image.asset('lib/assets/icons/panini-icon.png'),
-                            title: Text('Panino al Salame',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: getFontSize(20))),
-                            subtitle: Text(
-                              '€ 2,00',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: getFontSize(18)),
-                            ),
-                            isThreeLine: false,
-                          ))),
-                ],
-              ))
+            alignment: Alignment.center,
+            child: Container(
+              child: (() {
+                if (productList.isEmpty) {
+                  return Center(
+                      child: RichText(
+                    text: const TextSpan(
+                      text: ("Nessun prodotto"),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16),
+                    ),
+                  ));
+                } else {
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: productList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return CartCard(
+                        1,
+                        productList[index].name,
+                        productList[index].price,
+                      );
+                    },
+                  );
+                }
+              }()),
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: GNavi(2, widget.userID),

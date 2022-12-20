@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/tag.dart';
 import 'package:sandwech/types/product_tag.dart';
@@ -31,11 +32,11 @@ Future<List<ProductTag>> getProductTag(id) async {
   }
 }
 
-Future<List<Product>> getProduct(id) async {
+Future<List<Product>> getProducts(id) async {
   try {
     Response response = await Dio().get(getProductUrl + id);
     log(response.toString());
-    return parseProduct(jsonEncode(response.data));
+    return parseProducts(jsonEncode(response.data));
   } catch (e) {
     log(e.toString());
     return List.empty();
@@ -88,6 +89,18 @@ Future<User> getUser(userID) async {
   }
 }
 
+Future<List<Product>> getCart(userID) async {
+  try {
+    Response response = await Dio().get(getCartUrl + userID);
+    log(response.toString());
+    log(getCartUrl + userID);
+    return parseCart(response.data);
+  } catch (e) {
+    log(e.toString());
+    return List.empty();
+  }
+}
+
 List<Tag> parseTag(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
@@ -100,7 +113,7 @@ List<ProductTag> parseProductTag(String responseBody) {
   return parsed.map<ProductTag>((json) => ProductTag.fromJson(json)).toList();
 }
 
-List<Product> parseProduct(String responseBody) {
+List<Product> parseProducts(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
   return parsed.map<Product>((json) => Product.fromJson(json)).toList();
@@ -122,4 +135,9 @@ User parseGetUser(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
   return parsed.map<User>((json) => User.fromJson(json)).toList()[0];
+}
+
+List<Product> parseCart(String responseBody) {
+  List parsed = jsonDecode(responseBody);
+  return parsed.map<Product>((json) => Product.fromJsonCart(json)).toList();
 }

@@ -70,7 +70,7 @@ class _CatalogPageState extends State<CatalogPage> {
             {
               for (var i = 0; i < _productTagList.length; i++)
                 {
-                  getProduct(_productTagList[i].product).then(
+                  getProducts(_productTagList[i].product).then(
                     (value) => setState(() {
                       _productList.add(Product(
                           id: value[0].id.toString(),
