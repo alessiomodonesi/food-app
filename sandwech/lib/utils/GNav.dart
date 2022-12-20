@@ -34,30 +34,36 @@ class GNavState extends State<GNavi> {
               icon: Icons.home,
               text: 'Home',
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => HomePage(widget.userID)));
+                if (widget._currentIndex != 0) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => HomePage(widget.userID)));
+                }
               },
             ),
             GButton(
               icon: Icons.person,
               text: 'Profilo',
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ProfilePage(widget.userID)));
+                if (widget._currentIndex != 1) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ProfilePage(widget.userID)));
+                }
               },
             ),
             GButton(
               icon: Icons.shopping_cart,
               text: 'Carrello',
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CartPage(widget.userID)));
+                if (widget._currentIndex != 2) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CartPage(widget.userID)));
+                }
               },
             ),
           ],
