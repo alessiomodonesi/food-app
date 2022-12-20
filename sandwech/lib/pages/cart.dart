@@ -77,7 +77,6 @@ class _CartPageState extends State<CartPage> {
               top: 70,
               child: Container(
                   child: RichText(
-                // ignore: prefer_const_constructors
                 text: TextSpan(
                   text: 'Ciao, ',
                   style: const TextStyle(
@@ -96,9 +95,7 @@ class _CartPageState extends State<CartPage> {
               child: Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-                padding: const EdgeInsets.only(top: 23, bottom: 25),
-                width: 250,
-                height: 74,
+                padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
                   color: const Color(0xFFFF9B18),
