@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:sandwech/utils/utils.dart';
+import 'package:sandwech/pages/signin.dart';
 
 class ProfilePage extends StatefulWidget {
   final int userID;
@@ -117,7 +118,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   width: 300,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignInPage()));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFEE0F38),
                       shape: RoundedRectangleBorder(

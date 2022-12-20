@@ -118,7 +118,7 @@ class SignupScreen extends GetWidget<SignupController> {
                           width: 358,
                           focusNode: FocusNode(),
                           controller: controller.nameController,
-                          hintText: "Mario",
+                          hintText: "Nome",
                           margin: getMargin(
                             left: 16,
                             top: 1,
@@ -162,7 +162,7 @@ class SignupScreen extends GetWidget<SignupController> {
                           width: 358,
                           focusNode: FocusNode(),
                           controller: controller.surnameController,
-                          hintText: "Rossi",
+                          hintText: "Cognome",
                           margin: getMargin(
                             left: 16,
                             top: 1,
@@ -206,7 +206,7 @@ class SignupScreen extends GetWidget<SignupController> {
                           width: 358,
                           focusNode: FocusNode(),
                           controller: controller.emailController,
-                          hintText: "mario.rossi@gmail.com",
+                          hintText: "Email",
                           margin: getMargin(
                             left: 16,
                             top: 1,
@@ -255,7 +255,7 @@ class SignupScreen extends GetWidget<SignupController> {
                               width: 358,
                               focusNode: FocusNode(),
                               controller: controller.passwordController,
-                              hintText: "••••••••••••••",
+                              hintText: "Password",
                               textInputAction: TextInputAction.done,
                               alignment: Alignment.centerLeft,
                               suffix: InkWell(
@@ -341,7 +341,7 @@ class SignupScreen extends GetWidget<SignupController> {
                               width: 358,
                               focusNode: FocusNode(),
                               controller: controller.confirmPasswordController,
-                              hintText: "••••••••••••••",
+                              hintText: "Password",
                               textInputAction: TextInputAction.done,
                               alignment: Alignment.centerLeft,
                               suffix: InkWell(

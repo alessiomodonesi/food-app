@@ -107,7 +107,7 @@ class _SignInPageState extends State<SignInPage> {
                               width: 358,
                               focusNode: FocusNode(),
                               controller: signInController.passwordController,
-                              hintText: "••••••••••••••",
+                              hintText: "Password",
                               margin: getMargin(
                                 left: 16,
                                 top: 1,
@@ -162,7 +162,7 @@ class _SignInPageState extends State<SignInPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: const [
-                        Text('Password dimenticata?',
+                        Text('Password dimenticata',
                             style: TextStyle(
                                 color: Color.fromARGB(255, 158, 11, 0),
                                 fontSize: 14,
