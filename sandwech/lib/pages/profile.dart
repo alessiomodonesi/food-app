@@ -101,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFEE0F38),
+                      backgroundColor: const Color.fromARGB(255, 158, 11, 0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -125,7 +125,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               builder: (context) => SignInPage()));
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFEE0F38),
+                      backgroundColor: const Color.fromARGB(255, 158, 11, 0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),

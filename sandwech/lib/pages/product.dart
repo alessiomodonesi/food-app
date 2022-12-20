@@ -110,8 +110,8 @@ class _ProductPageState extends State<ProductPage> {
       body: Stack(children: <Widget>[
         Image.asset(paninoPath),
         Positioned(
-          top: 40,
-          left: 10,
+          top: 45,
+          left: 12,
           child: ButtonCircle(30, Colors.white, Icons.arrow_back_ios,
               Alignment.centerRight, Colors.black, () {
             Navigator.pop(context);
