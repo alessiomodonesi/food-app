@@ -1,9 +1,10 @@
 // hostname
 const android = "10.0.2.2:8080";
 const ios = "localhost";
-const vm = ":8081";
+const vm = "192.168.0.230:8081";
 
-const baseUrl = "$ios/food-api";
+const baseUrl = vm;
+//const baseUrl = "$ios/food-api";
 
 // url
 const getTagUrl = "http://$baseUrl/API/tag/getTag.php?tag_ID=";
@@ -16,3 +17,4 @@ const postSignUpUrl = "http://$baseUrl/API/user/registration.php";
 const addItemCartUrl = "http://$baseUrl/API/cart/setAddItem.php";
 const postSignInUrl = "http://$baseUrl/API/user/login.php";
 const getCartUrl = "http://$baseUrl/API/cart/getCart.php?user=";
+const getUserUrl = "http://$baseUrl/API/user/getUser.php?id=";

@@ -6,6 +6,22 @@ import 'package:vertical_card_pager/vertical_card_pager.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  /*
+  @override
+  void initState() {
+    super.initState();
+    getSingleProduct(widget.idProduct.toString()).then(
+        (value) => setState(() {
+              prodotto = value as Product;
+              checkDescription(prodotto.description as String);
+            }), onError: (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Sending Message"),
+      ));
+    });
+  }
+  */
+
   @override
   Widget build(BuildContext context) {
     String name = "Alessio";
