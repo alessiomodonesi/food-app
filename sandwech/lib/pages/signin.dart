@@ -9,14 +9,13 @@ import 'package:sandwech/pages/signup.dart';
 
 // ignore: must_be_immutable
 class SignInPage extends StatefulWidget {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   SignInPage({super.key});
   @override
   State<StatefulWidget> createState() => _SignInPageState();
 }
 
-@override
 final signInController = SignInController();
 
 class _SignInPageState extends State<SignInPage> {
@@ -26,7 +25,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext conterxt) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+        padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
         width: size.width,
         child: SingleChildScrollView(
           child: Form(
@@ -106,7 +105,8 @@ class _SignInPageState extends State<SignInPage> {
                             width: 358,
                             focusNode: FocusNode(),
                             controller: signInController.passwordController,
-                            hintText: "Password",
+                            hintText: signInController.passwordHintText[
+                                signInController.isShowPassword.value],
                             margin: getMargin(
                               left: 16,
                               top: 1,

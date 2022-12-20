@@ -7,11 +7,10 @@ import 'package:sandwech/utils/colors.dart';
 import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/utils/text_form_field.dart';
 
-class SignupScreen extends GetWidget<SignupController> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+class SignupScreen extends GetWidget<SignUpController> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  @override
-  final controller = SignupController();
+  final signUpController = SignUpController();
 
   // final nameController = SignupController().nameController;
   // final surnameController = SignupController().surnameController;
@@ -25,7 +24,7 @@ class SignupScreen extends GetWidget<SignupController> {
     return Scaffold(
       backgroundColor: ColorConstant.whiteA700,
       body: Container(
-        padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+        padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
         width: size.width,
         child: SingleChildScrollView(
           child: Form(
@@ -116,7 +115,7 @@ class SignupScreen extends GetWidget<SignupController> {
                       child: CustomTextFormField(
                         width: 358,
                         focusNode: FocusNode(),
-                        controller: controller.nameController,
+                        controller: signUpController.nameController,
                         hintText: "Nome",
                         margin: getMargin(
                           left: 16,
@@ -160,7 +159,7 @@ class SignupScreen extends GetWidget<SignupController> {
                       child: CustomTextFormField(
                         width: 358,
                         focusNode: FocusNode(),
-                        controller: controller.surnameController,
+                        controller: signUpController.surnameController,
                         hintText: "Cognome",
                         margin: getMargin(
                           left: 16,
@@ -204,7 +203,7 @@ class SignupScreen extends GetWidget<SignupController> {
                       child: CustomTextFormField(
                         width: 358,
                         focusNode: FocusNode(),
-                        controller: controller.emailController,
+                        controller: signUpController.emailController,
                         hintText: "Email",
                         margin: getMargin(
                           left: 16,
@@ -253,14 +252,15 @@ class SignupScreen extends GetWidget<SignupController> {
                           () => CustomTextFormField(
                             width: 358,
                             focusNode: FocusNode(),
-                            controller: controller.passwordController,
-                            hintText: "Password",
+                            controller: signUpController.passwordController,
+                            hintText: signUpController.passwordHintText[
+                                signUpController.isShowPassword.value],
                             textInputAction: TextInputAction.done,
                             alignment: Alignment.centerLeft,
                             suffix: InkWell(
                               onTap: () {
-                                controller.isShowPassword.value =
-                                    !controller.isShowPassword.value;
+                                signUpController.isShowPassword.value =
+                                    !signUpController.isShowPassword.value;
                               },
                               child: Container(
                                 margin: getMargin(
@@ -292,7 +292,8 @@ class SignupScreen extends GetWidget<SignupController> {
                               }
                               return null;
                             },
-                            isObscureText: !controller.isShowPassword.value,
+                            isObscureText:
+                                !signUpController.isShowPassword.value,
                           ),
                         ),
                       ),
@@ -338,14 +339,17 @@ class SignupScreen extends GetWidget<SignupController> {
                           () => CustomTextFormField(
                             width: 358,
                             focusNode: FocusNode(),
-                            controller: controller.confirmPasswordController,
-                            hintText: "Password",
+                            controller:
+                                signUpController.confirmPasswordController,
+                            hintText: signUpController.passwordHintText[
+                                signUpController.isShowPasswordConfirm.value],
                             textInputAction: TextInputAction.done,
                             alignment: Alignment.centerLeft,
                             suffix: InkWell(
                               onTap: () {
-                                controller.isShowPassword.value =
-                                    !controller.isShowPassword.value;
+                                signUpController.isShowPasswordConfirm.value =
+                                    !signUpController
+                                        .isShowPasswordConfirm.value;
                               },
                               child: Container(
                                 margin: getMargin(
@@ -373,12 +377,14 @@ class SignupScreen extends GetWidget<SignupController> {
                             validator: (value) {
                               if (value == null ||
                                   (value !=
-                                      controller.passwordController.text)) {
+                                      signUpController
+                                          .passwordController.text)) {
                                 return "La password non corrisponde a quella precedente";
                               }
                               return null;
                             },
-                            isObscureText: !controller.isShowPassword.value,
+                            isObscureText:
+                                !signUpController.isShowPassword.value,
                           ),
                         ),
                       ),
@@ -442,7 +448,7 @@ class SignupScreen extends GetWidget<SignupController> {
                 Container(
                     child: ElevatedButton(
                       onPressed: () {
-                        controller.PostSignUp(context);
+                        signUpController.PostSignUp(context);
                       },
                       child: const Text('Registrati'),
                       style: ElevatedButton.styleFrom(
