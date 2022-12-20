@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/product_tag.dart';
 import 'package:sandwech/utils/utils.dart';
-import 'package:sandwech/utils/navbar.dart';
+import 'package:sandwech/utils/GNav.dart';
 import 'package:flutter/cupertino.dart';
 //import 'package:sandwech/types/tag.dart';
 import 'package:sandwech/utils/circle_button.dart';
@@ -311,6 +311,6 @@ class _HomepageState extends State<Homepage> {
                 ),
           ],
         ),
-        bottomNavigationBar: const Navbar());
+        bottomNavigationBar: const GNav());
   }
 }
