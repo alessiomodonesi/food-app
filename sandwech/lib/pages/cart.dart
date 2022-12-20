@@ -129,7 +129,7 @@ class _CartPageState extends State<CartPage> {
                           padding: const EdgeInsets.only(top: 15, bottom: 15),
                           child: ListTile(
                             leading:
-                                Image.asset('lib/assets/icons/panino-icon.png'),
+                                Image.asset('lib/assets/icons/panini-icon.png'),
                             title: Text('Panino al Salame',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -154,7 +154,7 @@ class _CartPageState extends State<CartPage> {
                           padding: const EdgeInsets.only(top: 15, bottom: 15),
                           child: ListTile(
                             leading:
-                                Image.asset('lib/assets/icons/panino-icon.png'),
+                                Image.asset('lib/assets/icons/panini-icon.png'),
                             title: Text('Panino al Salame',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,

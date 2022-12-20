@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:sandwech/pages/homepage.dart';
 import 'package:sandwech/pages/profile.dart';
-import 'package:sandwech/pages/user.dart';
 import 'package:sandwech/pages/cart.dart';
 
 class GNavi extends StatefulWidget {

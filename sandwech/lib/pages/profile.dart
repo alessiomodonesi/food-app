@@ -19,13 +19,13 @@ class _ProfilePageState extends State<ProfilePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(padding: const EdgeInsets.only(top: 50)),
+              const Padding(padding: EdgeInsets.only(top: 75)),
               Align(
                   alignment: Alignment.center,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(50),
                     child: Image.asset(
-                      'lib/assets/images/foto_profilo_app.png',
+                      'lib/assets/images/profile.png',
                       width: 200,
                       height: 200,
                     ),

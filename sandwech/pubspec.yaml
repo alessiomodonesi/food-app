@@ -73,7 +73,7 @@ flutter:
     - lib/assets/svg/left_side_pills.svg
     - lib/assets/svg/img_eye.svg
     - lib/assets/images/panino.png
-    - lib/assets/images/foto_profilo_app.png
+    - lib/assets/images/profile.png
     - lib/assets/icons/panini-icon.png
     - lib/assets/icons/bibite-icon.png
     - lib/assets/icons/brioches-icon.png
