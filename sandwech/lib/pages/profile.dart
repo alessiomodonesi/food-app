@@ -44,18 +44,6 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             children: [
               const Padding(padding: EdgeInsets.only(top: 80)),
-              /*
-              Align(
-                  alignment: Alignment.center,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: Image.asset(
-                      'lib/assets/images/profile.png',
-                      width: 200,
-                      height: 200,
-                    ),
-                  )),
-                  */
               Align(
                   alignment: Alignment.center,
                   child: ClipRRect(
@@ -77,6 +65,20 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                   )),
+              Container(
+                margin: const EdgeInsets.only(top: 40),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "$nomeUtente $cognomeUtente",
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
