@@ -6,7 +6,9 @@ import 'package:sandwech/pages/cart.dart';
 
 class GNavi extends StatefulWidget {
   final int _currentIndex;
-  const GNavi(this._currentIndex, {Key? key}) : super(key: key);
+  final int userID;
+
+  const GNavi(this._currentIndex, this.userID, {Key? key}) : super(key: key);
   @override
   State<GNavi> createState() => GNavState();
 }
@@ -32,8 +34,10 @@ class GNavState extends State<GNavi> {
               icon: Icons.home,
               text: 'Home',
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const HomePage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HomePage(widget.userID)));
               },
             ),
             GButton(
@@ -43,15 +47,17 @@ class GNavState extends State<GNavi> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ProfilePage()));
+                        builder: (context) => ProfilePage(widget.userID)));
               },
             ),
             GButton(
               icon: Icons.shopping_cart,
               text: 'Carrello',
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const CartPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CartPage(widget.userID)));
               },
             ),
           ],

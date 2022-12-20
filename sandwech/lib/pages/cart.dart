@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/utils/GNav.dart';
+import 'package:sandwech/utils/utils.dart';
 
 class CartPage extends StatefulWidget {
-  // final int userID;
-  // const CartPage(this.userID, {super.key});
-  const CartPage({super.key});
+  final int userID;
+
+  const CartPage(this.userID, {super.key});
 
   @override
   State<CartPage> createState() => _CartPageState();
@@ -14,23 +15,24 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   String productName = "";
+  String nomeUtente = "";
 
   String capitalize(String str) {
     return str[0].toUpperCase() + str.substring(1);
   }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   getCartProduct(widget.userID.toString()).then(
-  //       (value) => setState(() {
-  //             productName = capitalize(value[0].name);
-  //           }), onError: (e) {
-  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //       content: Text("Sending Message"),
-  //     ));
-  //   });
-  // }
+  @override
+  void initState() {
+    super.initState();
+    getUser(widget.userID.toString()).then(
+        (value) => setState(() {
+              nomeUtente = value.name;
+            }), onError: (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Sending Message"),
+      ));
+    });
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -171,7 +173,7 @@ class _CartPageState extends State<CartPage> {
               ))
         ],
       ),
-      bottomNavigationBar: const GNavi(2),
+      bottomNavigationBar: GNavi(2, widget.userID),
     );
   }
 }
