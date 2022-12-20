@@ -73,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     "$nomeUtente $cognomeUtente",
                     style: const TextStyle(
                       color: Colors.black,
-                      fontSize: 40,
+                      fontSize: 35,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
