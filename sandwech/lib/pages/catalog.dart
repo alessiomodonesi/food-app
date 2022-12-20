@@ -18,7 +18,7 @@ class CatalogPage extends StatefulWidget {
 }
 
 class _CatalogPageState extends State<CatalogPage> {
-  String name = "utente";
+  String name = "Alessio";
   String catalogName = "";
   List<Product> _productList = List.empty(growable: true);
   List<ProductTag> _productTagList = List.empty();
@@ -310,6 +310,6 @@ class _CatalogPageState extends State<CatalogPage> {
                 ),
           ],
         ),
-        bottomNavigationBar: const GNavi());
+        bottomNavigationBar: GNavi(0));
   }
 }

@@ -153,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => GNavi()));
+                                      builder: (context) => const HomePage()));
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color.fromARGB(255, 158, 11, 0),
@@ -171,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => GNavi()));
+                                      builder: (context) => const HomePage()));
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color.fromARGB(255, 158, 11, 0),

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:sandwech/pages/catalog.dart';
 import 'package:sandwech/utils/GNav.dart';
@@ -144,6 +143,6 @@ class HomePage extends StatelessWidget {
                 )
               ],
             )),
-        bottomNavigationBar: const GNavi());
+        bottomNavigationBar: GNavi(0));
   }
 }
