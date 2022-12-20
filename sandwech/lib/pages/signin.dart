@@ -7,8 +7,11 @@ import 'package:sandwech/utils/signin_controller.dart';
 import 'package:get/get.dart';
 import 'package:sandwech/pages/signup.dart';
 
+// ignore: must_be_immutable
 class SignInPage extends StatefulWidget {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  SignInPage({super.key});
   @override
   State<StatefulWidget> createState() => _SignInPageState();
 }
@@ -181,7 +184,6 @@ class _SignInPageState extends State<SignInPage> {
                             onPressed: () {
                               signInController.PostSignIn(conterxt);
                             },
-                            child: const Text('Accedi'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
                                   const Color.fromARGB(255, 158, 11, 0),
@@ -189,6 +191,7 @@ class _SignInPageState extends State<SignInPage> {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                             ),
+                            child: const Text('Accedi'),
                           )),
                       Container(
                         padding: EdgeInsets.fromLTRB(30, 30, 30, 0),

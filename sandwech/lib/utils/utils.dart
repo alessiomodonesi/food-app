@@ -2,6 +2,7 @@ import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/tag.dart';
 import 'package:sandwech/types/product_tag.dart';
 import 'package:sandwech/types/ingredient.dart';
+import 'package:sandwech/types/user.dart';
 
 import 'dart:convert';
 import 'endpoints.dart';
@@ -76,6 +77,17 @@ Future<String> addItemCart(userID, productID, quantity) async {
   }
 }
 
+Future<User> getUser(userID) async {
+  try {
+    Response response = await Dio().get(getArchieveIngredientsUrl + getUserUrl);
+    log(response.toString());
+    return parseGetUser(jsonEncode(response.data));
+  } catch (e) {
+    log(e.toString());
+    return const User(name: "", surname: "");
+  }
+}
+
 List<Tag> parseTag(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
@@ -104,4 +116,10 @@ List<Ingredient> parseArchieveIngredients(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
   return parsed.map<Ingredient>((json) => Ingredient.fromJson(json)).toList();
+}
+
+User parseGetUser(String responseBody) {
+  List parsed = jsonDecode(responseBody);
+  //log(parsed.toString());
+  return parsed.map<User>((json) => User.fromJson(json)).toList()[0];
 }

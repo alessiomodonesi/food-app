@@ -72,8 +72,10 @@ flutter:
     - lib/assets/svg/right_side_pills.svg
     - lib/assets/svg/left_side_pills.svg
     - lib/assets/svg/img_eye.svg
-    - lib/assets/icons/panino-icon.png
     - lib/assets/images/panino.png
+    - lib/assets/icons/panini-icon.png
+    - lib/assets/icons/bibite-icon.png
+    - lib/assets/icons/brioches-icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

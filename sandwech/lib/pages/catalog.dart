@@ -28,6 +28,22 @@ class _CatalogPageState extends State<CatalogPage> {
     return str[0].toUpperCase() + str.substring(1);
   }
 
+  String tagName(int id) {
+    switch (id) {
+      case 1:
+        return "panini";
+      case 2:
+        return "bibite";
+      case 3:
+        return "piadine";
+      case 4:
+        return "brioches";
+      case 5:
+        return "snack";
+    }
+    return "";
+  }
+
   @override
   void initState() {
     super.initState();
@@ -234,7 +250,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                                     color: Color(0xEEEEEAEA),
                                                   ),
                                                   child: Image.asset(
-                                                      'lib/assets/icons/panino-icon.png'),
+                                                      'lib/assets/icons/${tagName(widget.idCat)}-icon.png'),
                                                 ),
                                                 Container(
                                                     height: 20,
