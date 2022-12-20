@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:sandwech/utils/validation.dart';
 import 'package:sandwech/utils/endpoints.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +68,10 @@ class SignUpController extends GetxController {
                 }));
         if (response.statusCode == 200) {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePage()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => HomePage(
+                      int.parse(jsonDecode(response.toString())["userID"]))));
           return;
         } else {
           showDialogError(context, 'Impossibile registrarsi',

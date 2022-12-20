@@ -61,7 +61,7 @@ class SignInController extends GetxController {
               context,
               MaterialPageRoute(
                   builder: (context) => HomePage(
-                      int.parse(jsonDecode(response.toString())["user"]))));
+                      int.parse(jsonDecode(response.toString())["userID"]))));
           return;
         }
         if (response.statusCode == 401) {
