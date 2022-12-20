@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sandwech/pages/logintry.dart';
+import 'package:sandwech/pages/homepage.dart';
+import 'package:sandwech/pages/product.dart';
+//import 'package:sandwech/pages/cart.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class GNavi extends StatefulWidget {
@@ -9,35 +13,51 @@ class GNavi extends StatefulWidget {
 }
 
 class GNavState extends State<GNavi> {
-  List<Widget> body = const [];
-  final int _currentIndex = 0;
-
-  // if (body != null && body.length > _currentIndex)
+  List<Widget> pages = [HomePage()];
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(child: body[_currentIndex]),
+        body: pages[_currentIndex],
         bottomNavigationBar: Container(
           color: Colors.white,
           // ignore: prefer_const_constructors
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: const GNav(
-              color: Color.fromARGB(255, 255, 166, 0),
+            child: GNav(
+              haptic: true,
+              color: const Color.fromARGB(255, 255, 166, 0),
               activeColor: Colors.red,
               //tabBackgroundColor: Colors.grey,
               gap: 8,
               tabs: [
                 GButton(
-                  icon: Icons.person,
-                  text: 'Profilo',
-                ),
-                GButton(
                   icon: Icons.home,
                   text: 'Home',
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage()));
+                  },
                 ),
-                GButton(icon: Icons.shopping_cart, text: 'Carrello'),
+                GButton(
+                  icon: Icons.person,
+                  text: 'Profilo',
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginPage()));
+                  },
+                ),
+                GButton(
+                  icon: Icons.shopping_cart,
+                  text: 'Carrello',
+                  onPressed: () {
+                    // Navigator.push(context,
+                    // MaterialPageRoute(builder: (context) => CartPage()));
+                  },
+                ),
               ],
             ),
           ),

@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String name = "utente";
+    String name = "Alessio";
     var titles = {
       "PANINI": "1",
       "PIADINE": "3",
@@ -110,7 +110,7 @@ class HomePage extends StatelessWidget {
                       child: VerticalCardPager(
                           titles: titles.keys.toList(), // required
                           images: images, // required
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold), // optional
                           onPageChanged: (page) {
@@ -123,15 +123,16 @@ class HomePage extends StatelessWidget {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomePage()));
+                                      builder: (context) => const HomePage()));
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(content: Text("Errore")));
                             } else {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Homepage(int.parse(
-                                          titles.values.toList()[index]))));
+                                      builder: (context) => CatalogPage(
+                                          int.parse(
+                                              titles.values.toList()[index]))));
                             }
                             // optional
                           },

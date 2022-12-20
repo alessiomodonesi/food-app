@@ -9,15 +9,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/pages/product.dart';
 
-class Homepage extends StatefulWidget {
+class CatalogPage extends StatefulWidget {
   final int idCat;
-  const Homepage(this.idCat, {super.key});
+  const CatalogPage(this.idCat, {super.key});
 
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<CatalogPage> createState() => _CatalogPageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _CatalogPageState extends State<CatalogPage> {
   String name = "utente";
   String catalogName = "";
   List<Product> _productList = List.empty(growable: true);

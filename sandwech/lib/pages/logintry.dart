@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sandwech/pages/homepage.dart';
+import 'package:sandwech/utils/GNav.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
 
 class LoginPage extends StatefulWidget {
@@ -152,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomePage()));
+                                      builder: (context) => GNavi()));
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color.fromARGB(255, 158, 11, 0),
@@ -170,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomePage()));
+                                      builder: (context) => GNavi()));
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color.fromARGB(255, 158, 11, 0),
