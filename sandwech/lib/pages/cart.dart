@@ -1,35 +1,6 @@
-// import 'package:flutter/material.dart';
-// import 'package:sandwech/utils/GNav.dart';
-
-// class CartPage extends StatefulWidget {
-//   const CartPage({super.key});
-
-//   @override
-//   State<CartPage> createState() => _CartPageState();
-// }
-
-// class _CartPageState extends State<CartPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(
-//         child: Text("Carrello"),
-//       ),
-//       bottomNavigationBar: GNavi(1),
-//     );
-//   }
-// }
-
-import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/routes/default_transitions.dart';
 import 'package:sandwech/utils/circle_button.dart';
-import 'package:sandwech/pages/product.dart';
-import 'package:sandwech/types/product.dart';
-import 'package:sandwech/types/product_tag.dart';
 import 'package:sandwech/utils/size.dart';
-import 'package:sandwech/utils/utils.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:sandwech/utils/GNav.dart';
 
 class CartPage extends StatefulWidget {
@@ -88,6 +59,18 @@ class _CartPageState extends State<CartPage> {
             )),
           ),
           Positioned(
+              width: 23,
+              height: 56,
+              left: 35,
+              top: -13,
+              child: Container(
+                width: 23,
+                height: 56,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: const Color(0xFFEE0F38)),
+              )),
+          Positioned(
               width: 400,
               height: 270,
               left: 24,
@@ -113,11 +96,20 @@ class _CartPageState extends State<CartPage> {
               child: Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-                width: 20,
-                height: 20,
+                padding: EdgeInsets.only(top: 23, bottom: 25),
+                width: 250,
+                height: 74,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(100),
                   color: const Color(0xFFFF9B18),
+                ),
+                child: Text(
+                  'Conferma Ordine',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: getFontSize(30)),
+                  textAlign: TextAlign.center,
                 )),
           )),
           Align(
@@ -125,56 +117,30 @@ class _CartPageState extends State<CartPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    width: 350,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Color.fromARGB(255, 236, 235, 235),
-                    ),
-                    padding: const EdgeInsets.only(
-                      top: 15,
-                    ),
-                    margin: const EdgeInsets.only(top: 10, bottom: 10),
-                    // child: const Center(
-                    //     child: Text(
-                    //   'test',
-                    //   textAlign: TextAlign.center,
-                    //   style: TextStyle(
-                    //     fontSize: 20,
-                    //   ),
-                    // )),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[
-                        ListTile(
-                          leading: Image.asset('lib/assets/sandwich.png'),
-                          title: Center(
-                              child: Text(
-                            'PANINO',
-                          )),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 350,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Color.fromARGB(255, 236, 235, 235),
-                    ),
-                    padding: const EdgeInsets.all(20),
-                    margin: const EdgeInsets.only(top: 10, bottom: 10),
-                    child: const Center(
-                        child: Text(
-                      'test',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    )),
-                  ),
+                  Card(
+                      // ignore: prefer_const_constructors
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      margin: const EdgeInsets.only(
+                          top: 10, bottom: 10, left: 20, right: 20),
+                      color: const Color.fromARGB(255, 236, 235, 235),
+                      child: Padding(
+                          padding: EdgeInsets.only(top: 15, bottom: 15),
+                          child: ListTile(
+                            leading: Image.asset('lib/assets/sandwich.png'),
+                            title: Text('Panino al Salame',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: getFontSize(20))),
+                            subtitle: Text(
+                              '€ 2,00',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: getFontSize(18)),
+                            ),
+                            isThreeLine: false,
+                          ))),
                   Card(
                       // ignore: prefer_const_constructors
                       elevation: 10,
