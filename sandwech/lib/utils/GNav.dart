@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:sandwech/pages/homepage.dart';
+import 'package:sandwech/pages/profile.dart';
 import 'package:sandwech/pages/user.dart';
 import 'package:sandwech/pages/cart.dart';
 
@@ -40,8 +41,10 @@ class GNavState extends State<GNavi> {
               icon: Icons.person,
               text: 'Profilo',
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const UserPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfilePage()));
               },
             ),
             GButton(

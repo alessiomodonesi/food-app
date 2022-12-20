@@ -74,6 +74,7 @@ flutter:
     - lib/assets/svg/img_eye.svg
     - lib/assets/icons/panino-icon.png
     - lib/assets/images/panino.png
+    - lib/assets/images/foto_profilo_app.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
