@@ -38,3 +38,5 @@ const postSignUpUrl =
     "http://192.168.1.100:80/food-api/API/user/registration.php";
 const addItemCartUrl = "http://192.168.19.67:8081/API/cart/setAddItem.php";
 const postSignInUrl = "http://192.168.1.100/food-api/API/user/login.php";
+const getCartUrl =
+    "http://192.168.19.67:8081/food-api/API/cart/getCart.php?user=";
