@@ -65,8 +65,8 @@ class SignUpController extends GetxController {
                   return status! < 500;
                 }));
         if (response.statusCode == 200) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const HomePage(2)));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomePage()));
           return;
         } else {
           showDialogError(context, 'Impossibile registrarsi',

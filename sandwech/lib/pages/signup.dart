@@ -24,7 +24,7 @@ class SignupScreen extends GetWidget<SignUpController> {
     return Scaffold(
       backgroundColor: ColorConstant.whiteA700,
       body: Container(
-        padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+        padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
         width: size.width,
         child: SingleChildScrollView(
           child: Form(
@@ -40,7 +40,7 @@ class SignupScreen extends GetWidget<SignUpController> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Container(
-                      padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                      padding: const EdgeInsets.fromLTRB(30, 18, 30, 0),
                       child: SvgPicture.asset(
                           "lib/assets/svg/right_side_pills.svg",
                           semanticsLabel: 'Pills'),
@@ -51,7 +51,7 @@ class SignupScreen extends GetWidget<SignUpController> {
                   children: [
                     Container(
                       margin: getMargin(
-                        left: 16,
+                        left: 18,
                         top: 1,
                         right: 16,
                       ),
@@ -75,7 +75,7 @@ class SignupScreen extends GetWidget<SignUpController> {
                   ),
                   margin: getMargin(
                     left: 16,
-                    top: 1,
+                    top: 10,
                     right: 16,
                   ),
                   decoration: BoxDecoration(
@@ -412,7 +412,7 @@ class SignupScreen extends GetWidget<SignUpController> {
                           style: TextStyle(
                             color: ColorConstant.gray800,
                             fontSize: getFontSize(
-                              9,
+                              9.6,
                             ),
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w400,
@@ -423,18 +423,7 @@ class SignupScreen extends GetWidget<SignUpController> {
                           style: TextStyle(
                             color: ColorConstant.orange400,
                             fontSize: getFontSize(
-                              9,
-                            ),
-                            fontFamily: 'Inter',
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ".",
-                          style: TextStyle(
-                            color: ColorConstant.gray800,
-                            fontSize: getFontSize(
-                              9,
+                              9.6,
                             ),
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w400,
@@ -446,23 +435,28 @@ class SignupScreen extends GetWidget<SignUpController> {
                   ),
                 ),
                 Container(
+                    margin: getMargin(
+                      left: 16,
+                      top: 40,
+                      right: 16,
+                      bottom: 5,
+                    ),
                     child: ElevatedButton(
                       onPressed: () {
                         signUpController.PostSignUp(context);
                       },
-                      child: const Text('Registrati'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 158, 11, 0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
-                    ),
-                    margin: getMargin(
-                      left: 16,
-                      top: 40,
-                      right: 16,
-                      bottom: 5,
+                      child: const Text(
+                        'Registrati',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
                     )),
               ],
             ),

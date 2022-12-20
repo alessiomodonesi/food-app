@@ -35,7 +35,7 @@ class _SignInPageState extends State<SignInPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                  padding: EdgeInsets.fromLTRB(30, 18, 30, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -190,8 +190,14 @@ class _SignInPageState extends State<SignInPage> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
-                          child: const Text('Accedi'),
+                          child: const Text(
+                            'Accedi',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
                         )),
+                    /*
                     Container(
                       padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
                       child: Row(
@@ -200,10 +206,14 @@ class _SignInPageState extends State<SignInPage> {
                           Text('o',
                               style: TextStyle(
                                 color: Color.fromARGB(255, 158, 11, 0),
-                                fontSize: 14,
+                                fontSize: 23,
                               )),
                         ],
                       ),
+                    ),
+                    */
+                    SizedBox(
+                      width: 70,
                     ),
                     Container(
                         margin: getMargin(
@@ -226,7 +236,12 @@ class _SignInPageState extends State<SignInPage> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
-                          child: const Text('Registrati'),
+                          child: const Text(
+                            'Registrati',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
                         )),
                   ],
                 ),
