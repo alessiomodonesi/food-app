@@ -15,8 +15,9 @@ class ProductPage extends StatefulWidget {
   // attributi
   final int idUser;
   final int idProduct;
+  final int userID;
 
-  const ProductPage(this.idUser, this.idProduct, {super.key});
+  const ProductPage(this.idUser, this.idProduct, this.userID, {super.key});
 
   @override
   State<ProductPage> createState() => _ProductPageState();
@@ -349,7 +350,7 @@ class _ProductPageState extends State<ProductPage> {
           ),
         )
       ]),
-      bottomNavigationBar: const GNavi(0),
+      bottomNavigationBar: GNavi(0, widget.userID),
     );
   }
 }

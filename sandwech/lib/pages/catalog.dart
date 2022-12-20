@@ -10,17 +10,19 @@ import 'package:sandwech/pages/product.dart';
 
 class CatalogPage extends StatefulWidget {
   final int idCat;
-  const CatalogPage(this.idCat, {super.key});
+  final int userID;
+
+  const CatalogPage(this.idCat, this.userID, {super.key});
 
   @override
   State<CatalogPage> createState() => _CatalogPageState();
 }
 
 class _CatalogPageState extends State<CatalogPage> {
-  String name = "Alessio";
   String catalogName = "";
   List<Product> _productList = List.empty(growable: true);
   List<ProductTag> _productTagList = List.empty();
+  String nomeUtente = "";
 
   int debugUserID = 4;
 
@@ -79,6 +81,15 @@ class _CatalogPageState extends State<CatalogPage> {
                 },
             }
         });
+
+    getUser(widget.userID.toString()).then(
+        (value) => setState(() {
+              nomeUtente = value.name;
+            }), onError: (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Sending Message"),
+      ));
+    });
   }
 
   Widget build(BuildContext context) {
@@ -131,7 +142,7 @@ class _CatalogPageState extends State<CatalogPage> {
                         fontFamily: 'Inter'),
                     children: <TextSpan>[
                       TextSpan(
-                          text: name,
+                          text: nomeUtente,
                           style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -209,8 +220,8 @@ class _CatalogPageState extends State<CatalogPage> {
                                     MaterialPageRoute(
                                         builder: (context) => ProductPage(
                                             debugUserID,
-                                            int.parse(
-                                                _productList[index].id))));
+                                            int.parse(_productList[index].id),
+                                            widget.userID)));
                               },
                               child: Container(
                                   padding: const EdgeInsets.only(top: 15),
@@ -325,6 +336,6 @@ class _CatalogPageState extends State<CatalogPage> {
                 ),
           ],
         ),
-        bottomNavigationBar: const GNavi(0));
+        bottomNavigationBar: GNavi(0, widget.userID));
   }
 }

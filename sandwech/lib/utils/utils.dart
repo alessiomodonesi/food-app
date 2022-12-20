@@ -79,7 +79,7 @@ Future<String> addItemCart(userID, productID, quantity) async {
 
 Future<User> getUser(userID) async {
   try {
-    Response response = await Dio().get(getArchieveIngredientsUrl + getUserUrl);
+    Response response = await Dio().get(getUserUrl + userID);
     log(response.toString());
     return parseGetUser(jsonEncode(response.data));
   } catch (e) {

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:sandwech/utils/validation.dart';
 import 'package:sandwech/utils/endpoints.dart';
 import 'package:flutter/material.dart';
@@ -52,8 +54,11 @@ class SignInController extends GetxController {
               },
             ));
         if (response.statusCode == 200) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const HomePage()));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => HomePage(
+                      int.parse(jsonDecode(response.toString())["user"]))));
           return;
         }
         if (response.statusCode == 401) {

@@ -1,30 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:sandwech/pages/catalog.dart';
 import 'package:sandwech/utils/GNav.dart';
+import 'package:sandwech/utils/utils.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  final int userID;
 
-  /*
+  const HomePage(this.userID, {super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String nomeUtente = "";
+
   @override
   void initState() {
     super.initState();
-    getSingleProduct(widget.idProduct.toString()).then(
+    getUser(widget.userID.toString()).then(
         (value) => setState(() {
-              prodotto = value as Product;
-              checkDescription(prodotto.description as String);
+              nomeUtente = value.name;
             }), onError: (e) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Sending Message"),
       ));
     });
   }
-  */
 
   @override
   Widget build(BuildContext context) {
-    String name = "Alessio";
+    //String name = "Alessio";
     var titles = {
       "PANINI": "1",
       "PIADINE": "3",
@@ -112,7 +119,7 @@ class HomePage extends StatelessWidget {
                             fontFamily: 'Inter'),
                         children: <TextSpan>[
                           TextSpan(
-                              text: name,
+                              text: nomeUtente,
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
                         ],
@@ -138,7 +145,8 @@ class HomePage extends StatelessWidget {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const HomePage()));
+                                      builder: (context) =>
+                                          HomePage(widget.userID)));
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(content: Text("Errore")));
                             } else {
@@ -147,7 +155,8 @@ class HomePage extends StatelessWidget {
                                   MaterialPageRoute(
                                       builder: (context) => CatalogPage(
                                           int.parse(
-                                              titles.values.toList()[index]))));
+                                              titles.values.toList()[index]),
+                                          widget.userID)));
                             }
                             // optional
                           },
@@ -159,6 +168,6 @@ class HomePage extends StatelessWidget {
                 )
               ],
             )),
-        bottomNavigationBar: const GNavi(0));
+        bottomNavigationBar: GNavi(0, widget.userID));
   }
 }
