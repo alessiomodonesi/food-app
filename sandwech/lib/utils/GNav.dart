@@ -9,7 +9,7 @@ class GNavi extends StatefulWidget {
 }
 
 class GNavState extends State<GNavi> {
-  int _currentIndex = 0;
+  final int _currentIndex = 0;
   List<Widget> body = const [];
 
   @override

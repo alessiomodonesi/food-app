@@ -1,10 +1,7 @@
 import 'dart:developer';
-
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/ingredient.dart';
-
 import 'package:flutter/material.dart';
-import 'package:sandwech/utils/endpoints.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/utils/GNav.dart';
