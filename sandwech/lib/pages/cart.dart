@@ -78,7 +78,7 @@ class _CartPageState extends State<CartPage> {
               child: Container(
                   child: RichText(
                 text: const TextSpan(
-                  text: 'Ecco il tuo carrello, ',
+                  text: 'Ciao, ',
                   style: TextStyle(
                       color: Colors.black,
                       fontStyle: FontStyle.normal,

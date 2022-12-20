@@ -77,6 +77,8 @@ flutter:
     - lib/assets/icons/panini-icon.png
     - lib/assets/icons/bibite-icon.png
     - lib/assets/icons/brioches-icon.png
+    - lib/assets/icons/piadine-icon.png
+    - lib/assets/icons/snack-icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
