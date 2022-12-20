@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sandwech/pages/homepage.dart';
 
-class LoginPage extends StatefulWidget {
+class OldLoginPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _LoginPageState();
+  State<StatefulWidget> createState() => _OldLoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _OldLoginPageState extends State<OldLoginPage> {
   //String _email;
   //String _password;
   @override

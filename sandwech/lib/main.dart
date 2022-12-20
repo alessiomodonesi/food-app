@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sandwech/pages/signin.dart';
-import 'pages/logintry.dart';
 // import 'pages/signup.dart';
 // import 'pages/product.dart';
 
