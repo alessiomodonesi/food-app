@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sandwech/utils/circle_button.dart';
-import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:sandwech/utils/utils.dart';
 
@@ -45,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Padding(padding: EdgeInsets.only(top: 75)),
+              const Padding(padding: EdgeInsets.only(top: 80)),
               /*
               Align(
                   alignment: Alignment.center,
@@ -66,7 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: 200,
                       height: 200,
                       decoration: const BoxDecoration(
-                        color: Colors.amber,
+                        color: Colors.orange,
                       ),
                       child: Center(
                         child: Text(
