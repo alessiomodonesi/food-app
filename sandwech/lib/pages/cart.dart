@@ -42,14 +42,6 @@ class _CartPageState extends State<CartPage> {
             color: const Color(0x00000000),
           ),
           Positioned(
-            top: 40,
-            left: 10,
-            child: ButtonCircle(30, Colors.white, Icons.arrow_back_ios,
-                Alignment.centerRight, Colors.black, () {
-              Navigator.pop(context);
-            }),
-          ),
-          Positioned(
             width: 23,
             height: 56,
             left: 5,
@@ -75,8 +67,8 @@ class _CartPageState extends State<CartPage> {
           Positioned(
               width: 400,
               height: 270,
-              left: 24,
-              top: 70,
+              left: 20,
+              top: 68,
               child: Container(
                   child: RichText(
                 text: const TextSpan(

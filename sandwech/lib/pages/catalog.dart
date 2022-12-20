@@ -100,7 +100,7 @@ class _CatalogPageState extends State<CatalogPage> {
               color: const Color(0xFFFFFFFF),
             ),
             Positioned(
-              top: 40,
+              top: 65,
               left: 10,
               child: ButtonCircle(30, Colors.white, Icons.arrow_back_ios,
                   Alignment.centerRight, Colors.black, () {
@@ -111,7 +111,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 width: 23,
                 height: 56,
                 left: 5,
-                top: -31,
+                top: -28,
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
@@ -121,7 +121,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 width: 23,
                 height: 56,
                 left: 35,
-                top: -13,
+                top: -15,
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25), color: rossoApp),
@@ -129,8 +129,8 @@ class _CatalogPageState extends State<CatalogPage> {
             Positioned(
                 width: 400,
                 height: 270,
-                left: 24,
-                top: 70,
+                left: 40,
+                top: 68,
                 child: Container(
                     child: RichText(
                   text: TextSpan(
@@ -152,7 +152,7 @@ class _CatalogPageState extends State<CatalogPage> {
                         (MediaQuery.of(context).size.width - 30)) /
                     2,
                 width: (MediaQuery.of(context).size.width) - 30,
-                top: 100,
+                top: 110,
                 child: Material(
                   color: Colors.white,
                   child: Column(
@@ -176,8 +176,8 @@ class _CatalogPageState extends State<CatalogPage> {
             Positioned(
                 width: 100,
                 height: 24,
-                left: 30,
-                top: 160,
+                left: 20,
+                top: 180,
                 child: Container(
                     child: RichText(
                   text: TextSpan(
@@ -288,40 +288,33 @@ class _CatalogPageState extends State<CatalogPage> {
                                                     )),
                                                 Container(
                                                   height: 37,
-                                                  width: 57,
+                                                  width: 65,
                                                   margin: const EdgeInsets.only(
                                                     top: 15,
                                                     left: 302,
                                                   ),
                                                   child: SizedBox(
-                                                      height: 37,
-                                                      width: 57,
                                                       child: DecoratedBox(
-                                                        decoration: BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        15),
-                                                            color: rossoApp),
-                                                        child: Center(
-                                                            child: RichText(
-                                                                text: TextSpan(
-                                                          text:
-                                                              "${_productList[index].price} €",
-                                                          style: const TextStyle(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700,
-                                                              fontStyle:
-                                                                  FontStyle
-                                                                      .normal,
-                                                              fontSize: 16,
-                                                              fontFamily:
-                                                                  'Inter'),
-                                                        ))),
-                                                      )),
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12),
+                                                        color: rossoApp),
+                                                    child: Center(
+                                                        child: RichText(
+                                                            text: TextSpan(
+                                                      text:
+                                                          "${_productList[index].price} €",
+                                                      style: const TextStyle(
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          fontStyle:
+                                                              FontStyle.normal,
+                                                          fontSize: 16,
+                                                          fontFamily: 'Inter'),
+                                                    ))),
+                                                  )),
                                                 ),
                                               ],
                                             ),

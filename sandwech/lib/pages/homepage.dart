@@ -106,8 +106,8 @@ class _HomePageState extends State<HomePage> {
                 Positioned(
                     width: 400,
                     height: 270,
-                    left: 24,
-                    top: 60,
+                    left: 20,
+                    top: 68,
                     child: Container(
                         child: RichText(
                       text: TextSpan(
