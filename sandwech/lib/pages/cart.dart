@@ -75,7 +75,7 @@ class _CartPageState extends State<CartPage> {
           Positioned(
             width: 23,
             height: 56,
-            left: 5,
+            left: 4,
             top: -28,
             child: Container(
                 decoration: BoxDecoration(
@@ -86,7 +86,7 @@ class _CartPageState extends State<CartPage> {
           Positioned(
               width: 23,
               height: 56,
-              left: 35,
+              left: 32,
               top: -15,
               child: Container(
                 width: 23,
@@ -117,12 +117,11 @@ class _CartPageState extends State<CartPage> {
                 ),
               ))),
           GestureDetector(
-              onTap: () {
-                print("Test Tasto");
-              },
+              onTap: () {},
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
+                    margin: const EdgeInsets.only(bottom: 50),
                     padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
@@ -133,7 +132,7 @@ class _CartPageState extends State<CartPage> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
-                          fontSize: getFontSize(30)),
+                          fontSize: getFontSize(24)),
                       textAlign: TextAlign.center,
                     )),
               )),
