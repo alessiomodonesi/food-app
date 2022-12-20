@@ -72,7 +72,7 @@ flutter:
     - lib/assets/svg/right_side_pills.svg
     - lib/assets/svg/left_side_pills.svg
     - lib/assets/svg/img_eye.svg
-    - lib/assets/sandwich.png
+    - lib/assets/icons/panino-icon.png
     - lib/assets/images/panino.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -5,7 +5,6 @@ import 'package:sandwech/types/product_tag.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:flutter/cupertino.dart';
-//import 'package:sandwech/types/tag.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/pages/product.dart';
 
@@ -235,7 +234,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                                     color: Color(0xEEEEEAEA),
                                                   ),
                                                   child: Image.asset(
-                                                      'lib/assets/sandwich.png'),
+                                                      'lib/assets/icons/panino-icon.png'),
                                                 ),
                                                 Container(
                                                     height: 20,
