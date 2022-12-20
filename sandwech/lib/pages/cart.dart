@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/utils/GNav.dart';
@@ -77,38 +78,41 @@ class _CartPageState extends State<CartPage> {
               top: 70,
               child: Container(
                   child: RichText(
-                text: TextSpan(
-                  text: 'Ciao, ',
-                  style: const TextStyle(
+                text: const TextSpan(
+                  text: 'Ecco il tuo carrello, ',
+                  style: TextStyle(
                       color: Colors.black,
                       fontStyle: FontStyle.normal,
                       fontSize: 20,
                       fontFamily: 'Inter'),
-                  children: const <TextSpan>[
+                  children: <TextSpan>[
                     TextSpan(
                         text: ('Alessio'),
                         style: TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
               ))),
-          Positioned(
+          GestureDetector(
+              onTap: () {
+                print("Test Tasto");
+              },
               child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-                padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  color: const Color(0xFFFF9B18),
-                ),
-                child: Text(
-                  'Conferma Ordine',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: getFontSize(30)),
-                  textAlign: TextAlign.center,
-                )),
-          )),
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                    padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: const Color(0xFFFF9B18),
+                    ),
+                    child: Text(
+                      'Conferma Ordine',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: getFontSize(30)),
+                      textAlign: TextAlign.center,
+                    )),
+              )),
           Align(
               alignment: Alignment.center,
               child: Column(
