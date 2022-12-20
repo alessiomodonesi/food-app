@@ -1,11 +1,7 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sandwech/pages/homepage.dart';
 import 'package:sandwech/utils/size.dart';
-import 'package:sandwech/utils/validation.dart';
-import 'package:vertical_card_pager/vertical_card_pager.dart';
 import 'package:sandwech/utils/text_form_field.dart';
 import 'package:sandwech/utils/signin_controller.dart';
 import 'package:get/get.dart';

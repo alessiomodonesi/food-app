@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:sandwech/utils/signup_controller.dart';
-import 'package:flutter/material.dart';
 import 'package:sandwech/utils/validation.dart';
 import 'package:get/get.dart';
 import 'package:sandwech/utils/colors.dart';

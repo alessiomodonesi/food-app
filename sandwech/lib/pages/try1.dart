@@ -1,7 +1,4 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:sandwech/pages/catalog.dart';
-import 'package:vertical_card_pager/vertical_card_pager.dart';
 
 class Try extends StatelessWidget {
   const Try({super.key});
