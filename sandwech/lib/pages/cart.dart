@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/utils/GNav.dart';
@@ -129,7 +128,8 @@ class _CartPageState extends State<CartPage> {
                       child: Padding(
                           padding: const EdgeInsets.only(top: 15, bottom: 15),
                           child: ListTile(
-                            leading: Image.asset('lib/assets/sandwich.png'),
+                            leading:
+                                Image.asset('lib/assets/icons/panino-icon.png'),
                             title: Text('Panino al Salame',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -153,7 +153,8 @@ class _CartPageState extends State<CartPage> {
                       child: Padding(
                           padding: const EdgeInsets.only(top: 15, bottom: 15),
                           child: ListTile(
-                            leading: Image.asset('lib/assets/sandwich.png'),
+                            leading:
+                                Image.asset('lib/assets/icons/panino-icon.png'),
                             title: Text('Panino al Salame',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
