@@ -150,6 +150,6 @@ class HomePage extends StatelessWidget {
                 )
               ],
             )),
-        bottomNavigationBar: const GNav());
+        bottomNavigationBar: const GNavi());
   }
 }

@@ -353,7 +353,7 @@ class _ProductPageState extends State<ProductPage> {
           ),
         )
       ]),
-      bottomNavigationBar: const GNav(),
+      bottomNavigationBar: const GNavi(),
     );
   }
 }

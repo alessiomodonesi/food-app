@@ -311,6 +311,6 @@ class _HomepageState extends State<Homepage> {
                 ),
           ],
         ),
-        bottomNavigationBar: const GNav());
+        bottomNavigationBar: const GNavi());
   }
 }

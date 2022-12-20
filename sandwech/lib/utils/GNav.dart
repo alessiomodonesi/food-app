@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-class GNav extends StatefulWidget {
-  const GNav({Key? key}) : super(key: key);
+class GNavi extends StatefulWidget {
+  const GNavi({Key? key}) : super(key: key);
 
   @override
-  State<GNav> createState() => _GNavState();
+  State<GNavi> createState() => GNavState();
 }
 
-class _GNavState extends State<GNav> {
+class GNavState extends State<GNavi> {
   int _currentIndex = 0;
   List<Widget> body = const [];
 
