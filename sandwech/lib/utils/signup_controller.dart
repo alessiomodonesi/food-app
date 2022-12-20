@@ -6,19 +6,24 @@ import 'package:get/get.dart';
 import 'package:sandwech/utils/error_dialog.dart';
 import 'package:sandwech/pages/homepage.dart';
 
-class SignupModel {}
+class SignUpModel {}
 
-class SignupController extends GetxController {
+class SignUpController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController surnameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
-  Rx<SignupModel> SignupModelObj = SignupModel().obs;
+  Rx<SignUpModel> SignUpModelObj = SignUpModel().obs;
 
   Rx<bool> isShowPassword = false.obs;
   Rx<bool> isShowPasswordConfirm = false.obs;
+
+  var passwordHintText = {
+    true: "Password",
+    false: "••••••••",
+  };
 
   @override
   void onReady() {
@@ -38,13 +43,9 @@ class SignupController extends GetxController {
   void PostSignUp(context) async {
     var dio = Dio();
 
-    if (nameController.text != null &&
+    if (nameController.text != '' &&
         nameController.text != '' &&
-        surnameController.text != null &&
-        nameController.text != '' &&
-        emailController.text != null &&
         isValidEmail(emailController.text) &&
-        passwordController.text != null &&
         isValidPassword(passwordController.text) &&
         confirmPasswordController.text == passwordController.text) {
       try {
@@ -64,8 +65,8 @@ class SignupController extends GetxController {
                   return status! < 500;
                 }));
         if (response.statusCode == 200) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePage(2)));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const HomePage(2)));
           return;
         } else {
           showDialogError(context, 'Impossibile registrarsi',

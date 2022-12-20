@@ -18,6 +18,11 @@ class SignInController extends GetxController {
 
   Rx<bool> isShowPassword = false.obs;
 
+  var passwordHintText = {
+    true: "Password",
+    false: "••••••••",
+  };
+
   @override
   void onReady() {
     super.onReady();
@@ -34,10 +39,8 @@ class SignInController extends GetxController {
   void PostSignIn(context) async {
     var dio = Dio();
 
-    if (emailController.text != null &&
-        isValidEmail(emailController.text) &&
-        passwordController.text != null &&
-        !passwordController.text.isEmpty) {
+    if (isValidEmail(emailController.text) &&
+        passwordController.text.isNotEmpty) {
       try {
         var response = await dio.post(postSignInUrl,
             data: {
