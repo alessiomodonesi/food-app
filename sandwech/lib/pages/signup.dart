@@ -28,6 +28,7 @@ class SignupScreen extends GetWidget<SignupController> {
       child: Scaffold(
         backgroundColor: ColorConstant.whiteA700,
         body: Container(
+          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
           width: size.width,
           child: SingleChildScrollView(
             child: Form(
@@ -43,9 +44,7 @@ class SignupScreen extends GetWidget<SignupController> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
-                        margin: getMargin(
-                          right: 30,
-                        ),
+                        padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
                         child: SvgPicture.asset(
                             "lib/assets/svg/right_side_pills.svg",
                             semanticsLabel: 'Pills'),

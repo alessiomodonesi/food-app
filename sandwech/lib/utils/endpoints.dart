@@ -36,3 +36,4 @@ const getArchieveIngredientsUrl =
     "http://192.168.19.67:8081/API/product/getArchiveIngredients.php?panino=";
 const postSignUpUrl = "http://192.168.19.67:8081/API/user/registration.php";
 const addItemCartUrl = "http://192.168.19.67:8081/API/cart/setAddItem.php";
+const postSignInUrl = "http://192.168.1.100/food-api/API/user/login.php";

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sandwech/pages/signin.dart';
 import 'pages/logintry.dart';
 // import 'pages/signup.dart';
 // import 'pages/product.dart';
@@ -18,7 +19,7 @@ class myApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red, //fabulous
       ),
-      home: LoginPage(),
+      home: SignInPage(),
       // home: SignupScreen(),
       // home: const ProductPage(5),
       debugShowCheckedModeBanner: false,
