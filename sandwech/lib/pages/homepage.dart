@@ -37,16 +37,11 @@ class HomePage extends StatelessWidget {
             color: Color.fromARGB(255, 255, 17, 0)),
       ),
       InkWell(
-          onTap: () {
-            log('mzzz');
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Homepage(1)));
-          },
           child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: Color.fromARGB(255, 158, 11, 0)),
-          )),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(100),
+            color: Color.fromARGB(255, 158, 11, 0)),
+      )),
       Container(
         decoration: BoxDecoration(
             //image: ,

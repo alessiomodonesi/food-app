@@ -9,8 +9,10 @@ class GNavi extends StatefulWidget {
 }
 
 class GNavState extends State<GNavi> {
-  final int _currentIndex = 0;
   List<Widget> body = const [];
+  final int _currentIndex = 0;
+
+  // if (body != null && body.length > _currentIndex)
 
   @override
   Widget build(BuildContext context) {
