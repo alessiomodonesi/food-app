@@ -78,7 +78,45 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                 ),
-              )
+              ),
+              Container(
+                  margin: const EdgeInsets.only(top: 60),
+                  width: 300,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFEE0F38),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: const Text(
+                      'Reset password',
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
+                  )),
+              Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  width: 300,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFEE0F38),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: const Text(
+                      'Logout',
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
+                  )),
             ],
           ),
         ),

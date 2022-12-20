@@ -35,7 +35,7 @@ class GNavState extends State<GNavi> {
               text: 'Home',
               onPressed: () {
                 if (widget._currentIndex != 0) {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => HomePage(widget.userID)));
@@ -47,7 +47,7 @@ class GNavState extends State<GNavi> {
               text: 'Profilo',
               onPressed: () {
                 if (widget._currentIndex != 1) {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => ProfilePage(widget.userID)));
@@ -59,7 +59,7 @@ class GNavState extends State<GNavi> {
               text: 'Carrello',
               onPressed: () {
                 if (widget._currentIndex != 2) {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => CartPage(widget.userID)));
