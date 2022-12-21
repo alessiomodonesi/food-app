@@ -175,7 +175,7 @@ class _CatalogPageState extends State<CatalogPage> {
                   ),
                 )),
             Positioned(
-                width: 100,
+                width: 200,
                 height: 24,
                 left: 40,
                 top: 175,

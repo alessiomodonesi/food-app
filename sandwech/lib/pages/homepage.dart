@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
       "PIADINE": "3",
       "BRIOCHES": "4",
       "SNACK": "5",
-      "BIBITE": "2"
+      "BEVANDE": "2"
     };
 
     final List<Widget> images = [
