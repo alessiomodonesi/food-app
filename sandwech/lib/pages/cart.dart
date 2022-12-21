@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:sandwech/utils/calculation.dart';
 import 'package:sandwech/utils/size.dart';
@@ -45,6 +47,15 @@ class _CartPageState extends State<CartPage> {
         content: Text("Sending Message"),
       ));
     });
+  }
+
+  EdgeInsets getMargin(double android, double ios) {
+    if (Platform.isAndroid) {
+      return EdgeInsets.only(bottom: android);
+    } else if (Platform.isIOS) {
+      return EdgeInsets.only(bottom: ios);
+    }
+    return const EdgeInsets.only(top: 0);
   }
 
   @override
@@ -161,7 +172,7 @@ class _CartPageState extends State<CartPage> {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                    margin: const EdgeInsets.only(bottom: 50),
+                    margin: getMargin(0, 50),
                     padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),

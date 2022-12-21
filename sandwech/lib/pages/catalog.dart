@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/product_tag.dart';
@@ -44,6 +46,27 @@ class _CatalogPageState extends State<CatalogPage> {
         return "snack";
     }
     return "";
+  }
+
+  EdgeInsets getPadding() {
+    if (Platform.isAndroid) {
+      return const EdgeInsets.only(
+        top: 170,
+        left: 14,
+        right: 14,
+      );
+    } else if (Platform.isIOS) {
+      return const EdgeInsets.only(
+        top: 150,
+        left: 14,
+        right: 14,
+      );
+    }
+    return const EdgeInsets.only(
+      top: 0,
+      left: 0,
+      right: 0,
+    );
   }
 
   @override
@@ -191,11 +214,7 @@ class _CatalogPageState extends State<CatalogPage> {
                   ),
                 ))),
             Container(
-                padding: const EdgeInsets.only(
-                  top: 150,
-                  left: 14,
-                  right: 14,
-                ),
+                padding: getPadding(),
                 child: (() {
                   if (_productList.isEmpty) {
                     return Center(

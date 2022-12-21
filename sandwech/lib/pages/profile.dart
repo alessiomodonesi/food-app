@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:sandwech/utils/utils.dart';
@@ -42,13 +44,22 @@ class _ProfilePageState extends State<ProfilePage> {
     return str[0].toUpperCase() + str.substring(1);
   }
 
+  EdgeInsets getPadding(double android, double ios) {
+    if (Platform.isAndroid) {
+      return EdgeInsets.only(top: android);
+    } else if (Platform.isIOS) {
+      return EdgeInsets.only(top: ios);
+    }
+    return const EdgeInsets.only(top: 0);
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Padding(padding: EdgeInsets.only(top: 100)),
+              Padding(padding: getPadding(50, 100)),
               Align(
                   alignment: Alignment.center,
                   child: ClipRRect(
@@ -99,7 +110,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               Container(
-                  margin: const EdgeInsets.only(top: 230),
+                  margin: getPadding(160, 230),
                   width: 300,
                   height: 50,
                   child: ElevatedButton(
