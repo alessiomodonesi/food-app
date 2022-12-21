@@ -146,7 +146,7 @@ class _CartPageState extends State<CartPage> {
                   itemCount: productList.length,
                   itemBuilder: (BuildContext context, int index) {
                     return CartCard(
-                      int.parse(productList[index].tagName as String),
+                      int.parse(productList[index].tagID as String),
                       productList[index].name,
                       productList[index].price,
                       productList[index].quantity,

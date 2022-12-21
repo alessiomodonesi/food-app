@@ -1,7 +1,7 @@
 // hostname
 const android = "10.0.2.2:8080";
 const ios = "localhost";
-const vm = "192.168.61.162:8081";
+const vm = "192.168.223.212:8081";
 
 const baseUrl = vm;
 //const baseUrl = "$ios/food-api";
