@@ -5,6 +5,7 @@ import 'package:sandwech/utils/GNav.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/cart_card.dart';
 import 'package:sandwech/types/product.dart';
+import 'package:sandwech/types/tag.dart';
 import 'package:flutter/cupertino.dart';
 
 class CartPage extends StatefulWidget {
@@ -19,26 +20,8 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   String productName = "";
   String nomeUtente = "";
-  List<Product> productList = const [
-    Product(
-        id: "1",
-        name: "Panino al Salame",
-        price: "2.00",
-        quantity: "5",
-        description: ""),
-    Product(
-        id: "2",
-        name: "Panino proteico",
-        price: "3.00",
-        quantity: "7",
-        description: ""),
-    Product(
-        id: "3",
-        name: "Panino al formaggio",
-        price: "1.50",
-        quantity: "2",
-        description: ""),
-  ];
+  List<Product> productList = List.empty(growable: true);
+  List<int> tagIDList = List.empty(growable: true);
 
   String capitalize(String str) {
     return str[0].toUpperCase() + str.substring(1);
@@ -63,7 +46,19 @@ class _CartPageState extends State<CartPage> {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Sending Message"),
       ));
-    });
+    }).then((value) => {
+          for (int i = 0; i < productList.length; i++)
+            {
+              getSingleTag(productList[i].id.toString()).then(
+                  (value) => setState(() {
+                        tagIDList.add(value);
+                      }), onError: (e) {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text("Sending Message"),
+                ));
+              }),
+            }
+        });
   }
 
   @override
@@ -165,9 +160,10 @@ class _CartPageState extends State<CartPage> {
                   itemCount: productList.length,
                   itemBuilder: (BuildContext context, int index) {
                     return CartCard(
-                      1,
+                      tagIDList[index],
                       productList[index].name,
                       productList[index].price,
+                      productList[index].quantity,
                     );
                   },
                 );
