@@ -49,7 +49,7 @@ class _CartPageState extends State<CartPage> {
     });
   }
 
-  EdgeInsets getMargin(double android, double ios) {
+  EdgeInsets getMarginDevice(double android, double ios) {
     if (Platform.isAndroid) {
       return EdgeInsets.only(bottom: android);
     } else if (Platform.isIOS) {
@@ -172,7 +172,7 @@ class _CartPageState extends State<CartPage> {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                    margin: getMargin(0, 50),
+                    margin: getMarginDevice(0, 50),
                     padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),

@@ -48,7 +48,7 @@ class _CatalogPageState extends State<CatalogPage> {
     return "";
   }
 
-  EdgeInsets getPadding() {
+  EdgeInsets getPaddingDevice() {
     if (Platform.isAndroid) {
       return const EdgeInsets.only(
         top: 170,
@@ -214,7 +214,7 @@ class _CatalogPageState extends State<CatalogPage> {
                   ),
                 ))),
             Container(
-                padding: getPadding(),
+                padding: getPaddingDevice(),
                 child: (() {
                   if (_productList.isEmpty) {
                     return Center(

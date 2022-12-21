@@ -44,7 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return str[0].toUpperCase() + str.substring(1);
   }
 
-  EdgeInsets getPadding(double android, double ios) {
+  EdgeInsets getPaddingDevice(double android, double ios) {
     if (Platform.isAndroid) {
       return EdgeInsets.only(top: android);
     } else if (Platform.isIOS) {
@@ -59,7 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(padding: getPadding(50, 100)),
+              Padding(padding: getPaddingDevice(50, 100)),
               Align(
                   alignment: Alignment.center,
                   child: ClipRRect(
@@ -110,7 +110,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               Container(
-                  margin: getPadding(160, 230),
+                  margin: getPaddingDevice(160, 230),
                   width: 300,
                   height: 50,
                   child: ElevatedButton(
