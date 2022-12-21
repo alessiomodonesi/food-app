@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sandwech/utils/calculation.dart';
 import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:sandwech/utils/utils.dart';
@@ -143,6 +144,36 @@ class _CartPageState extends State<CartPage> {
                   ],
                 ),
               )),
+          Container(
+            margin: const EdgeInsets.only(top: 160),
+            height: calcPercentage(MediaQuery.of(context).size.height, 55),
+            child: (() {
+              if (productList.isEmpty) {
+                return Center(
+                    child: RichText(
+                  text: const TextSpan(
+                    text: ("Nessun prodotto"),
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
+                  ),
+                ));
+              } else {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: productList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return CartCard(
+                      1,
+                      productList[index].name,
+                      productList[index].price,
+                    );
+                  },
+                );
+              }
+            }()),
+          ),
           GestureDetector(
               onTap: () {},
               child: Align(
@@ -163,37 +194,6 @@ class _CartPageState extends State<CartPage> {
                       textAlign: TextAlign.center,
                     )),
               )),
-          Align(
-            alignment: Alignment.center,
-            child: Container(
-              child: (() {
-                if (productList.isEmpty) {
-                  return Center(
-                      child: RichText(
-                    text: const TextSpan(
-                      text: ("Nessun prodotto"),
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16),
-                    ),
-                  ));
-                } else {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: productList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return CartCard(
-                        1,
-                        productList[index].name,
-                        productList[index].price,
-                      );
-                    },
-                  );
-                }
-              }()),
-            ),
-          ),
         ],
       ),
       bottomNavigationBar: GNavi(2, widget.userID),

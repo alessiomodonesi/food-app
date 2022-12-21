@@ -94,7 +94,7 @@ Future<List<Product>> getCart(userID) async {
     Response response = await Dio().get(getCartUrl + userID);
     log(response.toString());
     //log(getCartUrl + userID);
-    return parseCart(response.data);
+    return parseCart(jsonEncode(response.data));
   } catch (e) {
     log(e.toString());
     return List.empty();
