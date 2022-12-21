@@ -97,7 +97,7 @@ Future<User> getUser(userID) async {
     return parseGetUser(jsonEncode(response.data));
   } catch (e) {
     log(e.toString());
-    return const User(name: "", surname: "");
+    return User(name: "", surname: "");
   }
 }
 

@@ -1,6 +1,7 @@
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/ingredient.dart';
 import 'package:flutter/material.dart';
+import 'package:sandwech/types/user.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/utils/GNav.dart';
@@ -13,11 +14,10 @@ import 'package:flutter/cupertino.dart';
 /// Bisogna passare al costruttore l'id del prodotto in formato [int]
 class ProductPage extends StatefulWidget {
   // attributi
-  final int idUser;
   final int idProduct;
-  final int userID;
+  final User userData;
 
-  const ProductPage(this.idUser, this.idProduct, this.userID, {super.key});
+  const ProductPage(this.idProduct, this.userData, {super.key});
 
   @override
   State<ProductPage> createState() => _ProductPageState();
@@ -331,7 +331,7 @@ class _ProductPageState extends State<ProductPage> {
                                         CupertinoIcons.cart_fill,
                                         Alignment.center,
                                         ambratoApp, () {
-                                      addItemCart(widget.idUser,
+                                      addItemCart(widget.userData.id,
                                           widget.idProduct, quantita);
                                       setState(() {
                                         quantita = 1;
@@ -350,7 +350,7 @@ class _ProductPageState extends State<ProductPage> {
           ),
         )
       ]),
-      bottomNavigationBar: GNavi(0, widget.userID),
+      bottomNavigationBar: GNavi(0, widget.userData),
     );
   }
 }

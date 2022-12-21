@@ -7,13 +7,13 @@ import 'package:sandwech/utils/GNav.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/cart_card.dart';
 import 'package:sandwech/types/product.dart';
-import 'package:sandwech/types/tag.dart';
+import 'package:sandwech/types/user.dart';
 import 'package:flutter/cupertino.dart';
 
 class CartPage extends StatefulWidget {
-  final int userID;
+  final User userData;
 
-  const CartPage(this.userID, {super.key});
+  const CartPage(this.userData, {super.key});
 
   @override
   State<CartPage> createState() => _CartPageState();
@@ -21,7 +21,7 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   String productName = "";
-  String nomeUtente = "";
+  //String nomeUtente = "";
   List<Product> productList = List.empty(growable: true);
   String capitalize(String str) {
     return str[0].toUpperCase() + str.substring(1);
@@ -30,16 +30,7 @@ class _CartPageState extends State<CartPage> {
   @override
   void initState() {
     super.initState();
-    getUser(widget.userID.toString()).then(
-        (value) => setState(() {
-              nomeUtente = value.name;
-            }), onError: (e) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Sending Message"),
-      ));
-    });
-
-    getCart(widget.userID.toString()).then(
+    getCart(widget.userData.id.toString()).then(
         (value) => setState(() {
               productList = value;
             }), onError: (e) {
@@ -105,7 +96,7 @@ class _CartPageState extends State<CartPage> {
                       fontFamily: 'Inter'),
                   children: <TextSpan>[
                     TextSpan(
-                        text: nomeUtente,
+                        text: widget.userData.name,
                         style: const TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
@@ -189,7 +180,7 @@ class _CartPageState extends State<CartPage> {
               )),
         ],
       ),
-      bottomNavigationBar: GNavi(2, widget.userID),
+      bottomNavigationBar: GNavi(2, widget.userData),
     );
   }
 }

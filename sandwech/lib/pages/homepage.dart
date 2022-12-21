@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:sandwech/pages/catalog.dart';
+import 'package:sandwech/types/user.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
 
 class HomePage extends StatefulWidget {
-  final int userID;
+  final User userData;
 
-  const HomePage(this.userID, {super.key});
+  const HomePage(this.userData, {super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  /*
   String nomeUtente = "";
 
   @override
   void initState() {
     super.initState();
-    getUser(widget.userID.toString()).then(
+    getUser(widget.userData.id.toString()).then(
         (value) => setState(() {
               nomeUtente = value.name;
             }), onError: (e) {
@@ -28,6 +30,7 @@ class _HomePageState extends State<HomePage> {
       ));
     });
   }
+  */
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                             fontFamily: 'Inter'),
                         children: <TextSpan>[
                           TextSpan(
-                              text: nomeUtente,
+                              text: widget.userData.name,
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
                         ],
@@ -146,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          HomePage(widget.userID)));
+                                          HomePage(widget.userData)));
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(content: Text("Errore")));
                             } else {
@@ -156,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                                       builder: (context) => CatalogPage(
                                           int.parse(
                                               titles.values.toList()[index]),
-                                          widget.userID)));
+                                          widget.userData)));
                             }
                             // optional
                           },
@@ -168,6 +171,6 @@ class _HomePageState extends State<HomePage> {
                 )
               ],
             )),
-        bottomNavigationBar: GNavi(0, widget.userID));
+        bottomNavigationBar: GNavi(0, widget.userData));
   }
 }

@@ -70,38 +70,77 @@ class _CartCardState extends State<CartCard> {
               ),
               isThreeLine: false,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ButtonCircle(30, const Color(0xFFECEBEB), CupertinoIcons.minus,
-                    Alignment.center, Colors.black, () {
-                  setState(
-                    () {
-                      if (quant > 1) {
-                        quant--;
-                      }
-                    },
-                  );
-                }),
-                Text(
-                  quant.toString(),
-                  textScaleFactor: 1.6,
-                  style: const TextStyle(
-                    color: Colors.black,
-                  ),
+            Container(
+                height: 30,
+                width: 200,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(25.0)),
+                  color: ambratoApp,
+                  border: Border.all(color: Colors.white, width: 2),
                 ),
-                ButtonCircle(30, const Color(0xFFECEBEB), CupertinoIcons.plus,
-                    Alignment.center, Colors.black, () {
-                  setState(
-                    () {
-                      if (quant < 99) {
-                        quant++;
-                      }
-                    },
-                  );
-                }),
-              ],
-            )
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ButtonCircle(
+                        30,
+                        const Color(0xFFECEBEB),
+                        CupertinoIcons.minus,
+                        Alignment.center,
+                        Colors.black, () {
+                      setState(
+                        () {
+                          if (quant > 1) {
+                            quant--;
+                          }
+                        },
+                      );
+                    }),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      quant.toString(),
+                      textScaleFactor: 1.6,
+                      style: const TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    ButtonCircle(
+                        30,
+                        const Color(0xFFECEBEB),
+                        CupertinoIcons.plus,
+                        Alignment.center,
+                        Colors.black, () {
+                      setState(
+                        () {
+                          if (quant < 99) {
+                            quant++;
+                          }
+                        },
+                      );
+                    }),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    ButtonCircle(
+                        30,
+                        const Color(0xFFECEBEB),
+                        CupertinoIcons.trash,
+                        Alignment.center,
+                        Colors.black, () {
+                      setState(
+                        () {
+                          if (quant < 99) {
+                            quant++;
+                          }
+                        },
+                      );
+                    }),
+                  ],
+                )),
           ],
         ),
       ),

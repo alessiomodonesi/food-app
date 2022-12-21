@@ -1,8 +1,9 @@
 class User {
+  late int id;
   final String name;
   final String surname;
 
-  const User({
+  User({
     required this.name,
     required this.surname,
   });

@@ -1,12 +1,15 @@
 import 'dart:convert';
+import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+
+import 'package:flutter/material.dart';
 
 import 'package:sandwech/utils/validation.dart';
 import 'package:sandwech/utils/endpoints.dart';
-import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-import 'package:get/get.dart';
 import 'package:sandwech/utils/error_dialog.dart';
+import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/pages/homepage.dart';
+import 'package:sandwech/types/user.dart';
 
 class SignUpModel {}
 
@@ -67,11 +70,13 @@ class SignUpController extends GetxController {
                   return status! < 500;
                 }));
         if (response.statusCode == 200) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => HomePage(
-                      int.parse(jsonDecode(response.toString())["userID"]))));
+          int idUser = int.parse(jsonDecode(response.toString())["userID"]);
+          var userResponse = await Dio().get(getUserUrl + idUser.toString());
+          User userData = parseGetUser(jsonEncode(userResponse.data));
+          userData.id = idUser;
+
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => HomePage(userData)));
           return;
         } else {
           showDialogError(context, 'Impossibile registrarsi',

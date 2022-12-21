@@ -2,35 +2,25 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:sandwech/utils/GNav.dart';
-import 'package:sandwech/utils/utils.dart';
+import 'package:sandwech/utils/calculation.dart';
+import 'package:sandwech/utils/profile_button.dart';
 import 'package:sandwech/pages/signin.dart';
+import 'package:sandwech/types/user.dart';
 
 class ProfilePage extends StatefulWidget {
-  final int userID;
+  final User userData;
 
-  const ProfilePage(this.userID, {super.key});
+  const ProfilePage(this.userData, {super.key});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  /*
   String nomeUtente = "";
   String cognomeUtente = "";
-
-  @override
-  void initState() {
-    super.initState();
-    getUser(widget.userID.toString()).then(
-        (value) => setState(() {
-              nomeUtente = value.name;
-              cognomeUtente = value.surname;
-            }), onError: (e) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Sending Message"),
-      ));
-    });
-  }
+  */
 
   String iniziali(String nome, String cognome) {
     if (nome.isEmpty && cognome.isEmpty) {
@@ -46,20 +36,22 @@ class _ProfilePageState extends State<ProfilePage> {
 
   EdgeInsets getPaddingDevice(double android, double ios) {
     if (Platform.isAndroid) {
-      return EdgeInsets.only(top: android);
+      return EdgeInsets.only(
+          top: calcPercentage(MediaQuery.of(context).size.height, android));
     } else if (Platform.isIOS) {
       return EdgeInsets.only(top: ios);
     }
     return const EdgeInsets.only(top: 0);
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(padding: getPaddingDevice(50, 100)),
+              Padding(padding: getPaddingDevice(10, 100)),
               Align(
                   alignment: Alignment.center,
                   child: ClipRRect(
@@ -72,7 +64,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       child: Center(
                         child: Text(
-                          iniziali(nomeUtente, cognomeUtente),
+                          iniziali(
+                              widget.userData.name, widget.userData.surname),
                           style: const TextStyle(
                               color: Colors.white,
                               fontSize: 100,
@@ -82,11 +75,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   )),
               Container(
-                margin: const EdgeInsets.only(top: 45),
+                margin: getPaddingDevice(3, 45),
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
-                    capText(nomeUtente),
+                    capText(widget.userData.name),
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 34,
@@ -100,7 +93,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
-                    capText(cognomeUtente),
+                    capText(widget.userData.surname),
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 34,
@@ -109,54 +102,28 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
-              Container(
-                  margin: getPaddingDevice(160, 230),
-                  width: 300,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 158, 11, 0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      'Reset Password',
-                      style: TextStyle(
-                        fontSize: 24,
-                      ),
-                    ),
-                  )),
-              Container(
-                  margin: const EdgeInsets.only(top: 20),
-                  width: 300,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignInPage()));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 158, 11, 0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      'Log Out',
-                      style: TextStyle(
-                        fontSize: 24,
-                      ),
-                    ),
-                  )),
+              ProfileButton(
+                width: 300,
+                height: 50,
+                margin: getPaddingDevice(25, 230),
+                text: "Reset Password",
+                onTap: () {},
+              ),
+              ProfileButton(
+                width: 300,
+                height: 50,
+                margin: const EdgeInsets.only(top: 20),
+                text: "Log Out",
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignInPage()));
+                },
+              ),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: GNavi(1, widget.userID),
+      bottomNavigationBar: GNavi(1, widget.userData),
     );
   }
 }

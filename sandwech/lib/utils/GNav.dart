@@ -3,12 +3,13 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:sandwech/pages/homepage.dart';
 import 'package:sandwech/pages/profile.dart';
 import 'package:sandwech/pages/cart.dart';
+import 'package:sandwech/types/user.dart';
 
 class GNavi extends StatefulWidget {
   final int _currentIndex;
-  final int userID;
+  final User userData;
 
-  const GNavi(this._currentIndex, this.userID, {Key? key}) : super(key: key);
+  const GNavi(this._currentIndex, this.userData, {Key? key}) : super(key: key);
   @override
   State<GNavi> createState() => GNavState();
 }
@@ -38,7 +39,7 @@ class GNavState extends State<GNavi> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => HomePage(widget.userID)));
+                          builder: (context) => HomePage(widget.userData)));
                 }
               },
             ),
@@ -50,7 +51,7 @@ class GNavState extends State<GNavi> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ProfilePage(widget.userID)));
+                          builder: (context) => ProfilePage(widget.userData)));
                 }
               },
             ),
@@ -62,7 +63,7 @@ class GNavState extends State<GNavi> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => CartPage(widget.userID)));
+                          builder: (context) => CartPage(widget.userData)));
                 }
               },
             ),

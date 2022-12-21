@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:sandwech/pages/searchResult.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/product_tag.dart';
+import 'package:sandwech/types/user.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,9 +15,9 @@ import 'package:sandwech/pages/product.dart';
 
 class CatalogPage extends StatefulWidget {
   final int idCat;
-  final int userID;
+  final User userData;
 
-  const CatalogPage(this.idCat, this.userID, {super.key});
+  const CatalogPage(this.idCat, this.userData, {super.key});
 
   @override
   State<CatalogPage> createState() => _CatalogPageState();
@@ -26,7 +27,7 @@ class _CatalogPageState extends State<CatalogPage> {
   String catalogName = "";
   List<Product> _productList = List.empty(growable: true);
   List<ProductTag> _productTagList = List.empty();
-  String nomeUtente = "";
+  //String nomeUtente = "";
 
   int debugUserID = 4;
 
@@ -106,15 +107,6 @@ class _CatalogPageState extends State<CatalogPage> {
                 },
             }
         });
-
-    getUser(widget.userID.toString()).then(
-        (value) => setState(() {
-              nomeUtente = value.name;
-            }), onError: (e) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Sending Message"),
-      ));
-    });
   }
 
   @override
@@ -168,7 +160,7 @@ class _CatalogPageState extends State<CatalogPage> {
                         fontFamily: 'Inter'),
                     children: <TextSpan>[
                       TextSpan(
-                          text: nomeUtente,
+                          text: widget.userData.name,
                           style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -201,7 +193,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                     MaterialPageRoute(
                                         builder: (context) => SearchResultPage(
                                             widget.idCat,
-                                            widget.userID,
+                                            widget.userData,
                                             value)))
                               },
                             )
@@ -253,9 +245,8 @@ class _CatalogPageState extends State<CatalogPage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => ProductPage(
-                                        widget.userID,
                                         int.parse(_productList[index].id),
-                                        widget.userID)));
+                                        widget.userData)));
                           },
                           child: CatalogCard(
                             widget.idCat,
@@ -269,6 +260,6 @@ class _CatalogPageState extends State<CatalogPage> {
                 }())),
           ],
         ),
-        bottomNavigationBar: GNavi(0, widget.userID));
+        bottomNavigationBar: GNavi(0, widget.userData));
   }
 }

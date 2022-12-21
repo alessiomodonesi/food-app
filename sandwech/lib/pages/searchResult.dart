@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/product_tag.dart';
+import 'package:sandwech/types/user.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,10 +14,10 @@ import 'package:sandwech/pages/product.dart';
 
 class SearchResultPage extends StatefulWidget {
   final int idCat;
-  final int userID;
+  final User userData;
   final List<Product> _productList;
 
-  const SearchResultPage(this.idCat, this.userID, this._productList,
+  const SearchResultPage(this.idCat, this.userData, this._productList,
       {super.key});
 
   @override
@@ -77,15 +78,6 @@ class _SearchResultWidget extends State<SearchResultPage> {
     getTag(widget.idCat.toString()).then(
         (value) => setState(() {
               catalogName = capitalize(value[0].name);
-            }), onError: (e) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Sending Message"),
-      ));
-    });
-
-    getUser(widget.userID.toString()).then(
-        (value) => setState(() {
-              nomeUtente = value.name;
             }), onError: (e) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Sending Message"),
@@ -176,7 +168,7 @@ class _SearchResultWidget extends State<SearchResultPage> {
                                   MaterialPageRoute(
                                       builder: (context) => SearchResultPage(
                                             widget.idCat,
-                                            widget.userID,
+                                            widget.userData,
                                             value,
                                           ))),
                             )
@@ -228,10 +220,9 @@ class _SearchResultWidget extends State<SearchResultPage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => ProductPage(
-                                        widget.userID,
                                         int.parse(
                                             widget._productList[index].id),
-                                        widget.userID)));
+                                        widget.userData)));
                           },
                           child: CatalogCard(
                             widget.idCat,
@@ -245,6 +236,6 @@ class _SearchResultWidget extends State<SearchResultPage> {
                 }())),
           ],
         ),
-        bottomNavigationBar: GNavi(0, widget.userID));
+        bottomNavigationBar: GNavi(0, widget.userData));
   }
 }
