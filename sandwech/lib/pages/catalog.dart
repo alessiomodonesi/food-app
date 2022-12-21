@@ -5,7 +5,7 @@ import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sandwech/utils/circle_button.dart';
-import 'package:sandwech/utils/cart_card.dart';
+import 'package:sandwech/utils/catalog_card.dart';
 import 'package:sandwech/pages/product.dart';
 
 class CatalogPage extends StatefulWidget {
@@ -224,8 +224,8 @@ class _CatalogPageState extends State<CatalogPage> {
                                         int.parse(_productList[index].id),
                                         widget.userID)));
                           },
-                          child: CartCard(
-                            1,
+                          child: CatalogCard(
+                            widget.idCat,
                             _productList[index].name,
                             _productList[index].price,
                           ),

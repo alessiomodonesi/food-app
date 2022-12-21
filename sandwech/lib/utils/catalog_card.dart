@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-
 import 'package:sandwech/utils/size.dart';
 
-class CartCard extends StatefulWidget {
+class CatalogCard extends StatefulWidget {
   final int idCategory;
   final String productName;
   final String price;
 
-  const CartCard(this.idCategory, this.productName, this.price, {super.key});
+  const CatalogCard(this.idCategory, this.productName, this.price, {super.key});
 
   @override
-  State<CartCard> createState() => _CartCardState();
+  State<CatalogCard> createState() => _CatalogCardState();
 }
 
-class _CartCardState extends State<CartCard> {
+class _CatalogCardState extends State<CatalogCard> {
   String tagName(int id) {
     switch (id) {
       case 1:
