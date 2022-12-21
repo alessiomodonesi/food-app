@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/product_tag.dart';
@@ -6,6 +5,7 @@ import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sandwech/utils/circle_button.dart';
+import 'package:sandwech/utils/cart_card.dart';
 import 'package:sandwech/pages/product.dart';
 
 class CatalogPage extends StatefulWidget {
@@ -177,7 +177,7 @@ class _CatalogPageState extends State<CatalogPage> {
             Positioned(
                 width: 100,
                 height: 24,
-                left: 20,
+                left: 25,
                 top: 180,
                 child: Container(
                     child: RichText(
@@ -210,6 +210,29 @@ class _CatalogPageState extends State<CatalogPage> {
                     ));
                   } else {
                     return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: _productList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return GestureDetector(
+                          onTap: () {
+                            //log(_productList[index].id);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ProductPage(
+                                        debugUserID,
+                                        int.parse(_productList[index].id),
+                                        widget.userID)));
+                          },
+                          child: CartCard(
+                            1,
+                            _productList[index].name,
+                            _productList[index].price,
+                          ),
+                        );
+                      },
+                    );
+                    /*return ListView.builder(
                         shrinkWrap: true,
                         itemCount: _productList.length,
                         itemBuilder: (context, index) {
@@ -324,7 +347,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                       ],
                                     ),
                                   )));
-                        });
+                        });*/
                   }
                 }()) /**/
                 ),
