@@ -4,6 +4,7 @@ import 'package:sandwech/utils/GNav.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/cart_card.dart';
 import 'package:sandwech/types/product.dart';
+import 'package:flutter/cupertino.dart';
 
 class CartPage extends StatefulWidget {
   final int userID;
@@ -116,6 +117,32 @@ class _CartPageState extends State<CartPage> {
                   ],
                 ),
               ))),
+          Positioned(
+              left: (MediaQuery.of(context).size.width -
+                      (MediaQuery.of(context).size.width - 30)) /
+                  2,
+              width: (MediaQuery.of(context).size.width) - 30,
+              top: 110,
+              child: Material(
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      child: CupertinoSearchTextField(
+                        borderRadius: BorderRadius.circular(20),
+                        placeholder: 'Cerca qualcosa...',
+                        prefixInsets: const EdgeInsets.only(left: 10),
+                        suffixIcon:
+                            const Icon(CupertinoIcons.slider_horizontal_3),
+                        suffixMode: OverlayVisibilityMode.always,
+                        suffixInsets: const EdgeInsets.only(right: 10),
+                        onSuffixTap: () {},
+                      ),
+                    ),
+                  ],
+                ),
+              )),
           GestureDetector(
               onTap: () {},
               child: Align(
