@@ -43,6 +43,17 @@ Future<List<Product>> getProducts(id) async {
   }
 }
 
+Future<List<Product>> getProductsLike(name) async {
+  try {
+    Response response = await Dio().get(getProductsLikeUrl + name);
+    log(response.toString());
+    return parseProducts(jsonEncode(response.data));
+  } catch (e) {
+    log(e.toString());
+    return List.empty();
+  }
+}
+
 // il ? sta a indicare che la funzione può tornare Product oppure null
 Future<Product?> getSingleProduct(id) async {
   try {

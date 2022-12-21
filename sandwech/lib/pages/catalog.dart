@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -191,7 +192,11 @@ class _CatalogPageState extends State<CatalogPage> {
                               const Icon(CupertinoIcons.slider_horizontal_3),
                           suffixMode: OverlayVisibilityMode.always,
                           suffixInsets: const EdgeInsets.only(right: 10),
-                          onSuffixTap: () {},
+                          onSubmitted: (value) => {
+                            getProductsLike(value).then(
+                              (value) => log(value.toList().toString()),
+                            )
+                          },
                         ),
                       ),
                     ],
