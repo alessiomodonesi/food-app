@@ -101,17 +101,6 @@ Future<List<Product>> getCart(userID) async {
   }
 }
 
-Future<int> getSingleTag(productID) async {
-  try {
-    Response response = await Dio().get(getSingleTagUrl + productID);
-    log(response.toString());
-    return parseSingleTag(jsonEncode(response.data));
-  } catch (e) {
-    log(e.toString());
-    return 1;
-  }
-}
-
 List<Tag> parseTag(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
@@ -151,9 +140,4 @@ User parseGetUser(String responseBody) {
 List<Product> parseCart(String responseBody) {
   List parsed = jsonDecode(responseBody);
   return parsed.map<Product>((json) => Product.fromJsonCart(json)).toList();
-}
-
-int parseSingleTag(String responseBody) {
-  List parsed = jsonDecode(responseBody);
-  return int.parse(parsed[0]["tag"]);
 }

@@ -21,8 +21,6 @@ class _CartPageState extends State<CartPage> {
   String productName = "";
   String nomeUtente = "";
   List<Product> productList = List.empty(growable: true);
-  List<int> tagIDList = List.empty(growable: true);
-
   String capitalize(String str) {
     return str[0].toUpperCase() + str.substring(1);
   }
@@ -46,19 +44,7 @@ class _CartPageState extends State<CartPage> {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Sending Message"),
       ));
-    }).then((value) => {
-          for (int i = 0; i < productList.length; i++)
-            {
-              getSingleTag(productList[i].id.toString()).then(
-                  (value) => setState(() {
-                        tagIDList.add(value);
-                      }), onError: (e) {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text("Sending Message"),
-                ));
-              }),
-            }
-        });
+    });
   }
 
   @override
@@ -160,7 +146,7 @@ class _CartPageState extends State<CartPage> {
                   itemCount: productList.length,
                   itemBuilder: (BuildContext context, int index) {
                     return CartCard(
-                      tagIDList[index],
+                      int.parse(productList[index].tagName as String),
                       productList[index].name,
                       productList[index].price,
                       productList[index].quantity,

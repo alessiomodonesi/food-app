@@ -4,7 +4,7 @@ class Product {
   final String price;
   final String? description; //può essere anche null, grazie al ?
   final String? quantity; //può essere anche null, grazie al ?
-  final String? categoryID; //può essere anche null, grazie al ?
+  final String? tagName; //può essere anche null, grazie al ?
 
   const Product({
     required this.id,
@@ -12,7 +12,7 @@ class Product {
     required this.price,
     this.description, // campo non obbligatorio da passare per paramentro alla crezione dell'oggetto
     this.quantity, // campo non obbligatorio da passare per paramentro alla crezione dell'oggetto
-    this.categoryID, // campo non obbligatorio da passare per paramentro alla crezione dell'oggetto
+    this.tagName, // campo non obbligatorio da passare per paramentro alla crezione dell'oggetto
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -31,6 +31,7 @@ class Product {
       price: json['price'],
       description: json['description'],
       quantity: json['quantity'],
+      tagName: json['tag_name'],
     );
   }
 }
