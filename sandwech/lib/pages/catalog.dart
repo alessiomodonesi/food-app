@@ -177,8 +177,8 @@ class _CatalogPageState extends State<CatalogPage> {
             Positioned(
                 width: 100,
                 height: 24,
-                left: 25,
-                top: 180,
+                left: 40,
+                top: 175,
                 child: Container(
                     child: RichText(
                   text: TextSpan(
@@ -186,7 +186,7 @@ class _CatalogPageState extends State<CatalogPage> {
                     style: const TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 23,
                         fontFamily: 'Inter'),
                   ),
                 ))),
