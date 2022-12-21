@@ -5,7 +5,7 @@ const vm = "192.168.223.212:8081";
 
 // const baseUrl = vm;
 const baseUrl = "$ios/food-api";
-// const baseUrl = android;
+//const baseUrl = android;
 
 // url
 const getTagUrl = "http://$baseUrl/API/tag/getTag.php?tag_ID=";
@@ -22,8 +22,9 @@ const getUserUrl = "http://$baseUrl/API/user/getUser.php?id=";
 const resetPassword = "http://$baseUrl/API/user/resetPassword.php";
 const getProductsLike =
     "http://$baseUrl/API/product/getProductLike.php?nome_panino=";
-const getProductsLikeUrl =
-    "http://$baseUrl/API/product/getArchiveProductLike.php?nome_panino=";
+const getProductsLikeWithTagUrl =
+    "http://$baseUrl/API/product/getArchiveProductsLikeWithTag.php?nome_panino=";
+
 
 /*const getTagUrl = "http://$baseUrl/food-api/API/tag/getTag.php?tag_ID=";
 const getProductUrl =
@@ -38,5 +39,5 @@ const postSignInUrl = "http://$baseUrl/food-api/API/user/login.php";
 const getCartUrl = "http://$baseUrl/food-api/API/cart/getCart.php?user=";
 const getUserUrl = "http://$baseUrl/food-api/API/user/getUser.php?id=";
 const resetPassword = "http://$baseUrl/food-api/API/user/resetPassword.php";
-const getProductsLikeUrl =
-    "http://$baseUrl/food-api/API/product/getArchiveProductLike.php?nome_panino=";*/
+const getProductsLikeWithTagUrl =
+    "http://$baseUrl/food-api/API/product/getArchiveProductsLikeWithTag.php?nome_panino=";*/

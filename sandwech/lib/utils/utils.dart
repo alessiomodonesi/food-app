@@ -43,9 +43,10 @@ Future<List<Product>> getProducts(id) async {
   }
 }
 
-Future<List<Product>> getProductsLike(name) async {
+Future<List<Product>> getProductsLikeWithTag(name, int id_cat) async {
   try {
-    Response response = await Dio().get(getProductsLikeUrl + name);
+    Response response = await Dio()
+        .get(getProductsLikeWithTagUrl + name + "&tag_id=" + id_cat.toString());
     log(response.toString());
     return parseProducts(jsonEncode(response.data));
   } catch (e) {

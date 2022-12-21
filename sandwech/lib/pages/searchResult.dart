@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:sandwech/pages/searchResult.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/product_tag.dart';
 import 'package:sandwech/utils/utils.dart';
@@ -12,19 +11,20 @@ import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/utils/catalog_card.dart';
 import 'package:sandwech/pages/product.dart';
 
-class CatalogPage extends StatefulWidget {
+class SearchResultPage extends StatefulWidget {
   final int idCat;
   final int userID;
+  final List<Product> _productList;
 
-  const CatalogPage(this.idCat, this.userID, {super.key});
+  const SearchResultPage(this.idCat, this.userID, this._productList,
+      {super.key});
 
   @override
-  State<CatalogPage> createState() => _CatalogPageState();
+  State<SearchResultPage> createState() => _SearchResultWidget();
 }
 
-class _CatalogPageState extends State<CatalogPage> {
+class _SearchResultWidget extends State<SearchResultPage> {
   String catalogName = "";
-  List<Product> _productList = List.empty(growable: true);
   List<ProductTag> _productTagList = List.empty();
   String nomeUtente = "";
 
@@ -82,30 +82,6 @@ class _CatalogPageState extends State<CatalogPage> {
         content: Text("Sending Message"),
       ));
     });
-
-    getProductTag(widget.idCat.toString()).then(
-        (value) => setState(() {
-              _productTagList = value;
-            }), onError: (e) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Sending Message"),
-      ));
-    }).then((value) => {
-          if (_productTagList.isNotEmpty)
-            {
-              for (var i = 0; i < _productTagList.length; i++)
-                {
-                  getProducts(_productTagList[i].product).then(
-                    (value) => setState(() {
-                      _productList.add(Product(
-                          id: value[0].id.toString(),
-                          name: value[0].name,
-                          price: value[0].price));
-                    }),
-                  ),
-                },
-            }
-        });
 
     getUser(widget.userID.toString()).then(
         (value) => setState(() {
@@ -195,15 +171,14 @@ class _CatalogPageState extends State<CatalogPage> {
                           suffixInsets: const EdgeInsets.only(right: 10),
                           onSubmitted: (value) => {
                             getProductsLikeWithTag(value, widget.idCat).then(
-                              (value) => {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SearchResultPage(
+                              (value) => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SearchResultPage(
                                             widget.idCat,
                                             widget.userID,
-                                            value)))
-                              },
+                                            value,
+                                          ))),
                             )
                           },
                         ),
@@ -230,7 +205,7 @@ class _CatalogPageState extends State<CatalogPage> {
             Container(
                 padding: getPaddingDevice(),
                 child: (() {
-                  if (_productList.isEmpty) {
+                  if (widget._productList.isEmpty) {
                     return Center(
                         child: RichText(
                       text: const TextSpan(
@@ -244,7 +219,7 @@ class _CatalogPageState extends State<CatalogPage> {
                   } else {
                     return ListView.builder(
                       shrinkWrap: true,
-                      itemCount: _productList.length,
+                      itemCount: widget._productList.length,
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
                           onTap: () {
@@ -254,13 +229,14 @@ class _CatalogPageState extends State<CatalogPage> {
                                 MaterialPageRoute(
                                     builder: (context) => ProductPage(
                                         widget.userID,
-                                        int.parse(_productList[index].id),
+                                        int.parse(
+                                            widget._productList[index].id),
                                         widget.userID)));
                           },
                           child: CatalogCard(
                             widget.idCat,
-                            _productList[index].name,
-                            _productList[index].price,
+                            widget._productList[index].name,
+                            widget._productList[index].price,
                           ),
                         );
                       },
