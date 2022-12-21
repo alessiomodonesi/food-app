@@ -38,6 +38,10 @@ class _ProfilePageState extends State<ProfilePage> {
     return profilo;
   }
 
+  String capText(String str) {
+    return str[0].toUpperCase() + str.substring(1);
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -71,7 +75,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
-                    nomeUtente,
+                    capText(nomeUtente),
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 34,
@@ -85,7 +89,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
-                    cognomeUtente,
+                    capText(cognomeUtente),
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 34,
