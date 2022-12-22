@@ -152,6 +152,8 @@ class _CartPageState extends State<CartPage> {
                       productList[index].name,
                       productList[index].price,
                       productList[index].quantity,
+                      productList[index].id,
+                      widget.userData,
                     );
                   },
                 );

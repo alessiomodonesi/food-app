@@ -1,16 +1,24 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:sandwech/utils/utils.dart';
+
+import '../types/user.dart';
 
 class CartCard extends StatefulWidget {
   final int idCategory;
   final String productName;
   final String price;
   final String? quantity;
+  final String productId;
+  final User userData;
 
   const CartCard(this.idCategory, this.productName, this.price, this.quantity,
+      this.productId, this.userData,
       {super.key});
 
   @override
@@ -91,6 +99,9 @@ class _CartCardState extends State<CartCard> {
                         () {
                           if (quant > 1) {
                             quant--;
+                            setCartItemremove(
+                                    widget.userData.id, widget.productId)
+                                .then((value) => log(value));
                           }
                         },
                       );
@@ -118,6 +129,8 @@ class _CartCardState extends State<CartCard> {
                         () {
                           if (quant < 99) {
                             quant++;
+                            setCartItemAdd(widget.userData.id, widget.productId)
+                                .then((value) => log(value));
                           }
                         },
                       );
