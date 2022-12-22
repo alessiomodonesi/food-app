@@ -27,7 +27,6 @@ class SearchResultPage extends StatefulWidget {
 class _SearchResultWidget extends State<SearchResultPage> {
   String catalogName = "";
   List<ProductTag> _productTagList = List.empty();
-  String nomeUtente = "";
 
   int debugUserID = 4;
 
@@ -136,7 +135,7 @@ class _SearchResultWidget extends State<SearchResultPage> {
                         fontFamily: 'Inter'),
                     children: <TextSpan>[
                       TextSpan(
-                          text: nomeUtente,
+                          text: widget.userData.name,
                           style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
