@@ -24,3 +24,5 @@ const getProductsLike =
     "http://$baseUrl/API/product/getProductLike.php?nome_panino=";
 const getProductsLikeWithTagUrl =
     "http://$baseUrl/API/product/getArchiveProductsLikeWithTag.php?nome_panino=";
+const setCartItemRemoveUrl = "http://$baseUrl/API/cart/setRemove.php";
+const setCartItemAddUrl = "http://$baseUrl/API/cart/setAddItem.php";

@@ -90,6 +90,31 @@ Future<String> addItemCart(userID, productID, quantity) async {
   }
 }
 
+// aggiorna di 1 la quantità di un prodotto nel carrello
+/*Future<String> setCartItemremove(userID, productID, quantity) async {
+  try {
+    var response = await Dio().post(addItemCartUrl,
+        data: {"user": userID, "product": productID, "quantity": quantity});
+    log(response.toString());
+    return jsonEncode(response.data);
+  } catch (e) {
+    log(e.toString());
+    return "error";
+  }
+}*/
+
+/*Future<String> setCartItemAdd(userID, productID, quantity) async {
+  try {
+    var response = await Dio().post(addItemCartUrl,
+        data: {"user": userID, "product": productID, "quantity": quantity});
+    log(response.toString());
+    return jsonEncode(response.data);
+  } catch (e) {
+    log(e.toString());
+    return "error";
+  }
+}*/
+
 Future<User> getUser(userID) async {
   try {
     Response response = await Dio().get(getUserUrl + userID);
