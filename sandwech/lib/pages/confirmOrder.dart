@@ -1,32 +1,27 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:sandwech/pages/searchResult.dart';
 import 'package:sandwech/types/product.dart';
-import 'package:sandwech/types/product_tag.dart';
 import 'package:sandwech/types/user.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/GNav.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:sandwech/utils/order_cart.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/utils/catalog_card.dart';
 import 'package:sandwech/pages/product.dart';
 
-class CatalogPage extends StatefulWidget {
-  final int idCat;
+class ConfirmOrderWidget extends StatefulWidget {
   final User userData;
 
-  const CatalogPage(this.idCat, this.userData, {super.key});
+  const ConfirmOrderWidget(this.userData, {super.key});
 
   @override
-  State<CatalogPage> createState() => _CatalogPageState();
+  State<ConfirmOrderWidget> createState() => _ConfirmOrderWidgetState();
 }
 
-class _CatalogPageState extends State<CatalogPage> {
+class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
   String catalogName = "";
   List<Product> _productList = List.empty(growable: true);
-  List<ProductTag> _productTagList = List.empty();
-  //String nomeUtente = "";
 
   int debugUserID = 4;
 
@@ -53,7 +48,7 @@ class _CatalogPageState extends State<CatalogPage> {
   EdgeInsets getPaddingDevice() {
     if (Platform.isAndroid) {
       return const EdgeInsets.only(
-        top: 170,
+        top: 400,
         left: 14,
         right: 14,
       );
@@ -74,38 +69,15 @@ class _CatalogPageState extends State<CatalogPage> {
   @override
   void initState() {
     super.initState();
-    getTag(widget.idCat.toString()).then(
+
+    getCart(widget.userData.id.toString()).then(
         (value) => setState(() {
-              catalogName = capitalize(value[0].name);
+              _productList = value;
             }), onError: (e) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Sending Message"),
       ));
     });
-
-    getProductTag(widget.idCat.toString()).then(
-        (value) => setState(() {
-              _productTagList = value;
-            }), onError: (e) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Sending Message"),
-      ));
-    }).then((value) => {
-          if (_productTagList.isNotEmpty)
-            {
-              for (var i = 0; i < _productTagList.length; i++)
-                {
-                  getProducts(_productTagList[i].product).then(
-                    (value) => setState(() {
-                      _productList.add(Product(
-                          id: value[0].id.toString(),
-                          name: value[0].name,
-                          price: value[0].price));
-                    }),
-                  ),
-                },
-            }
-        });
   }
 
   @override
@@ -169,53 +141,40 @@ class _CatalogPageState extends State<CatalogPage> {
                         (MediaQuery.of(context).size.width - 30)) /
                     2,
                 width: (MediaQuery.of(context).size.width) - 30,
-                top: 110,
-                child: Material(
+                top: 130,
+                child: const Material(
                   color: Colors.white,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        child: CupertinoSearchTextField(
-                          borderRadius: BorderRadius.circular(20),
-                          placeholder: 'Cerca qualcosa...',
-                          prefixInsets: const EdgeInsets.only(left: 10),
-                          suffixIcon:
-                              const Icon(CupertinoIcons.slider_horizontal_3),
-                          suffixMode: OverlayVisibilityMode.always,
-                          suffixInsets: const EdgeInsets.only(right: 10),
-                          onSubmitted: (value) => {
-                            getProductsLikeWithTag(value, widget.idCat).then(
-                              (value) => {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SearchResultPage(
-                                            widget.idCat,
-                                            widget.userData,
-                                            value)))
-                              },
-                            )
-                          },
-                        ),
-                      ),
-                    ],
+                  child: Center(
+                    child: Text('Seleziona punto di Ritiro'),
                   ),
                 )),
             Positioned(
-                width: 200,
+                left: (MediaQuery.of(context).size.width -
+                        (MediaQuery.of(context).size.width - 30)) /
+                    2,
+                width: (MediaQuery.of(context).size.width) - 30,
+                top: 250,
+                child: const Material(
+                  color: Colors.white,
+                  child: Center(
+                    child: Text('Seleziona orario di Ritiro'),
+                  ),
+                )),
+            Positioned(
+                width: MediaQuery.of(context).size.width,
                 height: 24,
-                left: 40,
-                top: 175,
+                top: 400,
                 child: Container(
                     child: RichText(
-                  text: TextSpan(
-                    text: catalogName,
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 23,
-                        fontFamily: 'Inter'),
+                  textAlign: TextAlign.center,
+                  text: const TextSpan(
+                    text: "Il mio ordine",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 23,
+                      fontFamily: 'Inter',
+                    ),
                   ),
                 ))),
             Container(
@@ -239,7 +198,6 @@ class _CatalogPageState extends State<CatalogPage> {
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
                           onTap: () {
-                            //log(_productList[index].id);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -247,10 +205,11 @@ class _CatalogPageState extends State<CatalogPage> {
                                         int.parse(_productList[index].id),
                                         widget.userData)));
                           },
-                          child: CatalogCard(
-                            widget.idCat,
+                          child: OrderCard(
+                            int.parse(_productList[index].tagID.toString()),
                             _productList[index].name,
                             _productList[index].price,
+                            int.parse(_productList[index].quantity.toString()),
                           ),
                         );
                       },
@@ -259,6 +218,6 @@ class _CatalogPageState extends State<CatalogPage> {
                 }())),
           ],
         ),
-        bottomNavigationBar: GNavi(0, widget.userData));
+        bottomNavigationBar: GNavi(2, widget.userData));
   }
 }

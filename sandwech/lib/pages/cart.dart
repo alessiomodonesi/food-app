@@ -9,6 +9,7 @@ import 'package:sandwech/utils/cart_card.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/user.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:sandwech/pages/confirmOrder.dart';
 
 class CartPage extends StatefulWidget {
   final User userData;
@@ -161,7 +162,14 @@ class _CartPageState extends State<CartPage> {
             }()),
           ),
           GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ConfirmOrderWidget(
+                              widget.userData,
+                            )));
+              },
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
