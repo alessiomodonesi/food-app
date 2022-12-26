@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -82,6 +81,36 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
       return EdgeInsets.only(bottom: ios);
     }
     return const EdgeInsets.only(top: 0);
+  }
+
+  double getOrderTotalPrice(List<Product> _products) {
+    double totalPrice = 0;
+
+    for (var product in _products) {
+      totalPrice += double.parse(product.price) * int.parse(product.quantity!);
+    }
+    return totalPrice;
+  }
+
+  List<String> productsListJson(List<Product> _products) {
+    List<String> list = List.empty(growable: true);
+
+    for (var product in _products) {
+      list.add(
+          '{"name": "${product.name}", "price": ${product.price}, "qunantity":${product.quantity}}');
+    }
+
+    return list;
+  }
+
+  List<String> productsList(List<Product> _products) {
+    List<String> list = List.empty(growable: true);
+
+    for (var product in _products) {
+      list.add('{"ID": ${product.id}, "quantity":${product.quantity}}');
+    }
+
+    return list;
   }
 
   @override
@@ -332,16 +361,25 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                       pickupPlace.name.isNotEmpty) {
                     jsonOrder = '''
                         {
-                          "user_ID": ${widget.userData.id}
-                          "total_price": "10"
-                          "break_ID": ${breakTime.id}
-                          "pickup_ID": ${pickupPlace.id}
-                          "products": [
-                            {"name": "panino al prosciutto"}
-                          ]
+                          "user": "${widget.userData.id}",
+                          "total_price": "${getOrderTotalPrice(_productList)}",
+                          "break":"${breakTime.id}",
+                          "status": 1,
+                          "pickup": "${pickupPlace.id}",
+                          "products": 
+                            ${productsListJson(_productList).toString()}    
                         }
                         ''';
-                    log(jsonOrder);
+                    log(productsList(_productList).toString());
+                    setOrder(
+                            widget.userData.id,
+                            getOrderTotalPrice(_productList),
+                            breakTime.id,
+                            1,
+                            pickupPlace.id,
+                            productsList(_productList).toString(),
+                            jsonOrder)
+                        .then((value) => log(value));
                     /*Navigator.push(
                       context,
                       MaterialPageRoute(

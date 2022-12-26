@@ -32,3 +32,4 @@ const getPickupUrl = "http://$baseUrl/API/order/pickup/getPickup.php";
 const getPickupIdBreakUrl =
     "http://$baseUrl/API/order/pickup/getPickupIdBreak.php?PICKUP_ID=";
 const getBreakUrl = "http://$baseUrl/API/order/break/getBreak.php?BREAK_ID=";
+const setOrderUrl = "http://$baseUrl/API/order/setOrder.php";
