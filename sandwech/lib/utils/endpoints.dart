@@ -4,10 +4,10 @@ const ios = "localhost";
 const vm = "192.168.0.230:8081";
 const raspserver = "192.168.0.22";
 
-const baseUrl = raspserver;
+// const baseUrl = raspserver;
 //const baseUrl = "$raspserver/food-api";
 //const baseUrl = "$ios/food-api";
-//const baseUrl = "$android/food-api";
+const baseUrl = "$android/food-api";
 
 // url
 const getTagUrl = "http://$baseUrl/API/tag/getTag.php?tag_ID=";
@@ -28,3 +28,7 @@ const getProductsLikeWithTagUrl =
     "http://$baseUrl/API/product/getArchiveProductsLikeWithTag.php?nome_panino=";
 const setCartItemRemoveUrl = "http://$baseUrl/API/cart/setRemove.php";
 const setCartItemAddUrl = "http://$baseUrl/API/cart/setAdd.php";
+const getPickupUrl = "http://$baseUrl/API/order/pickup/getPickup.php";
+const getPickupIdBreakUrl =
+    "http://$baseUrl/API/order/pickup/getPickupIdBreak.php?PICKUP_ID=";
+const getBreakUrl = "http://$baseUrl/API/order/break/getBreak.php?BREAK_ID=";

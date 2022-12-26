@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'package:sandwech/types/break.dart';
+import 'package:sandwech/types/pickup_break.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/tag.dart';
 import 'package:sandwech/types/product_tag.dart';
 import 'package:sandwech/types/ingredient.dart';
 import 'package:sandwech/types/user.dart';
+import 'package:sandwech/types/pickup.dart';
 
 import 'dart:convert';
 import 'endpoints.dart';
@@ -138,6 +140,39 @@ Future<List<Product>> getCart(userID) async {
   }
 }
 
+Future<List<Pickup>> getPickupZones() async {
+  try {
+    Response response = await Dio().get(getPickupUrl);
+    //log(response.toString());
+    return parsePickupZones(jsonEncode(response.data));
+  } catch (e) {
+    log(e.toString());
+    return List.empty();
+  }
+}
+
+Future<List<PickupBreak>> getPickupIdBreak(id) async {
+  try {
+    Response response = await Dio().get(getPickupIdBreakUrl + id);
+    //log(response.toString());
+    return parsePickupBreak(jsonEncode(response.data));
+  } catch (e) {
+    log(e.toString());
+    return List.empty();
+  }
+}
+
+Future<List<Break>> getBreak(id) async {
+  try {
+    Response response = await Dio().get(getBreakUrl + id);
+    log(response.toString());
+    return parseBreak(jsonEncode(response.data));
+  } catch (e) {
+    log(e.toString());
+    return List.empty();
+  }
+}
+
 List<Tag> parseTag(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
@@ -177,4 +212,19 @@ User parseGetUser(String responseBody) {
 List<Product> parseCart(String responseBody) {
   List parsed = jsonDecode(responseBody);
   return parsed.map<Product>((json) => Product.fromJsonCart(json)).toList();
+}
+
+List<Pickup> parsePickupZones(String responseBody) {
+  List parsed = jsonDecode(responseBody);
+  return parsed.map<Pickup>((json) => Pickup.fromJson(json)).toList();
+}
+
+List<PickupBreak> parsePickupBreak(String responseBody) {
+  List parsed = jsonDecode(responseBody);
+  return parsed.map<PickupBreak>((json) => PickupBreak.fromJson(json)).toList();
+}
+
+List<Break> parseBreak(String responseBody) {
+  List parsed = jsonDecode(responseBody);
+  return parsed.map<Break>((json) => Break.fromJson(json)).toList();
 }

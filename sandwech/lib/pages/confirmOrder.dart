@@ -1,13 +1,16 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:sandwech/types/break.dart';
+import 'package:sandwech/types/pickup.dart';
+import 'package:sandwech/types/pickup_break.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/user.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:sandwech/utils/order_cart.dart';
 import 'package:sandwech/utils/circle_button.dart';
-import 'package:sandwech/utils/catalog_card.dart';
 import 'package:sandwech/pages/product.dart';
 
 class ConfirmOrderWidget extends StatefulWidget {
@@ -22,6 +25,10 @@ class ConfirmOrderWidget extends StatefulWidget {
 class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
   String catalogName = "";
   List<Product> _productList = List.empty(growable: true);
+  List<Pickup> _pickupList = List.empty();
+  final List<Break> _breakList = List.empty(growable: true);
+  String pickupChoice = "";
+  String breakTime = "";
 
   int debugUserID = 4;
 
@@ -73,6 +80,15 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
     getCart(widget.userData.id.toString()).then(
         (value) => setState(() {
               _productList = value;
+            }), onError: (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Sending Message"),
+      ));
+    });
+
+    getPickupZones().then(
+        (value) => setState(() {
+              _pickupList = value;
             }), onError: (e) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Sending Message"),
@@ -153,11 +169,93 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                         (MediaQuery.of(context).size.width - 30)) /
                     2,
                 width: (MediaQuery.of(context).size.width) - 30,
+                top: 170,
+                child: Material(
+                  color: Colors.white,
+                  child: Center(
+                    child: DropdownButton(
+                      hint: Text(pickupChoice),
+                      elevation: 16,
+                      style: const TextStyle(color: rossoApp),
+                      underline: Container(
+                        height: 2,
+                        color: rossoApp,
+                      ),
+                      icon: const Icon(Icons.arrow_downward),
+                      items: _pickupList.map((pickup) {
+                        return DropdownMenuItem(
+                          value: pickup,
+                          child: Text(pickup.name),
+                        );
+                      }).toList(),
+                      onChanged: (pickup) {
+                        // This is called when the user selects an item.
+                        setState(() {
+                          pickupChoice = pickup!.name;
+                        });
+                        _breakList.clear();
+
+                        getPickupIdBreak(pickup!.id).then((value) => {
+                              for (var record in value)
+                                {
+                                  getBreak(record.break_).then((value) => {
+                                        for (var bbreak in value)
+                                          {
+                                            setState(() {
+                                              _breakList.add(bbreak);
+                                              breakTime = "";
+                                            }),
+                                          }
+                                      }),
+                                },
+                            });
+                      },
+                    ),
+                  ),
+                )),
+            Positioned(
+                left: (MediaQuery.of(context).size.width -
+                        (MediaQuery.of(context).size.width - 30)) /
+                    2,
+                width: (MediaQuery.of(context).size.width) - 30,
                 top: 250,
                 child: const Material(
                   color: Colors.white,
                   child: Center(
                     child: Text('Seleziona orario di Ritiro'),
+                  ),
+                )),
+            Positioned(
+                left: (MediaQuery.of(context).size.width -
+                        (MediaQuery.of(context).size.width - 30)) /
+                    2,
+                width: (MediaQuery.of(context).size.width) - 30,
+                top: 305,
+                child: Material(
+                  color: Colors.white,
+                  child: Center(
+                    child: DropdownButton(
+                      hint: Text(breakTime),
+                      elevation: 16,
+                      style: const TextStyle(color: ambratoApp),
+                      underline: Container(
+                        height: 2,
+                        color: ambratoApp,
+                      ),
+                      icon: const Icon(Icons.arrow_downward),
+                      items: _breakList.map((bbreak) {
+                        return DropdownMenuItem(
+                          value: bbreak,
+                          child: Text(bbreak.time),
+                        );
+                      }).toList(),
+                      onChanged: (bbreak) async {
+                        // This is called when the user selects an item.
+                        setState(() {
+                          breakTime = bbreak!.time;
+                        });
+                      },
+                    ),
                   ),
                 )),
             Positioned(

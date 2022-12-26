@@ -141,7 +141,9 @@ class _CatalogPageState extends State<CatalogPage> {
                 top: -15,
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25), color: rossoApp),
+                    borderRadius: BorderRadius.circular(25),
+                    color: rossoApp,
+                  ),
                 )),
             Positioned(
                 width: 400,
