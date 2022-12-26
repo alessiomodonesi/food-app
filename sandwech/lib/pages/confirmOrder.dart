@@ -1,10 +1,11 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:sandwech/types/break.dart';
 import 'package:sandwech/types/pickup.dart';
-import 'package:sandwech/types/pickup_break.dart';
+import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/user.dart';
 import 'package:sandwech/utils/utils.dart';
@@ -27,8 +28,9 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
   List<Product> _productList = List.empty(growable: true);
   List<Pickup> _pickupList = List.empty();
   final List<Break> _breakList = List.empty(growable: true);
-  String pickupChoice = "";
-  String breakTime = "";
+  Pickup pickupPlace = Pickup(id: "", name: "");
+  Break breakTime = Break(id: "", time: "");
+  String jsonOrder = "";
 
   int debugUserID = 4;
 
@@ -71,6 +73,15 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
       left: 0,
       right: 0,
     );
+  }
+
+  EdgeInsets getMarginDevice(double android, double ios) {
+    if (Platform.isAndroid) {
+      return EdgeInsets.only(bottom: android);
+    } else if (Platform.isIOS) {
+      return EdgeInsets.only(bottom: ios);
+    }
+    return const EdgeInsets.only(top: 0);
   }
 
   @override
@@ -174,7 +185,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                   color: Colors.white,
                   child: Center(
                     child: DropdownButton(
-                      hint: Text(pickupChoice),
+                      hint: Text(pickupPlace.name),
                       elevation: 16,
                       style: const TextStyle(color: rossoApp),
                       underline: Container(
@@ -191,7 +202,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                       onChanged: (pickup) {
                         // This is called when the user selects an item.
                         setState(() {
-                          pickupChoice = pickup!.name;
+                          pickupPlace = pickup!;
                         });
                         _breakList.clear();
 
@@ -203,7 +214,8 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                                           {
                                             setState(() {
                                               _breakList.add(bbreak);
-                                              breakTime = "";
+                                              breakTime =
+                                                  Break(id: "", time: "");
                                             }),
                                           }
                                       }),
@@ -235,7 +247,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                   color: Colors.white,
                   child: Center(
                     child: DropdownButton(
-                      hint: Text(breakTime),
+                      hint: Text(breakTime.time),
                       elevation: 16,
                       style: const TextStyle(color: ambratoApp),
                       underline: Container(
@@ -252,7 +264,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                       onChanged: (bbreak) async {
                         // This is called when the user selects an item.
                         setState(() {
-                          breakTime = bbreak!.time;
+                          breakTime = bbreak!;
                         });
                       },
                     ),
@@ -314,6 +326,52 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                     );
                   }
                 }())),
+            GestureDetector(
+                onTap: () {
+                  if (breakTime.time.isNotEmpty &&
+                      pickupPlace.name.isNotEmpty) {
+                    jsonOrder = '''
+                        {
+                          "user_ID": ${widget.userData.id}
+                          "total_price": "10"
+                          "break_ID": ${breakTime.id}
+                          "pickup_ID": ${pickupPlace.id}
+                          "products": [
+                            {"name": "panino al prosciutto"}
+                          ]
+                        }
+                        ''';
+                    log(jsonOrder);
+                    /*Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ConfirmOrderWidget(
+                                widget.userData,
+                              )));*/
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                            "Errore, seleziona un punto di ritiro e/o l'orario")));
+                  }
+                },
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                      margin: getMarginDevice(0, 50),
+                      padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: const Color.fromARGB(255, 158, 11, 0),
+                      ),
+                      child: Text(
+                        'Ordina',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: getFontSize(24)),
+                        textAlign: TextAlign.center,
+                      )),
+                )),
           ],
         ),
         bottomNavigationBar: GNavi(2, widget.userData));
