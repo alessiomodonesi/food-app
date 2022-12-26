@@ -120,7 +120,6 @@ Future<String> setCartItemAdd(userID, productID) async {
 Future<String> setOrder(
     int user, double total, bbreak, status, pickup, products, json) async {
   try {
-    log(json);
     var response = await Dio().post(setOrderUrl, data: {
       "user": user,
       "total_price": total,
@@ -131,6 +130,17 @@ Future<String> setOrder(
       "json": jsonDecode(json)
     });
     log(response.toString());
+    return jsonEncode(response.data);
+  } catch (e) {
+    log(e.toString());
+    return "error";
+  }
+}
+
+Future<String> deleteCartItem(user, product) async {
+  try {
+    var response =
+        await Dio().get("${deleteCartItemUrl + user}&product=$product");
     return jsonEncode(response.data);
   } catch (e) {
     log(e.toString());

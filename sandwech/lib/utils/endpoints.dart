@@ -33,3 +33,4 @@ const getPickupIdBreakUrl =
     "http://$baseUrl/API/order/pickup/getPickupIdBreak.php?PICKUP_ID=";
 const getBreakUrl = "http://$baseUrl/API/order/break/getBreak.php?BREAK_ID=";
 const setOrderUrl = "http://$baseUrl/API/order/setOrder.php";
+const deleteCartItemUrl = "http://$baseUrl/API/cart/deleteItem.php?user=";

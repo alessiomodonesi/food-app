@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:sandwech/pages/homepage.dart';
 import 'package:sandwech/types/break.dart';
 import 'package:sandwech/types/pickup.dart';
 import 'package:sandwech/utils/size.dart';
@@ -379,13 +380,23 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                             pickupPlace.id,
                             productsList(_productList).toString(),
                             jsonOrder)
-                        .then((value) => log(value));
-                    /*Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ConfirmOrderWidget(
-                                widget.userData,
-                              )));*/
+                        .then((value) => {
+                              for (var product in _productList)
+                                {
+                                  deleteCartItem(widget.userData.id.toString(),
+                                          product.id)
+                                      .then((value) => log(value))
+                                }
+                            });
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HomePage(
+                                  widget.userData,
+                                )));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Ordine effetuato")));
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text(
