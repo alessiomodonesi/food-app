@@ -254,7 +254,7 @@ class _ProductPageState extends State<ProductPage> {
                                     Align(
                                       alignment: Alignment.center,
                                       child: Text(
-                                        "€${prodotto.price}",
+                                        "€ ${prodotto.price}",
                                         textScaleFactor: 1.75,
                                         style: const TextStyle(
                                           color: Colors.white,

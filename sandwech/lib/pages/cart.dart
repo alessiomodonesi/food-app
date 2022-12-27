@@ -173,7 +173,7 @@ class _CartPageState extends State<CartPage> {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                    margin: getMarginDevice(30, 50),
+                    margin: getMarginDevice(25, 50),
                     padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),

@@ -79,14 +79,14 @@ class _CartCardState extends State<CartCard> {
               isThreeLine: false,
             ),
             Container(
-                height: 35,
-                width: 200,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(25.0)),
-                  color: ambratoApp,
-                  border: Border.all(color: Colors.white, width: 2),
-                ),
-                child: Row(
+              height: 40,
+              width: 200,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(25.0)),
+                color: ambratoApp,
+                border: Border.all(color: Colors.white, width: 2),
+              ),
+              /*child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // minus button
@@ -141,12 +141,82 @@ class _CartCardState extends State<CartCard> {
                         () {
                           if (quant < 99) {
                             quant = 0;
+                            deleteCartItem(widget.userData.id, widget.productId)
+                                .then((value) => log(value));
                           }
                         },
                       );
                     })
                   ],
-                )),
+                )),*/
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 28,
+                    width: 120,
+                    decoration: BoxDecoration(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(25.0)),
+                      //color: Colors.white,
+                      border: Border.all(color: Colors.white, width: 2),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const SizedBox(
+                          width: 1,
+                        ),
+                        // minus button
+                        ButtonCircle(25, ambratoApp, CupertinoIcons.minus,
+                            Alignment.center, Colors.white, () {
+                          setState(() {
+                            if (quant > 1) {
+                              quant--;
+                            }
+                          });
+                        }),
+                        Text(
+                          quant.toString(),
+                          textScaleFactor: 1.5,
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        // plus button
+                        ButtonCircle(25, ambratoApp, CupertinoIcons.plus,
+                            Alignment.center, Colors.white, () {
+                          setState(() {
+                            if (quant < 99) {
+                              quant++;
+                            }
+                          });
+                        }),
+                        const SizedBox(
+                          width: 1,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  // trash button
+                  ButtonCircle(30, Colors.white, CupertinoIcons.trash,
+                      Alignment.center, ambratoApp, () {
+                    setState(
+                      () {
+                        if (quant < 99) {
+                          quant = 0;
+                          deleteCartItem(widget.userData.id, widget.productId)
+                              .then((value) => log(value));
+                        }
+                      },
+                    );
+                  })
+                ],
+              ),
+            ),
           ],
         ),
       ),

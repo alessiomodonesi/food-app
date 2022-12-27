@@ -62,8 +62,8 @@ class _OrderCardState extends State<OrderCard> {
               isThreeLine: false,
             ),
             Container(
-                height: 30,
-                width: 200,
+                height: 32,
+                width: 150,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(25.0)),
                   color: ambratoApp,
@@ -81,9 +81,6 @@ class _OrderCardState extends State<OrderCard> {
                       style: const TextStyle(
                         color: Colors.white,
                       ),
-                    ),
-                    const SizedBox(
-                      width: 10,
                     ),
                     const SizedBox(
                       width: 10,
