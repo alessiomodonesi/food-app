@@ -396,7 +396,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                                   widget.userData,
                                 )));
                     ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Ordine effetuato")));
+                        const SnackBar(content: Text("Ordine effettuato")));
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text(
