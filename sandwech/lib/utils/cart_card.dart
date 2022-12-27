@@ -79,7 +79,7 @@ class _CartCardState extends State<CartCard> {
               isThreeLine: false,
             ),
             Container(
-                height: 30,
+                height: 35,
                 width: 200,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(25.0)),
@@ -89,42 +89,37 @@ class _CartCardState extends State<CartCard> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ButtonCircle(
-                        30,
-                        const Color(0xFFECEBEB),
-                        CupertinoIcons.minus,
-                        Alignment.center,
-                        Colors.black, () {
-                      setState(
-                        () {
-                          if (quant > 1) {
-                            quant--;
-                            setCartItemremove(
-                                    widget.userData.id, widget.productId)
-                                .then((value) => log(value));
-                          }
-                        },
-                      );
+                    // minus button
+                    ButtonCircle(25, ambratoApp, CupertinoIcons.minus,
+                        Alignment.center, Colors.white, () {
+                      setState(() {
+                        if (quant > 1) {
+                          quant--;
+                          setCartItemremove(
+                                  widget.userData.id, widget.productId)
+                              .then((value) => log(value));
+                        }
+                      });
                     }),
                     const SizedBox(
                       width: 10,
                     ),
+
+                    // quant text
                     Text(
                       quant.toString(),
                       textScaleFactor: 1.6,
                       style: const TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ),
                     const SizedBox(
                       width: 10,
                     ),
-                    ButtonCircle(
-                        30,
-                        const Color(0xFFECEBEB),
-                        CupertinoIcons.plus,
-                        Alignment.center,
-                        Colors.black, () {
+
+                    // plus button
+                    ButtonCircle(25, ambratoApp, CupertinoIcons.plus,
+                        Alignment.center, Colors.white, () {
                       setState(
                         () {
                           if (quant < 99) {
@@ -138,20 +133,18 @@ class _CartCardState extends State<CartCard> {
                     const SizedBox(
                       width: 10,
                     ),
-                    ButtonCircle(
-                        30,
-                        const Color(0xFFECEBEB),
-                        CupertinoIcons.trash,
-                        Alignment.center,
-                        Colors.black, () {
+
+                    // trash button
+                    ButtonCircle(25, Colors.white, CupertinoIcons.trash,
+                        Alignment.center, ambratoApp, () {
                       setState(
                         () {
                           if (quant < 99) {
-                            quant++;
+                            quant = 0;
                           }
                         },
                       );
-                    }),
+                    })
                   ],
                 )),
           ],

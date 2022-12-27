@@ -55,7 +55,7 @@ class _OrderCardState extends State<OrderCard> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold, fontSize: getFontSize(20))),
               subtitle: Text(
-                "€ ${double.parse(widget.price) * widget.quantity}",
+                "€ ${double.parse(widget.price) * widget.quantity}0",
                 style: TextStyle(
                     fontWeight: FontWeight.bold, fontSize: getFontSize(18)),
               ),
@@ -79,7 +79,7 @@ class _OrderCardState extends State<OrderCard> {
                       widget.quantity.toString(),
                       textScaleFactor: 1.6,
                       style: const TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ),
                     const SizedBox(

@@ -48,6 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: const Color(0xFFFFFFFF),
         child: SingleChildScrollView(
           child: Column(
             children: [
