@@ -93,7 +93,7 @@ Future<String> addItemCart(userID, productID, quantity) async {
 }
 
 // aggiorna di 1 la quantità di un prodotto nel carrello
-Future<String> setCartItemremove(userID, productID) async {
+Future<String> setCartItemRemove(userID, productID) async {
   try {
     var response = await Dio()
         .put(setCartItemRemoveUrl, data: {"user": userID, "prod": productID});
@@ -139,8 +139,8 @@ Future<String> setOrder(
 
 Future<String> deleteCartItem(user, product) async {
   try {
-    var response =
-        await Dio().get("${deleteCartItemUrl + user}&product=$product");
+    var response = await Dio()
+        .get("${deleteCartItemUrl + user.toString()}&product=$product");
     return jsonEncode(response.data);
   } catch (e) {
     log(e.toString());

@@ -5,9 +5,8 @@ const vm = "192.168.0.230:8081";
 const raspserver = "192.168.0.22";
 const raspberryModo = "192.168.61.150";
 
-// const baseUrl = raspserver;
-const baseUrl = "$raspberryModo/food-api";
-// const baseUrl = "$raspserver/food-api";
+const baseUrl = raspserver;
+// const baseUrl = "$raspberryModo/food-api";
 // const baseUrl = "$ios/food-api";
 // const baseUrl = "$android/food-api";
 

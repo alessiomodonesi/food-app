@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -26,6 +27,14 @@ class _CartPageState extends State<CartPage> {
   List<Product> productList = List.empty(growable: true);
   String capitalize(String str) {
     return str[0].toUpperCase() + str.substring(1);
+  }
+
+  void deleteitem(int pos) {
+    setState(() {
+      Product removed = productList[pos];
+      productList.removeAt(pos);
+      print("Deleted item at position $pos, name: ${removed.name}");
+    });
   }
 
   @override
@@ -86,8 +95,7 @@ class _CartPageState extends State<CartPage> {
               height: 270,
               left: 20,
               top: 68,
-              child: Container(
-                  child: RichText(
+              child: RichText(
                 text: TextSpan(
                   text: 'Ciao, ',
                   style: const TextStyle(
@@ -101,7 +109,7 @@ class _CartPageState extends State<CartPage> {
                         style: const TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
-              ))),
+              )),
           Positioned(
               left: (MediaQuery.of(context).size.width -
                       (MediaQuery.of(context).size.width - 30)) /
@@ -155,6 +163,8 @@ class _CartPageState extends State<CartPage> {
                       productList[index].quantity,
                       productList[index].id,
                       widget.userData,
+                      uniqueID: index,
+                      removeItem: deleteitem,
                     );
                   },
                 );
