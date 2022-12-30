@@ -6,6 +6,8 @@ import 'package:sandwech/utils/text_form_field.dart';
 import 'package:sandwech/utils/signin_controller.dart';
 import 'package:get/get.dart';
 import 'package:sandwech/pages/signup.dart';
+import 'package:sandwech/pages/resetUserPass.dart';
+import 'package:flutter/gestures.dart';
 
 // ignore: must_be_immutable
 class SignInPage extends StatefulWidget {
@@ -160,12 +162,32 @@ class _SignInPageState extends State<SignInPage> {
                   padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
+                    children: [
+                      /*
                       Text('Password dimenticata',
                           style: TextStyle(
                               color: Color.fromARGB(255, 158, 11, 0),
                               fontSize: 14,
                               decoration: TextDecoration.underline)),
+                      */
+                      RichText(
+                        text: TextSpan(children: [
+                          TextSpan(
+                              text: 'Password dimenticata',
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 158, 11, 0),
+                                  fontSize: 14,
+                                  decoration: TextDecoration.underline),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ReserUserPasswordPage()));
+                                }),
+                        ]),
+                      ),
                     ],
                   ),
                 ),

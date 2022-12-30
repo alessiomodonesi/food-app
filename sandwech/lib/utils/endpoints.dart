@@ -5,7 +5,7 @@ const vm = "192.168.0.230:8081";
 const raspserver = "192.168.0.22";
 const raspberryModo = "192.168.61.150";
 
-const baseUrl = raspserver;
+const baseUrl = vm;
 // const baseUrl = "$raspberryModo/food-api";
 // const baseUrl = "$ios/food-api";
 // const baseUrl = "$android/food-api";
@@ -22,7 +22,7 @@ const addItemCartUrl = "http://$baseUrl/API/cart/setAddItem.php";
 const postSignInUrl = "http://$baseUrl/API/user/login.php";
 const getCartUrl = "http://$baseUrl/API/cart/getCart.php?user=";
 const getUserUrl = "http://$baseUrl/API/user/getUser.php?id=";
-const resetPassword = "http://$baseUrl/API/user/resetPassword.php";
+const resetPassword = "http://$baseUrl/API/user/resetPass.php";
 const getProductsLike =
     "http://$baseUrl/API/product/getProductLike.php?nome_panino=";
 const getProductsLikeWithTagUrl =

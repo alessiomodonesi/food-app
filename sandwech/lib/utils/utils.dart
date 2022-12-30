@@ -204,6 +204,17 @@ Future<List<Break>> getBreak(id) async {
   }
 }
 
+Future<bool> resetPass(mail) async {
+  try {
+    var response = await Dio().post(resetPassword, data: {"email": mail});
+    log(response.toString());
+    return true;
+  } catch (e) {
+    log(e.toString());
+    return false;
+  }
+}
+
 List<Tag> parseTag(String responseBody) {
   List parsed = jsonDecode(responseBody);
   //log(parsed.toString());
