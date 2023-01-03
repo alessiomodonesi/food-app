@@ -184,7 +184,7 @@ class _CartPageState extends State<CartPage> {
                 alignment: Alignment.bottomCenter,
                 child: Container(
                     margin: getMarginDevice(25, 25),
-                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    padding: const EdgeInsets.fromLTRB(18, 5, 18, 5),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: const Color.fromARGB(255, 158, 11, 0),

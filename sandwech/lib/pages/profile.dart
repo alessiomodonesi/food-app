@@ -85,6 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               Container(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 320),
                 margin: const EdgeInsets.only(top: 10),
                 child: Align(
                   alignment: Alignment.center,
@@ -98,27 +99,53 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
-              ProfileButton(
-                width: 150,
-                height: 35,
-                margin: getPaddingDevice(25, 275),
-                text: "Reset",
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ReserUserPasswordPage()));
-                },
-              ),
-              ProfileButton(
-                width: 150,
-                height: 35,
-                margin: const EdgeInsets.only(top: 20),
-                text: "Esci",
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignInPage()));
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ReserUserPasswordPage()));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 158, 11, 0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: const Text(
+                      'Reset',
+                      style: TextStyle(
+                        fontSize: 21,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 70,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignInPage()));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 158, 11, 0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: const Text(
+                      'Esci',
+                      style: TextStyle(
+                        fontSize: 21,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
