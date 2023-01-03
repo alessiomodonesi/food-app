@@ -83,7 +83,7 @@ class _CartCardState extends State<CartCard> {
             ),
             Container(
               height: 40,
-              width: 210,
+              width: 200,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(25.0)),
                 color: rossoScuroApp,

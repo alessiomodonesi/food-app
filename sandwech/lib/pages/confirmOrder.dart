@@ -198,11 +198,11 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                         (MediaQuery.of(context).size.width - 30)) /
                     2,
                 width: (MediaQuery.of(context).size.width) - 30,
-                top: 130,
+                top: 125,
                 child: const Material(
                   color: Colors.white,
                   child: Center(
-                    child: Text('Punto di Ritiro'),
+                    child: Text('Ritira qui'),
                   ),
                 )),
             Positioned(
@@ -210,7 +210,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                         (MediaQuery.of(context).size.width - 30)) /
                     2,
                 width: (MediaQuery.of(context).size.width) - 30,
-                top: 150,
+                top: 140,
                 child: Material(
                   color: Colors.white,
                   child: Center(
@@ -260,11 +260,11 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                         (MediaQuery.of(context).size.width - 30)) /
                     2,
                 width: (MediaQuery.of(context).size.width) - 30,
-                top: 230,
+                top: 215,
                 child: const Material(
                   color: Colors.white,
                   child: Center(
-                    child: Text('Orario di Ritiro'),
+                    child: Text('Orario'),
                   ),
                 )),
             Positioned(
@@ -272,7 +272,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                         (MediaQuery.of(context).size.width - 30)) /
                     2,
                 width: (MediaQuery.of(context).size.width) - 30,
-                top: 260,
+                top: 230,
                 child: Material(
                   color: Colors.white,
                   child: Center(
@@ -303,7 +303,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
             Positioned(
                 width: MediaQuery.of(context).size.width,
                 height: 24,
-                top: 350,
+                top: 300,
                 child: Container(
                     child: RichText(
                   textAlign: TextAlign.center,
@@ -318,7 +318,8 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                   ),
                 ))),
             Container(
-                padding: getPaddingDevice(),
+                //padding: getPaddingDevice(),
+                padding: const EdgeInsets.fromLTRB(0, 275, 0, 0),
                 child: (() {
                   if (_productList.isEmpty) {
                     return Center(
