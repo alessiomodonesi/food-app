@@ -267,6 +267,7 @@ class _ProductPageState extends State<ProductPage> {
                                 child: Text('Non disponibili'),
                               ),
                               Container(
+                                //manca da calcolare il margine automaticamente
                                 margin: const EdgeInsets.only(top: 65),
                                 /*top: calcPercentage(
                                         MediaQuery.of(context).size.height,
