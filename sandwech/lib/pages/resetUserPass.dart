@@ -64,7 +64,7 @@ class _ReserUserPasswordPageState extends State<ReserUserPasswordPage> {
                   ),
                 ),
                 Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
+                    padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
                     child: SizedBox(
                       width: (MediaQuery.of(context).size.width) - 20,
                       child: CustomTextFormField(

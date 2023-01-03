@@ -1,10 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:sandwech/utils/GNav.dart';
 import 'package:sandwech/utils/calculation.dart';
 import 'package:sandwech/utils/profile_button.dart';
-import 'package:sandwech/utils/utils.dart';
+import 'package:sandwech/pages/resetUserPass.dart';
 import 'package:sandwech/pages/signin.dart';
 import 'package:sandwech/types/user.dart';
 
@@ -18,11 +17,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  /*
-  String nomeUtente = "";
-  String cognomeUtente = "";
-  */
-
   String iniziali(String nome, String cognome) {
     if (nome.isEmpty && cognome.isEmpty) {
       return "";
@@ -105,17 +99,22 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               ProfileButton(
-                width: 300,
-                height: 50,
-                margin: getPaddingDevice(25, 230),
-                text: "Reset Password",
-                onTap: () {},
+                width: 150,
+                height: 35,
+                margin: getPaddingDevice(25, 275),
+                text: "Reset",
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ReserUserPasswordPage()));
+                },
               ),
               ProfileButton(
-                width: 300,
-                height: 50,
+                width: 150,
+                height: 35,
                 margin: const EdgeInsets.only(top: 20),
-                text: "Log Out",
+                text: "Esci",
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SignInPage()));

@@ -406,8 +406,8 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                      margin: getMarginDevice(25, 50),
-                      padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
+                      margin: getMarginDevice(25, 25),
+                      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
                         color: const Color.fromARGB(255, 158, 11, 0),
