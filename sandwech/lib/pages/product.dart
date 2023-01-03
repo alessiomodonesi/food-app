@@ -32,9 +32,11 @@ class _ProductPageState extends State<ProductPage> {
 
   int addDescrizione = 2;
   int addIngredienti = 2;
+  int addValue = 2;
 
   int moltiplicatoreNoDescrizione = 0;
   int moltiplicatoreNoIngredienti = 0;
+  int moltiplicatoreNoValue = 0;
 
   @override
   void initState() {
@@ -102,6 +104,24 @@ class _ProductPageState extends State<ProductPage> {
     }
 
     return listOfIngredients;
+  }
+
+  String checkValue(String str) {
+    if (str.isNotEmpty) {
+      setState(() {
+        if (str.length > 46) {
+          moltiplicatoreNoValue = 0;
+        } else {
+          moltiplicatoreNoValue = addValue;
+        }
+      });
+      return str;
+    } else {
+      setState(() {
+        moltiplicatoreNoValue = addValue;
+      });
+      return "Valori nutrizionali non disponibili";
+    }
   }
 
   @override
@@ -203,7 +223,7 @@ class _ProductPageState extends State<ProductPage> {
                           Column(
                             children: [
                               const SizedBox(
-                                height: 10,
+                                height: 20,
                               ),
                               const Align(
                                 alignment: Alignment.bottomLeft,
@@ -224,13 +244,35 @@ class _ProductPageState extends State<ProductPage> {
                                 alignment: Alignment.topLeft,
                                 child: Text(concatIngredients(ingredienti)),
                               ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Text(
+                                  "Valori nutrizionali",
+                                  textAlign: TextAlign.left,
+                                  textScaleFactor: 1.5,
+                                  style: TextStyle(
+                                    color: ambratoApp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              const Align(
+                                alignment: Alignment.topLeft,
+                                child: Text('Non disponibili'),
+                              ),
                               Container(
-                                margin: EdgeInsets.only(
-                                    top: calcPercentage(
+                                margin: const EdgeInsets.only(top: 65),
+                                /*top: calcPercentage(
                                         MediaQuery.of(context).size.height,
                                         9.8 +
                                             moltiplicatoreNoIngredienti +
-                                            moltiplicatoreNoDescrizione)),
+                                            moltiplicatoreNoDescrizione)),*/
                                 height: 50,
                                 width: calcPercentage(
                                     MediaQuery.of(context).size.width, 80),
