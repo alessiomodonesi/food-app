@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:sandwech/utils/colors.dart';
 import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/utils/text_form_field.dart';
+import 'package:sandwech/utils/circle_button.dart';
 
 class SignupScreen extends GetWidget<SignUpController> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -49,11 +50,19 @@ class SignupScreen extends GetWidget<SignUpController> {
                 ),
                 Row(
                   children: [
+                    Positioned(
+                      child: ButtonCircle(
+                          30,
+                          Colors.white,
+                          Icons.arrow_back_ios,
+                          const Alignment(5, 0.2),
+                          Colors.black, () {
+                        Navigator.pop(context);
+                      }),
+                    ),
                     Container(
                       margin: getMargin(
-                        left: 18,
-                        top: 1,
-                        right: 16,
+                        left: 16,
                       ),
                       child: const Text(
                         "Crea il tuo account",
