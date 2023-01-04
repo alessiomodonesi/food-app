@@ -8,6 +8,7 @@ import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/utils/text_form_field.dart';
 import 'package:sandwech/utils/circle_button.dart';
 
+// ignore: use_key_in_widget_constructors
 class SignupScreen extends GetWidget<SignUpController> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -119,7 +120,7 @@ class SignupScreen extends GetWidget<SignUpController> {
                   ),
                 ),
                 Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                     child: SizedBox(
                       child: CustomTextFormField(
                         width: 358,
@@ -162,7 +163,7 @@ class SignupScreen extends GetWidget<SignUpController> {
                   ),
                 ),
                 Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                     child: SizedBox(
                       width: (MediaQuery.of(context).size.width),
                       child: CustomTextFormField(
@@ -206,14 +207,14 @@ class SignupScreen extends GetWidget<SignUpController> {
                   ),
                 ),
                 Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                     child: SizedBox(
                       width: (MediaQuery.of(context).size.width),
                       child: CustomTextFormField(
                         width: 358,
                         focusNode: FocusNode(),
                         controller: signUpController.emailController,
-                        hintText: "Email",
+                        hintText: "Indirizzo email",
                         margin: getMargin(
                           left: 16,
                           top: 1,
@@ -251,7 +252,7 @@ class SignupScreen extends GetWidget<SignUpController> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -324,7 +325,7 @@ class SignupScreen extends GetWidget<SignUpController> {
                       right: 25,
                     ),
                     child: const Text(
-                      "Conferma Password",
+                      "Conferma",
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.left,
                       style: TextStyle(
@@ -338,7 +339,7 @@ class SignupScreen extends GetWidget<SignUpController> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

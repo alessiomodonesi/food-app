@@ -1,16 +1,14 @@
-import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:sandwech/utils/calculation.dart';
 import 'package:sandwech/utils/size.dart';
-import 'package:sandwech/utils/GNav.dart';
+import 'package:sandwech/utils/gnav.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/cart_card.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/user.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:sandwech/pages/confirmOrder.dart';
+import 'package:sandwech/pages/confirm_order.dart';
 
 class CartPage extends StatefulWidget {
   final User userData;
@@ -33,6 +31,7 @@ class _CartPageState extends State<CartPage> {
     setState(() {
       Product removed = productList[pos];
       productList.removeAt(pos);
+      // ignore: avoid_print
       print("Deleted item at position $pos, name: ${removed.name}");
     });
   }

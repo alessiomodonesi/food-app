@@ -1,6 +1,6 @@
+// ignore: file_names
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:sandwech/pages/homepage.dart';
 import 'package:sandwech/types/break.dart';
@@ -9,7 +9,7 @@ import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/user.dart';
 import 'package:sandwech/utils/utils.dart';
-import 'package:sandwech/utils/GNav.dart';
+import 'package:sandwech/utils/gnav.dart';
 import 'package:sandwech/utils/order_cart.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/pages/product.dart';
@@ -28,8 +28,8 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
   List<Product> _productList = List.empty(growable: true);
   List<Pickup> _pickupList = List.empty();
   final List<Break> _breakList = List.empty(growable: true);
-  Pickup pickupPlace = Pickup(id: "", name: "");
-  Break breakTime = Break(id: "", time: "");
+  Pickup pickupPlace = const Pickup(id: "", name: "");
+  Break breakTime = const Break(id: "", time: "");
   String jsonOrder = "";
 
   int debugUserID = 4;
@@ -84,6 +84,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
     return const EdgeInsets.only(top: 0);
   }
 
+  // ignore: no_leading_underscores_for_local_identifiers
   double getOrderTotalPrice(List<Product> _products) {
     double totalPrice = 0;
 
@@ -93,6 +94,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
     return totalPrice;
   }
 
+  // ignore: no_leading_underscores_for_local_identifiers
   List<String> productsListJson(List<Product> _products) {
     List<String> list = List.empty(growable: true);
 
@@ -104,6 +106,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
     return list;
   }
 
+  // ignore: no_leading_underscores_for_local_identifiers
   List<String> productsList(List<Product> _products) {
     List<String> list = List.empty(growable: true);
 
@@ -177,8 +180,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                 height: 270,
                 left: 40,
                 top: 68,
-                child: Container(
-                    child: RichText(
+                child: RichText(
                   text: TextSpan(
                     text: 'Ciao, ',
                     style: const TextStyle(
@@ -192,7 +194,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                           style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
-                ))),
+                )),
             Positioned(
                 left: (MediaQuery.of(context).size.width -
                         (MediaQuery.of(context).size.width - 30)) /
@@ -245,7 +247,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                                             setState(() {
                                               _breakList.add(bbreak);
                                               breakTime =
-                                                  Break(id: "", time: "");
+                                                  const Break(id: "", time: "");
                                             }),
                                           }
                                       }),
@@ -304,8 +306,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                 width: MediaQuery.of(context).size.width,
                 height: 24,
                 top: 300,
-                child: Container(
-                    child: RichText(
+                child: RichText(
                   textAlign: TextAlign.center,
                   text: const TextSpan(
                     text: "Il mio ordine",
@@ -316,7 +317,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                       fontFamily: 'Inter',
                     ),
                   ),
-                ))),
+                )),
             Container(
                 //padding: getPaddingDevice(),
                 padding: const EdgeInsets.fromLTRB(0, 275, 0, 0),

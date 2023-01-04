@@ -6,11 +6,12 @@ import 'package:sandwech/utils/text_form_field.dart';
 import 'package:sandwech/utils/signin_controller.dart';
 import 'package:get/get.dart';
 import 'package:sandwech/pages/signup.dart';
-import 'package:sandwech/pages/resetUserPass.dart';
+import 'package:sandwech/pages/reset_user_pass.dart';
 import 'package:flutter/gestures.dart';
 
 // ignore: must_be_immutable
 class SignInPage extends StatefulWidget {
+  // ignore: unused_field
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   SignInPage({super.key});
@@ -87,7 +88,7 @@ class _SignInPageState extends State<SignInPage> {
                         width: (MediaQuery.of(context).size.width),
                         focusNode: FocusNode(),
                         controller: signInController.emailController,
-                        hintText: "Email",
+                        hintText: "Indirizzo email",
                         margin: getMargin(
                           left: 16,
                           top: 1,

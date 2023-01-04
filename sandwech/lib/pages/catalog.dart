@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:sandwech/pages/searchResult.dart';
+import 'package:sandwech/pages/search_result.dart';
 import 'package:sandwech/types/product.dart';
 import 'package:sandwech/types/product_tag.dart';
 import 'package:sandwech/types/user.dart';
 import 'package:sandwech/utils/utils.dart';
-import 'package:sandwech/utils/GNav.dart';
+import 'package:sandwech/utils/gnav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/utils/catalog_card.dart';
@@ -24,6 +24,7 @@ class CatalogPage extends StatefulWidget {
 
 class _CatalogPageState extends State<CatalogPage> {
   String catalogName = "";
+  // ignore: prefer_final_fields
   List<Product> _productList = List.empty(growable: true);
   List<ProductTag> _productTagList = List.empty();
   //String nomeUtente = "";
@@ -150,8 +151,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 height: 270,
                 left: 40,
                 top: 68,
-                child: Container(
-                    child: RichText(
+                child: RichText(
                   text: TextSpan(
                     text: 'Ciao, ',
                     style: const TextStyle(
@@ -165,7 +165,7 @@ class _CatalogPageState extends State<CatalogPage> {
                           style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
-                ))),
+                )),
             Positioned(
                 left: (MediaQuery.of(context).size.width -
                         (MediaQuery.of(context).size.width - 30)) /
@@ -209,8 +209,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 height: 24,
                 left: 40,
                 top: 175,
-                child: Container(
-                    child: RichText(
+                child: RichText(
                   text: TextSpan(
                     text: catalogName,
                     style: const TextStyle(
@@ -219,7 +218,7 @@ class _CatalogPageState extends State<CatalogPage> {
                         fontSize: 23,
                         fontFamily: 'Inter'),
                   ),
-                ))),
+                )),
             Container(
                 padding: getPaddingDevice(),
                 child: (() {

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sandwech/types/user.dart';
 import 'package:sandwech/utils/utils.dart';
 import 'package:sandwech/utils/circle_button.dart';
-import 'package:sandwech/utils/GNav.dart';
+import 'package:sandwech/utils/gnav.dart';
 import 'package:sandwech/utils/calculation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/cupertino.dart';

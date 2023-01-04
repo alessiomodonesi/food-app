@@ -20,6 +20,7 @@ class SignUpController extends GetxController {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
+  // ignore: non_constant_identifier_names
   Rx<SignUpModel> SignUpModelObj = SignUpModel().obs;
 
   Rx<bool> isShowPassword = false.obs;
@@ -31,6 +32,7 @@ class SignUpController extends GetxController {
   };
 
   @override
+  // ignore: unnecessary_overrides
   void onReady() {
     super.onReady();
   }
@@ -45,6 +47,7 @@ class SignUpController extends GetxController {
     confirmPasswordController.dispose();
   }
 
+  // ignore: non_constant_identifier_names
   void PostSignUp(context) async {
     var dio = Dio();
 

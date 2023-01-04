@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sandwech/pages/catalog.dart';
 import 'package:sandwech/types/user.dart';
-import 'package:sandwech/utils/GNav.dart';
-import 'package:sandwech/utils/utils.dart';
+import 'package:sandwech/utils/gnav.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
 
 class HomePage extends StatefulWidget {
@@ -111,8 +110,7 @@ class _HomePageState extends State<HomePage> {
                     height: 270,
                     left: 20,
                     top: 68,
-                    child: Container(
-                        child: RichText(
+                    child: RichText(
                       text: TextSpan(
                         text: 'Ciao, ',
                         style: const TextStyle(
@@ -127,48 +125,46 @@ class _HomePageState extends State<HomePage> {
                                   const TextStyle(fontWeight: FontWeight.bold)),
                         ],
                       ),
-                    ))),
+                    )),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 100, 0, 10),
                   child: Expanded(
-                    child: Container(
-                      child: VerticalCardPager(
-                          titles: titles.keys.toList(), // required
-                          images: images, // required
-                          textStyle: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold), // optional
-                          onPageChanged: (page) {
-                            // optional
-                          },
-                          onSelectedItem: (index) {
-                            if (!titles.values
-                                .toList()
-                                .contains((index + 1).toString())) {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          HomePage(widget.userData)));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(content: Text("Errore")));
-                            } else {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CatalogPage(
-                                          int.parse(
-                                              titles.values.toList()[index]),
-                                          widget.userData)));
-                            }
-                            // optional
-                          },
-                          initialPage: 0, // optional
-                          align: ALIGN.CENTER // optional
-                          ),
-                    ),
+                    child: VerticalCardPager(
+                        titles: titles.keys.toList(), // required
+                        images: images, // required
+                        textStyle: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold), // optional
+                        onPageChanged: (page) {
+                          // optional
+                        },
+                        onSelectedItem: (index) {
+                          if (!titles.values
+                              .toList()
+                              .contains((index + 1).toString())) {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        HomePage(widget.userData)));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text("Errore")));
+                          } else {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CatalogPage(
+                                        int.parse(
+                                            titles.values.toList()[index]),
+                                        widget.userData)));
+                          }
+                          // optional
+                        },
+                        initialPage: 0, // optional
+                        align: ALIGN.CENTER // optional
+                        ),
                   ),
-                )
+                ),
               ],
             )),
         bottomNavigationBar: GNavi(0, widget.userData));

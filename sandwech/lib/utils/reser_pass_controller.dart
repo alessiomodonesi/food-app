@@ -1,11 +1,8 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-
 import 'package:flutter/material.dart';
 import 'package:sandwech/pages/signin.dart';
-
 import 'package:sandwech/utils/validation.dart';
 import 'package:sandwech/utils/endpoints.dart';
 import 'package:sandwech/utils/error_dialog.dart';
@@ -42,6 +39,7 @@ class ReserPassController extends GetxController {
               },
             ));
         if (response.statusCode == 200) {
+          // ignore: avoid_print
           print(json.encode(response));
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => SignInPage()));

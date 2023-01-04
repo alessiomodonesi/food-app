@@ -1,7 +1,10 @@
+// ignore_for_file: use_key_in_widget_constructors, constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:sandwech/utils/size.dart';
 import 'package:sandwech/utils/colors.dart';
 
+// ignore: must_be_immutable
 class CustomTextFormField extends StatelessWidget {
   CustomTextFormField(
       {this.shape,

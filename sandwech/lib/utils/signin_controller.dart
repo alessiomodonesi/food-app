@@ -1,10 +1,7 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:sandwech/types/user.dart';
 import 'package:sandwech/utils/validation.dart';
 import 'package:sandwech/utils/endpoints.dart';
@@ -18,6 +15,7 @@ class SignInController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  // ignore: non_constant_identifier_names
   Rx<SignInModel> SignInModelObj = SignInModel().obs;
 
   Rx<bool> isShowPassword = false.obs;
@@ -28,6 +26,7 @@ class SignInController extends GetxController {
   };
 
   @override
+  // ignore: unnecessary_overrides
   void onReady() {
     super.onReady();
   }

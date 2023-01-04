@@ -1,12 +1,9 @@
-import 'dart:developer';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:sandwech/types/product.dart';
-import 'package:sandwech/types/product_tag.dart';
 import 'package:sandwech/types/user.dart';
 import 'package:sandwech/utils/utils.dart';
-import 'package:sandwech/utils/GNav.dart';
+import 'package:sandwech/utils/gnav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sandwech/utils/circle_button.dart';
 import 'package:sandwech/utils/catalog_card.dart';
@@ -26,7 +23,6 @@ class SearchResultPage extends StatefulWidget {
 
 class _SearchResultWidget extends State<SearchResultPage> {
   String catalogName = "";
-  List<ProductTag> _productTagList = List.empty();
 
   int debugUserID = 4;
 
@@ -124,8 +120,7 @@ class _SearchResultWidget extends State<SearchResultPage> {
                 height: 270,
                 left: 40,
                 top: 68,
-                child: Container(
-                    child: RichText(
+                child: RichText(
                   text: TextSpan(
                     text: 'Ciao, ',
                     style: const TextStyle(
@@ -139,7 +134,7 @@ class _SearchResultWidget extends State<SearchResultPage> {
                           style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
-                ))),
+                )),
             Positioned(
                 left: (MediaQuery.of(context).size.width -
                         (MediaQuery.of(context).size.width - 30)) /
@@ -182,8 +177,7 @@ class _SearchResultWidget extends State<SearchResultPage> {
                 height: 24,
                 left: 40,
                 top: 175,
-                child: Container(
-                    child: RichText(
+                child: RichText(
                   text: TextSpan(
                     text: catalogName,
                     style: const TextStyle(
@@ -192,7 +186,7 @@ class _SearchResultWidget extends State<SearchResultPage> {
                         fontSize: 23,
                         fontFamily: 'Inter'),
                   ),
-                ))),
+                )),
             Container(
                 padding: getPaddingDevice(),
                 child: (() {

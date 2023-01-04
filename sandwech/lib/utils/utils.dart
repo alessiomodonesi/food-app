@@ -45,6 +45,7 @@ Future<List<Product>> getProducts(id) async {
   }
 }
 
+// ignore: non_constant_identifier_names
 Future<List<Product>> getProductsLikeWithTag(name, int id_cat) async {
   try {
     Response response =
@@ -155,7 +156,7 @@ Future<User> getUser(userID) async {
     return parseGetUser(jsonEncode(response.data));
   } catch (e) {
     log(e.toString());
-    return User(name: "", surname: "");
+    return User(name: "", surname: "", email: "");
   }
 }
 
