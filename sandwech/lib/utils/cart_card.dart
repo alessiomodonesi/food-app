@@ -87,7 +87,7 @@ class _CartCardState extends State<CartCard> {
               width: 200,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(25.0)),
-                color: rossoScuroApp,
+                color: ambratoApp,
                 border: Border.all(color: Colors.white, width: 2),
               ),
               child: Row(
@@ -109,7 +109,7 @@ class _CartCardState extends State<CartCard> {
                           width: 1,
                         ),
                         // minus button
-                        ButtonCircle(25, rossoScuroApp, CupertinoIcons.minus,
+                        ButtonCircle(25, ambratoApp, CupertinoIcons.minus,
                             Alignment.center, Colors.white, () {
                           setState(() {
                             if (quant > 1) {
@@ -128,7 +128,7 @@ class _CartCardState extends State<CartCard> {
                           ),
                         ),
                         // plus button
-                        ButtonCircle(25, rossoScuroApp, CupertinoIcons.plus,
+                        ButtonCircle(25, ambratoApp, CupertinoIcons.plus,
                             Alignment.center, Colors.white, () {
                           setState(() {
                             if (quant < 99) {
@@ -149,7 +149,7 @@ class _CartCardState extends State<CartCard> {
                     width: 30,
                   ),
                   // trash button
-                  ButtonCircle(30, rossoScuroApp, CupertinoIcons.trash,
+                  ButtonCircle(30, ambratoApp, CupertinoIcons.trash,
                       Alignment.center, Colors.white, () {
                     setState(
                       () {
