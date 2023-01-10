@@ -37,12 +37,12 @@ class _OrderCardState extends State<OrderCard> {
   Widget build(BuildContext context) {
     // ignore: sized_box_for_whitespace
     return Container(
-      height: 140,
+      height: 130,
       child: Card(
         // ignore: prefer_const_constructors
         elevation: 10,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        margin: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+        margin: const EdgeInsets.only(top: 10, bottom: 10, left: 25, right: 25),
         color: const Color.fromARGB(255, 236, 235, 235),
         child: Column(
           children: [
@@ -63,8 +63,8 @@ class _OrderCardState extends State<OrderCard> {
               isThreeLine: false,
             ),
             Container(
-                height: 32,
-                width: 150,
+                height: 30,
+                width: 100,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(25.0)),
                   color: ambratoApp,

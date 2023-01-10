@@ -69,26 +69,26 @@ class _ProfilePageState extends State<ProfilePage> {
                     borderRadius: BorderRadius.circular(25),
                     color: const Color(0xFFEE0F38)),
               )),
-          Positioned(
-              width: 400,
-              height: 270,
-              left: 20,
-              top: 68,
-              child: RichText(
-                text: TextSpan(
-                  text: 'Ciao, ',
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 20,
-                      fontFamily: 'Inter'),
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: widget.userData.name,
-                        style: const TextStyle(fontWeight: FontWeight.bold)),
-                  ],
-                ),
-              )),
+          // Positioned(
+          //     width: 400,
+          //     height: 270,
+          //     left: 20,
+          //     top: 68,
+          //     child: RichText(
+          //       text: TextSpan(
+          //         text: 'Ciao, ',
+          //         style: const TextStyle(
+          //             color: Colors.black,
+          //             fontStyle: FontStyle.normal,
+          //             fontSize: 20,
+          //             fontFamily: 'Inter'),
+          //         children: <TextSpan>[
+          //           TextSpan(
+          //               text: widget.userData.name,
+          //               style: const TextStyle(fontWeight: FontWeight.bold)),
+          //         ],
+          //       ),
+          //     )),
           SingleChildScrollView(
             child: Column(
               children: [
@@ -152,7 +152,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       capText(widget.userData.email).toLowerCase(),
                       style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 15,
+                        fontSize: 16,
                       ),
                     ),
                   ),

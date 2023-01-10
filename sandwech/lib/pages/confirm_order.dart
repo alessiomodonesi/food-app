@@ -320,7 +320,7 @@ class _ConfirmOrderWidgetState extends State<ConfirmOrderWidget> {
                 )),
             Container(
                 //padding: getPaddingDevice(),
-                padding: const EdgeInsets.fromLTRB(0, 275, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 300, 0, 0),
                 child: (() {
                   if (_productList.isEmpty) {
                     return Center(
