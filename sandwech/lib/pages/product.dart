@@ -268,12 +268,12 @@ class _ProductPageState extends State<ProductPage> {
                               ),
                               Container(
                                 //manca da calcolare il margine automaticamente
-                                margin: const EdgeInsets.only(top: 65),
-                                /*top: calcPercentage(
+                                margin: EdgeInsets.only(
+                                    top: calcPercentage(
                                         MediaQuery.of(context).size.height,
-                                        9.8 +
+                                        4.8 +
                                             moltiplicatoreNoIngredienti +
-                                            moltiplicatoreNoDescrizione)),*/
+                                            moltiplicatoreNoDescrizione)),
                                 height: 50,
                                 width: calcPercentage(
                                     MediaQuery.of(context).size.width, 80),

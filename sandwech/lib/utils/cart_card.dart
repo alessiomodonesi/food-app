@@ -154,10 +154,9 @@ class _CartCardState extends State<CartCard> {
                     setState(
                       () {
                         if (quant < 99) {
-                          quant = 0;
+                          widget.removeItem(widget.uniqueID);
                           deleteCartItem(widget.userData.id, widget.productId)
                               .then((value) => log(value));
-                          widget.removeItem(widget.uniqueID);
                         }
                       },
                     );

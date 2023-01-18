@@ -144,7 +144,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 285),
+                  padding: EdgeInsets.only(
+                      bottom: calcPercentage(
+                          MediaQuery.of(context).size.height, 30)),
                   margin: const EdgeInsets.only(top: 25),
                   child: Align(
                     alignment: Alignment.center,
