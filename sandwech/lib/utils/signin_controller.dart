@@ -1,4 +1,6 @@
 import 'dart:convert';
+//import 'dart:html';
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -42,13 +44,16 @@ class SignInController extends GetxController {
   void PostSignIn(context) async {
     var dio = Dio();
 
+    log(emailController.text);
+    log(passwordController.text);
+
     if (isValidEmail(emailController.text) &&
         passwordController.text.isNotEmpty) {
       try {
         var response = await dio.post(postSignInUrl,
             data: {
-              'email': emailController.text,
-              'password': passwordController.text
+              "email": emailController.text,
+              "password": passwordController.text
             },
             options: Options(
               headers: {
@@ -59,6 +64,7 @@ class SignInController extends GetxController {
                 return status! < 500;
               },
             ));
+
         if (response.statusCode == 200) {
           int idUser = int.parse(jsonDecode(response.toString())["userID"]);
           var userResponse = await Dio().get(getUserUrl + idUser.toString());
@@ -75,6 +81,7 @@ class SignInController extends GetxController {
           return;
         }
       } catch (e) {
+        //log(jsonEncode(e));
         showDialogError(context, 'Impossibile accedere',
             'Impossibile contattare il server. Controlla la connessione e riprova.');
         return;
